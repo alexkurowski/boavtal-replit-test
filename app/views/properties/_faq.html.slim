@@ -1,0 +1,11 @@
+- body = t "#{faq}"
+
+.faq
+  .btn.btn-link.px-0 = t "property.faq.label"
+
+  .faq-body.mt-10 style='display: none;'
+    - body.each do |key, text|
+      - if key.to_s.starts_with? 'q'
+        .faq-question.h4 = text.html_safe
+      - else
+        .faq-answer = text.html_safe

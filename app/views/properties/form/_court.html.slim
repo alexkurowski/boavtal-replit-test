@@ -1,0 +1,36 @@
+= property_panel 'court' do
+  - t('property.court.info').each do |p|
+    p = p
+
+  .form-group
+    label = t 'property.court.registration_date'
+    .input-group
+      span.input-group-addon
+        i.icon.wb-calendar aria-hidden="true"
+      = @f.text_field 'data[court][registration_date]',
+        class: 'form-control',
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required'),
+          plugin: 'datepicker',
+          container: '.page',
+          language: 'sv' }
+    .parsley-error
+
+  .form-group
+    label = t 'property.court.court'
+
+    = @f.select 'data[court][court]',
+      options_for_select(Court.pluck(:name, :id)),
+      { prompt: t('property.court.court_prompt') },
+      { class: "form-control",
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required') } }
+
+  .form-group
+    label = t 'property.court.case_number'
+    = @f.text_field 'data[court][case_number]',
+      class: 'form-control case-number-field'
+
+  p = t 'property.court.note'

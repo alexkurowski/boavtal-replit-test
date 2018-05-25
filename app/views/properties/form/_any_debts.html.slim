@@ -1,0 +1,19 @@
+= property_panel 'any_debts' do
+  .form-group.mb-0
+    p.mb-20 = t 'property.any_debts.info'
+    label = t 'property.any_debts.label'
+    .radio-custom.radio-primary
+      = @f.radio_button 'data[assets_debts][any_debts]', true,
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required'),
+          slide_target: '.if-any-debts' }
+      = @f.label 'data[assets_debts][any_debts]_true', t('yes').capitalize
+    .radio-custom.radio-primary
+      = @f.radio_button 'data[assets_debts][any_debts]', false,
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required'),
+          slide_target: '.if-any-debts' }
+      = @f.label 'data[assets_debts][any_debts]_false', t('no').capitalize
+    .parsley-error

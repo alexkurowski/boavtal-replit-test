@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title Bodelning
+
+    meta charset="utf-8"
+    meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"
+    meta name="ROBOTS" content="NOINDEX, NOFOLLOW"
+    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+
+    = csrf_meta_tags
+
+    link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"
+    link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"
+
+    link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+
+  body.layout-boxed class="#{controller.controller_name}"
+
+    = render 'layouts/header'
+
+    .page role='main'
+      .page-content.container-fluid
+        = yield
+
+    = javascript_include_tag 'theme', 'data-turbolinks-track': 'reload'

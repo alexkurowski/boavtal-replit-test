@@ -1,0 +1,23 @@
+= property_panel 'debts' do
+  - t('property.debts.info').each do |p|
+    p = p
+
+  = faq_section 'property.assets.faq'
+
+  .template
+    = debt_partial 'template'
+
+  .debts
+    - @property.data(:debts).blank?
+      = debt_partial
+
+    - debt_types = @property.data(:debts)
+    - unless debt_types.blank?
+      - debt_types.each do |type, debts|
+        - unless debts.blank?
+          - debts.each do |id, debt|
+            = debt_partial id, type
+
+  .add-debt.mx-20.mt-60
+    label.label.h4.mr-10 = t 'property.debts.add.label'
+    a.btn.btn-primary href='#' = t 'property.debts.add.button'

@@ -1,0 +1,22 @@
+= property_panel 'compensation' do
+  - t('property.compensation.info').each do |line|
+    p = line
+
+  .form-group.mb-40
+    .radio-custom.radio-primary
+      = @f.radio_button 'data[compensation][decide]', true,
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required'),
+          slide_target: '.if-compensation' }
+      = @f.label 'data[compensation][decide]_true', t('yes').capitalize
+    .radio-custom.radio-primary
+      = @f.radio_button 'data[compensation][decide]', false,
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required'),
+          slide_target: '.if-compensation' }
+      = @f.label 'data[compensation][decide]_false', t('no').capitalize
+    .parsley-error
+
+  = faq_section 'property.compensation.faq'

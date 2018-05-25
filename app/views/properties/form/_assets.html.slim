@@ -1,0 +1,23 @@
+= property_panel 'assets' do
+  - t('property.assets.info').each do |p|
+    p = p
+
+  = faq_section 'property.assets.faq'
+
+  .template
+    = asset_partial 'template'
+
+  .assets
+    - if @property.data(:assets).blank?
+      = asset_partial
+
+    - asset_types = @property.data(:assets)
+    - unless asset_types.blank?
+      - asset_types.each do |type, assets|
+        - unless assets.blank?
+          - assets.each do |id, asset|
+            = asset_partial id, type
+
+  .add-asset.mx-20.mt-60
+    label.label.h4.mr-10 = t 'property.assets.add.label'
+    a.btn.btn-primary href='#' = t 'property.assets.add.button'

@@ -1,0 +1,52 @@
+@import "font-awesome";
+
+.navbar-default .navbar-toolbar > .nav-item > a {
+  padding-bottom: 19px;
+  border-bottom: 3px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+}
+
+.navbar-default .navbar-toolbar > .nav-item.active > a {
+  color: #17b3a3;
+  background: transparent;
+  border-bottom: 3px solid #17b3a3;
+}
+
+.site-navbar .navbar-container {
+  margin-left: 0;
+}
+
+.site-navbar .navbar-header {
+  width: initial;
+}
+
+.page {
+  min-height: 100%;
+}
+
+input.labelauty + label > span.labelauty-unchecked-image {
+  @extend .fa;
+
+  background-image: none;
+  height: 12px;
+  opacity: .65;
+  font-size: 8px;
+  text-align: center;
+
+  &:before {
+    @extend .fa-circle:before;
+  }
+}
+
+input.labelauty + label > span.labelauty-checked-image {
+  @extend .fa;
+
+  background-image: none;
+  font-size: 18px;
+  text-align: center;
+
+  &:before {
+    @extend .fa-check, :before;
+  }
+}

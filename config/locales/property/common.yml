@@ -1,0 +1,6 @@
+sv: &sv
+  'yes': Ja
+  'no': Nej
+
+en:
+  <<: *sv

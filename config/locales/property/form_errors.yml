@@ -1,0 +1,7 @@
+sv: &sv
+  property:
+    error:
+      required: Ni måste svara på frågan.
+
+en:
+  <<: *sv

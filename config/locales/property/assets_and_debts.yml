@@ -1,0 +1,215 @@
+sv: &sv
+  division_of_property:
+    assets:
+      realestate:
+        marketvalue:
+          - 'Marknadsvärde:'
+          - 'Ange vad hela tillgången är värd och inte endast vad en andel är värd.'
+          - 'TEXT_FIELD'
+        purchaseprice:
+          - 'Anskaffningsvärde:'
+          - 'Här anges det pris som fastigheten köptes för. Om du har köpt en tomt och därefter byggt en byggnad på tomten är det i regel inköpspriset samt nybyggnadskostnaderna som ska anges här.'
+          - 'TEXT_FIELD'
+        acquisitioncost:
+          - 'Anskaffningskostnader:'
+          - 'Tänk på att kostnader för att få lagfart och sådana kostnader ni har haft för inteckningar får räknas in i anskaffningskostnaderna.'
+          - 'TEXT_FIELD'
+        faq:
+          q1: 'Jag har inga uppgifter om anskaffningskostnad?'
+          a1: 'Om du inte har uppgifter om anskaffningskostnad kan du istället använda dig av schablonmetoden:'
+          a2: 'Ditt inköpspris är köpeskillingen för bostaden (inklusive mark) med tillägg för inköpsprovision, lagfartskostnad och eventuell utgift för inteckning i fastigheten. Om du fått bostaden genom arv eller gåva övertar du den tidigare ägarens inköpspris. Tillägg får sedan göras för eventuella förbättringsutgifter.'
+          a3: 'Om du har köpt din fastighet före 1952 finns möjlighet att beräkna inköpspriset schablonmässigt. Det gäller även fastigheter som du fått i gåva eller ärvt om den tidigare ägaren köpte fastigheten före 1952. Inköpspriset kan då beräknas till 150 procent av fastighetens taxeringsvärde år 1952. Kan du visa att inköpspriset för fastigheten översteg 150 procent av 1952 års taxeringsvärde, får du använda det verkliga inköpspriset.'
+        agentfee:
+          - 'Mäklararvode:'
+          - 'Mäklararvodet är ett fiktivt värde som räknas med för att få fram ett nettovärde på fastigheten. Schablonvärdet brukar vara runt 2%.'
+          - 'TEXT_FIELD'
+        improvementcost:
+          - 'Förbättringsutgifter:'
+          - 'Man har rätt att göra avdrag för förbättringsutgifter. Det finns två typer av förbättringsutgifter och det är grundförbättringar och reparationer och underhåll.'
+          - 'Som grundförbättringar räknas kortfattat nybyggnad, tillbyggnad och ombyggnad. Även andra åtgärder kan i vissa fall räknas som grundförbättringar.'
+          - 'Som förbättrande reparationer och underhåll räknas kortfattat sådant som görs för att bibehålla bostadens egenskaper.'
+          - 'TEXT_FIELD'
+        deferral:
+          - 'Uppskov:'
+          - 'Uppskov är att skjuta upp betalning av vinstskatt efter försäljning av bostad. När försäljningen deklareras kan skatten antingen betalas direkt eller skjutas upp. Om du inte har något uppskov så fyller du i fältet med en nolla.'
+          - 'TEXT_FIELD'
+        name:
+          - 'Fastighetsbeteckning:'
+          - 'TEXT_FIELD'
+        city:
+          - 'Kommun:'
+          - 'TEXT_FIELD'
+        _:
+          - 'OBS! Har du en tomträtt så kan det i vissa avseende skilja sig skattemässigt från fastighet. Du måste då ta kontakt med våra jurister eller med lantmäteriet som du når på Telefon: 0771-63 63 63'
+      apartment:
+        marketvalue:
+          - 'Marknadsvärde:'
+          - 'Ange vad hela tillgången är värd och inte endast vad en andel är värd.'
+          - 'TEXT_FIELD'
+        purchaseprice:
+          - 'Anskaffningsvärde:'
+          - 'Eventuell inköpsprovision samt kostnader för upptagande av bolån (inteckning) får räknas in i anskaffningsvärdet.'
+          - 'TEXT_FIELD'
+        agentfee:
+          - 'Mäklararvode:'
+          - 'Mäklararvodet är ett fiktivt värde som räknas med för att få fram ett nettovärde på fastigheten. Schablonvärdet brukar vara runt 2%.'
+          - 'TEXT_FIELD'
+        salescosts:
+          - 'Övriga försäljningskostnader:'
+          - 'Du har rätt till avdrag för utgifter som har samband med försäljningen. Hit räknas advokatutgifter, utgifter för resor som görs i syfte att sälja bostadsrätten (exempelvis för visning, till mäklare, för att skriva på kontrakt och lämna nycklar) samt utgifter för homestyling.'
+          - 'Du kan inte få avdrag för städning och trädgårdsskötsel, flyttning och andra privata kostnader.'
+          - 'TEXT_FIELD'
+        improvementcost:
+          - 'Förbättringsutgifter:'
+          - 'Man har rätt att göra avdrag för förbättringsutgifter. Det finns två typer av förbättringsutgifter och det är grundförbättringar och reparationer och underhåll.'
+          - 'Som grundförbättringar räknas kortfattat nybyggnad, tillbyggnad och ombyggnad. Även andra åtgärder kan i vissa fall räknas som grundförbättringar.'
+          - 'Som förbättrande reparationer och underhåll räknas kortfattat sådant som görs för att bibehålla bostadens egenskaper.'
+          - 'TEXT_FIELD'
+        capitalinjection:
+          - 'Kapitaltillskott:'
+          - 'Ibland så kan medlemmar i en bostadsrättsförening ha betalat in en extra summa pengar till bostadsrättsföreningen för att stärka bostadsrättsföreningens ekonomi. Detta kallas för kapitaltillskott. Om du inte har betalat något kapitaltillskott till föreningen så fyller du i fältet med en nolla.'
+          - 'TEXT_FIELD'
+        salefunds:
+          - 'Reparationsfond vid försäljningen:'
+          - 'En del bostadsrättsföreningar har en så kallad reparationsfond knuten till varje lägenhet. Varje månad sätts då en del av månadsavgiften in på ett särskilt reparationskonto. Lägenhetsägaren får sedan använda dessa pengar när han eller hon ska renovera sin lägenhet. Om det inte finns någon reparationsfond då så fyller du i fältet med en nolla.'
+          - 'TEXT_FIELD'
+        purchasefunds:
+          - 'Reparationsfond vid köpet:'
+          - 'En del bostadsrättsföreningar har en så kallad reparationsfond knuten till varje lägenhet. Varje månad sätts då en del av månadsavgiften in på ett särskilt reparationskonto. Lägenhetsägaren får sedan använda dessa pengar när han eller hon ska renovera sin lägenhet. Om det inte finns någon reparationsfond då så fyller du i fältet med en nolla.'
+          - 'TEXT_FIELD'
+        deferral:
+          - 'Uppskov:'
+          - 'Uppskov är att skjuta upp betalning av vinstskatt efter försäljning av bostad. När försäljningen deklareras kan skatten antingen betalas direkt eller skjutas upp. Om du inte har något uppskov så fyller du i fältet med en nolla.'
+          - 'TEXT_FIELD'
+        number:
+          - 'Lägenhetsnummer:'
+          - 'TEXT_FIELD'
+        name:
+          - 'Bostadsrättsförening:'
+          - 'TEXT_FIELD'
+        address:
+          - 'Adress:'
+          - 'TEXT_FIELD'
+        zip:
+          - 'Postnummer:'
+          - 'TEXT_FIELD'
+        ort:
+          - 'Postort:'
+          - 'TEXT_FIELD'
+      car:
+        value:
+          - 'Bilens värde:'
+          - 'TEXT_FIELD'
+        registrationnumber:
+          - 'Bilens registreringsnummer:'
+          - 'TEXT_FIELD'
+      security:
+        _:
+          - 'Detta avser dig som har värdepapper på ett värdepapperskonto (VP-konto) alternativt på en depå.'
+        salesprice:
+          - 'Försäljningspris:'
+          - 'TEXT_FIELD'
+        costamount:
+          - 'Omkostnadsbelopp:'
+          - 'Omkostnadsbelopp är summan av dina anskaffningsutgifter, oftast ett belopp du sammanlagt har betalt för dina värdepapper.'
+          - 'Du som inte har någon uppgift på vad du köpte aktierna för kan använda schablonmetoden. För att ta reda på mer information rekommenderar vi dig att kontakta Skatteverket och läsa på:'
+          - 'TEXT_FIELD'
+        account:
+          - 'Konto/Depå:'
+          - 'TEXT_FIELD'
+        bank:
+          - 'Bank:'
+          - 'TEXT_FIELD'
+      funds:
+        _1:
+          - 'Detta avser dig som har ett fondkonto.'
+          - 'Om du säljer dina fonder med vinst beskattas vinsten med 30 procent. Om du har ditt fondinnehav på ett Investeringssparkonto (ISK) eller i en kapitalförsäkring betalar du inte kapitalvinstskatt varje gång du säljer med vinst, utan en schablonbeskattning sker istället årligen.'
+          - 'För att ta reda på mer information rekommenderar vi dig att kontakta Skatteverket och ta del av följande information:'
+          - '<a href="https://www.skatteverket.se/privat/skatter/vardepapper/omovrigavardepapper/fonder.4.19b9f599116a9e8ef36800010782.html" target="_blank">Läs mer här</a>'
+        salesprice:
+          - 'Försäljningspris:'
+          - 'TEXT_FIELD'
+        costamount:
+          - 'Omkostnadsbelopp:'
+          - 'Summan av dina anskaffningsutgifter, oftast ett belopp du sammanlagt har betalt för dina värdepapper.'
+          - 'TEXT_FIELD'
+        faq:
+          q1: 'Jag saknar uppgifter om anskaffningskostnad?'
+          a1: 'Om du inte har uppgifter om anskaffningskostnad och sålt marknadsnoterade fondandelar kan du istället beräkna omkostnadsbeloppet till 20 procent av försäljningspriset enligt schablonmetoden:'
+          a2: 'Som omkostnadsbelopp tar man normalt upp den faktiska anskaffningsutgiften för de sålda andelarna. Om en andelsägare fått utdelning på sina andelar och återinvesterat en del av utdelningen i fonden ska återinvesterad del räknas in i omkostnadsbeloppet. För att ta reda på mer information rekommenderar vi dig att kontakta Skatteverket och ta del av följande information:'
+          a3: '<a href="https://www.skatteverket.se/privat/vinstskatter/vardepapper/deklareraaktierochovrigavardepapper/omkostnadsbelopp.4.12815e4f14a62bc048fa7bc.html" target="_blank">Läs mer</a>'
+        account:
+          - 'Konto:'
+          - 'TEXT_FIELD'
+        bank:
+          - 'Bank:'
+          - 'TEXT_FIELD'
+      isk:
+        _:
+          - 'Ett investeringssparkonto (ISK) är en schablonbeskattad sparform, vilket innebär att du betalar en viss procentsats i kapitalvinstskatt per år.'
+        total:
+          - 'Ange värde:'
+          - 'TEXT_FIELD'
+        account:
+          - 'Konto:'
+          - 'TEXT_FIELD'
+        bank:
+          - 'Bank:'
+          - 'TEXT_FIELD'
+      insurance:
+        _:
+          - 'En kapitalförsäkring är ett sparande i en försäkring och beskattas en gång per år baserat på värdet av ditt sparande, samt de inbetalningar som du har gjort under året. Kapitalvinstskatten regleras direkt ur försäkringens värde av det försäkringsbolag där du har ditt sparande.'
+        total:
+          - 'Ange värde:'
+          - 'TEXT_FIELD'
+        account:
+          - 'Konto:'
+          - 'TEXT_FIELD'
+        bank:
+          - 'Bank:'
+          - 'TEXT_FIELD'
+      bank:
+        total:
+          - 'Ange belopp:'
+          - 'TEXT_FIELD'
+        account:
+          - 'Kontonummer:'
+          - 'TEXT_FIELD'
+        bank:
+          - 'Bank:'
+          - 'TEXT_FIELD'
+      other:
+        _:
+          - 'Om ni har övriga tillgångar och är osäkra på hur dessa sak redovisas rekommenderar vi att ni tar hjälp av någon av våra jurister.'
+        total:
+          - 'Tillgångens värde:'
+          - 'Med värde avses tillgångens totala marknadsvärde. Även om ni endast äger 20 % av en fritidsbåt ska ni alltså fylla i vad 100 % av fritidsbåten är värd här.'
+          - 'TEXT_FIELD'
+        name:
+          - 'Namnge tillgången kortfattat:'
+          - 'TEXT_FIELD'
+
+    debts:
+      loan:
+        amount:
+          - 'Ange belopp:'
+          - 'TEXT_FIELD'
+        number:
+          - 'Lånenummer:'
+          - 'TEXT_FIELD'
+        bank:
+          - 'Bank:'
+          - 'TEXT_FIELD'
+      bill:
+        amount:
+          - 'Ange belopp:'
+          - 'TEXT_FIELD'
+        owner:
+          - 'Vem är skulden till:'
+          - 'TEXT_FIELD'
+        date:
+          - 'Skuldebrev daterat:'
+          - 'DATE_FIELD'
+
+en:
+  <<: *sv

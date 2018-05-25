@@ -1,0 +1,7 @@
+.container
+  .property-form
+    == form_for @property, method: :patch do |f|
+
+      - @f = f
+
+      == render "form"

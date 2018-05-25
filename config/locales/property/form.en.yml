@@ -1,0 +1,130 @@
+sv: &sv
+  property:
+    court:
+      header: DATUM OCH DOMSTOL
+      info:
+        - Det går att bodela från den dagen då er ansökan om skilsmässa postats och registreras hos tingsrätten.
+        - Först när den är registrerad och ni har mottagit en bekräftelse på registreringen är det dags att skriva ert bodelningsavtal.
+      registration_date: 'Ange datum för registrering:'
+      court: 'Välj tingsrätt ni postade er ansökan till:'
+      court_prompt: Välj nedan
+      case_number: 'Om dom redan har meddelats ska du även ange det målnummer du fått hem av tingsrätten:'
+      note: OBS! Målnummer ska endast fyllas i om ni fått en dom på att skilsmässan är slutförd av tingsrätten. Om ni har lämnat in skilsmässoansökan men ännu inte fått någon dom ska ni inte fylla i målnummer.
+
+    any_assets:
+      header: TILLGÅNGAR
+      info: Med tillgångar menas till exempel en fastighet, bostadsrätt, bil båt eller pengar placerade på sparkonto eller i fonder. Normalt sett tas bara tillgångar av ett högre värde upp i ett bodelningsavtal. Tillgångar som är enskild egendom får tas upp om egendomen är enskild via äktenskapsförord och parterna är överens om att egendomen ska tas upp.
+      label: Finns det några tillgångar att ta upp i detta bodelningsavtal?
+
+    assets:
+      header: TILLGÅNGAR OCH NUVARANDE ÄGARE
+      info:
+        - 'Ange de tillgångar som ska tas upp i bodelningen samt vem av er som äger respektive tillgång och vad egendomen totalt är värd. Ange hur ägandet av egendomen ser ut idag, längre fram kommer ni få välja vem som ska få tillgången eller del av tillgången efter bodelningen.'
+        - 'Med tillgångens värde avses vad tillgången är värd som helhet och inte endast vad en andel är värd.'
+      faq:
+        q1: 'Vad ska ni ta upp?'
+        a1: 'Oftast väljer de flesta att endast ta upp tillgångar av ett större värde när de ska bodela, såsom till exempel bilar, båtar, bostadsrätter och fastigheter. Möbler och annat bohag brukar inte tas upp om de inte är särskilt värdefulla. Tänk dock på att detta är en fullständig och inte en partiell bodelning, sådant som inte tas upp kommer alltså anses vara uppdelat även om det inte uttryckligen skrivits in i bodelningen. Detta innebär att ni inte kan komma med ytterligare krav på varandra.'
+      tabs:
+        realestate: Fastighet
+        apartment:  Bostadsrätt
+        car:        Bil
+        security:   Värdepapper
+        funds:      Fonder
+        isk:        ISK
+        insurance:  Kapitalförsäkringar
+        bank:       Bankkonto
+        other:      Övrigt
+      tab:
+        shared:
+          own: "%{name} äger"
+          details: Specifikation av tillgången
+          after: 'Ange vem som ska äga denna tillgång EFTER bodelningen.'
+          after_full: 'Efter bodelningen ska denna tillgång ägas enligt nedan:'
+          after_part: "Andelen av denna tillgång om <span class='after-part-percent'></span> procent ska ägas enligt nedan:"
+      add:
+        label: En till tillgång?
+        button: Klicka här!
+
+    any_debts:
+      header: SKULDER
+      info: I princip alla skulder utom sådana som är hänförliga till enskild egendom får tas upp i ett bodelningsavtal. Skulder hänförliga till egendom, som är enskild genom äktenskapsförord, får tas upp om parterna är överens om det.
+      label: Finns det några skulder att ta upp i detta bodelningsavtal?
+
+    debts:
+      header: SPECIFIKATION AV SKULDER OCH NUVARANDE BETALNINGSANSVAR
+      info:
+        - 'Här ska ni specificera de skulder som ska tas upp i bodelningen samt vem av er som innehar betalningsansvaret för respektive skuld och vad skulden uppgår till. Ni ska ange hur betalningsansvaret för skulderna ser ut idag.'
+      faq:
+        a1: 'Samtliga skulder utom sådana som är knutna till enskild egendom får tas upp i bodelningen. Båda får behålla så mycket av sina tillgångar som de har i skulder. Alltså dras skulderna av från värdet av tillgångarna innan tillgångarna läggs samman och delas lika. Skulle någon av makarna hamna på ett minusbelopp räknas det som noll i bodelningen. Ett minusbelopp överförs således aldrig mellan makarna.'
+      tabs:
+        loan: Banklån
+        bill: Skuldebrev
+      tab:
+        shared:
+          owe: "%{name} är skyldig"
+          details: 'Specifikation av skulden'
+          after: 'Ange vem som ska ansvara för denna skuld EFTER bodelningen.'
+          after_info: 'Skulden ska fördelas enligt nedan:'
+      add:
+        label: En till skuld?
+        button: Klicka här!
+
+    compensation:
+      header: KOMPENSATION
+      info:
+        - 'Bodelningslikvid enligt lag eller överenskommelse'
+        - 'Reglerna om hur mycket den ena maken ska utbetala till den andra som kompensation i samband med bodelningen är dispositiva. Det betyder att ni är fria att avtala om en annan summa än den som gäller enligt lag.'
+        - 'Vill ni bestämma en egen bodelningslikvid?'
+      faq:
+        q1: 'Vilket svar passar oss?'
+        a1: 'Om ni har kommit överens om en annan summa än den som gäller enligt lag så ska ni välja ”Ja”.'
+        a2: 'Om ni vill att kompensation ska betalas mellan er i enlighet med vad som gäller enligt lag ska ni välja ”Nej”.'
+
+    payment:
+      header: BETALNING TILL VEM
+      how_much: Vi har kommit överens om en bodelningslikvid om totalt
+      currency: kronor.
+      to_whom: är den som ska få bodelningslikviden.
+
+    payment_details:
+      header: NÄR OCH HUR MAN BETALAR
+      bank: 'Ange vart betalningen av bodelningslikviden ska ske:'
+      bank_1: Clearingnummer
+      bank_2: Kontonummer
+      bank_3: Namn på bank
+      date: 'Ange när bodelningslikviden ska betalas:'
+
+    interest:
+      header: RÄNTA
+      before_payment_header: Ränta
+      before_payment:
+        - 'Om det är lång tid mellan bodelningen och betalningen av bodelningslikviden ses det som ett lån ur juridisk synvinkel. Den som ska få bodelningslikviden har därför rätt att få ränta på beloppet.'
+        - 'Ska det löpa ränta på beloppet fram till betalningen?'
+      before_payment_rate_label: Räntan ska vara
+      before_payment_rate_percent: procent.
+      before_payment_rate_faq:
+        q1: 'Vilken ränta ska vi ange?'
+        a1: 'Tänk på att inte sätta en oskäligt hög ränta. Normalt sett brukar räntan vara omkring 2-5 procent.'
+      after_payment_header: Förseningsränta
+      after_payment:
+        - 'För att undvika att bodelningslikviden inte betalas i tid kan det vara bra att ha avtalat om en förseningsränta. Förseningsränta innebär att ränta utgår från den dag bodelningslikviden borde ha betalats enligt er överenskommelse. Det blir alltså mer att betala desto längre betalningen drar ut på tiden.'
+        - 'Vill ni avtala om förseningsränta?'
+      after_payment_rate_label: Räntan ska vara
+      after_payment_rate_percent: procent.
+      after_payment_rate_faq:
+        q1: 'Vilken ränta ska vi ange?'
+        a1: 'Förseningsräntan enligt räntelagen är 8 procentenheter över vid var tid gällande referensränta. Man kan sätta både en högre eller en lägre ränta. Om man sätter en högre ränta ska man dock tänka på att den inte blir så hög att den blir oskälig.'
+
+    other:
+      header: ÖVRIGA VILLKOR
+      label: 'Här har ni möjlighet att lägga till egna villkor i bodelningsavtalet genom att skriva in dem i rutan nedan. Tänk dock på att alla typer av villkor inte är tillåtna enligt lag. Om ni vill lägga till egna villkor rekommenderar vi därför att ni beställer vår extratjänst för att skriva bodelningsavtalet manuellt åt er.'
+
+    faq:
+      label: Vanliga frågor och svar
+
+    submit:
+      soft: Spara och fortsätt senare
+      hard: Spara och skapa dokument
+
+en:
+  <<: *sv

@@ -1,0 +1,47 @@
+.row
+  .col
+    == render 'properties/form/court'
+
+.row
+  .col
+    == render 'properties/form/any_assets'
+
+.row.if-any-assets style="#{ hidden_unless @property.data(:assets_debts, :any_assets) }"
+  .col
+    == render 'properties/form/assets'
+
+.row
+  .col
+    == render 'properties/form/any_debts'
+
+.row.if-any-debts style="#{ hidden_unless @property.data(:assets_debts, :any_debts) }"
+  .col
+    == render 'properties/form/debts'
+
+.row
+  .col
+    == render 'properties/form/compensation'
+
+.row.if-compensation style="#{ hidden_unless @property.data(:compensation, :decide) }"
+  .col
+    == render 'properties/form/payment'
+
+.row.if-compensation style="#{ hidden_unless @property.data(:compensation, :decide) }"
+  .col
+    == render 'properties/form/payment_details'
+
+.row
+  .col
+    == render 'properties/form/interest'
+
+.row
+  .col
+    == render 'properties/form/other'
+
+= hidden_field_tag :submit_type, 'hard'
+
+= @f.submit t('property.submit.hard'),
+  class: 'hard-submit float-right btn btn-success ml-10'
+
+= @f.submit t('property.submit.soft'),
+  class: 'soft-submit float-right btn btn-default'

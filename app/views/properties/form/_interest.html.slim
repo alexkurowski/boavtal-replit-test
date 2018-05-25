@@ -1,0 +1,71 @@
+- parsley_required_before_rate = @property.data(:interest, :before_payment) == 'true'
+- parsley_required_after_rate = @property.data(:interest, :after_payment) == 'true'
+
+= property_panel 'interest' do
+  h4 = t 'property.interest.before_payment_header'
+  .form-group.mb-20
+    - t('property.interest.before_payment').each do |p|
+      p = p
+
+    .radio-custom.radio-primary
+      = @f.radio_button 'data[interest][before_payment]', true,
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required'),
+          slide_target: '.if-interest-before' }
+      = @f.label 'data[interest][before_payment]_true', t('yes').capitalize
+    .radio-custom.radio-primary
+      = @f.radio_button 'data[interest][before_payment]', false,
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required'),
+          slide_target: '.if-interest-before' }
+      = @f.label 'data[interest][before_payment]_false', t('no').capitalize
+    .parsley-error
+
+  .if-interest-before style="#{ hidden_unless @property.data(:interest, :before_payment) }"
+    .form-group.mb-20
+      span = t 'property.interest.before_payment_rate_label'
+      = @f.number_field 'data[interest][before_payment_rate]',
+        class: 'form-control interest-rate',
+        data: { \
+          parsley_required: parsley_required_before_rate,
+          parsley_error_message: t('property.error.required') }
+      span = t 'property.interest.before_payment_rate_percent'
+      .parsley-error
+
+    = faq_section 'property.interest.before_payment_rate_faq'
+
+  h4.mt-40 = t 'property.interest.after_payment_header'
+  .form-group.mb-20
+    - t('property.interest.after_payment').each do |p|
+      p = p
+
+    .radio-custom.radio-primary
+      = @f.radio_button 'data[interest][after_payment]', true,
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required'),
+          slide_target: '.if-interest-after' }
+      = @f.label 'data[interest][after_payment]_true', t('yes').capitalize
+    .radio-custom.radio-primary
+      = @f.radio_button 'data[interest][after_payment]', false,
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required'),
+          slide_target: '.if-interest-after' }
+      = @f.label 'data[interest][after_payment]_false', t('no').capitalize
+    .parsley-error
+
+  .if-interest-after style="#{ hidden_unless @property.data(:interest, :after_payment) }"
+    .form-group.mb-20
+      span = t 'property.interest.after_payment_rate_label'
+      = @f.number_field 'data[interest][after_payment_rate]',
+        class: 'form-control interest-rate',
+        data: { \
+          parsley_required: parsley_required_after_rate,
+          parsley_error_message: t('property.error.required') }
+      span = t 'property.interest.after_payment_rate_percent'
+      .parsley-error
+
+    = faq_section 'property.interest.after_payment_rate_faq'

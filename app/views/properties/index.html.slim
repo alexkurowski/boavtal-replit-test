@@ -1,0 +1,20 @@
+.container
+  .panel.panel-bordered
+    .panel-heading
+      h3.panel-title
+        | Division of property forms
+        .float-right.mt--8
+          = link_to properties_path, method: :post, class: 'btn btn-primary'
+            | New form
+    .panel-body
+      ul
+        - @properties.each do |property|
+          li
+            .float-left
+              | Form ##{property.id}
+
+            .float-right
+              = link_to edit_property_path property
+                | Edit
+              = link_to property_path(property), method: :destroy, confirm: 'Are you sure?'
+                | Delete

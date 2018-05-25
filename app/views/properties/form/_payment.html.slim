@@ -1,0 +1,26 @@
+- parsley_required = @property.data(:compensation, :decide) == 'true'
+
+= property_panel 'payment' do
+  .form-group
+    span = t 'property.payment.how_much'
+    = @f.number_field 'data[payment][how_much]',
+      class: 'form-control payment-how-much',
+      data: { \
+        parsley_required: parsley_required,
+        parsley_error_message: t('property.error.required') }
+    span = t 'property.payment.currency'
+    .parsley-error
+
+  .form-group.payment-to-whom
+    = @f.radio_button 'data[payment][to_whom]', 'husband',
+      data: { \
+        parsley_required: parsley_required,
+        parsley_error_message: t('property.error.required'),
+        name: 'Mannen' }
+    = @f.radio_button 'data[payment][to_whom]', 'wife',
+      data: { \
+        parsley_required: parsley_required,
+        parsley_error_message: t('property.error.required'),
+        name: 'Kvinnan' }
+    span = t 'property.payment.to_whom'
+    .parsley-error

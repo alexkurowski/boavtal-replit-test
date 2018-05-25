@@ -1,0 +1,42 @@
+- parsley_required = @property.data(:compensation, :decide) == 'true'
+
+= property_panel 'payment_details' do
+  .form-group
+    label = t 'property.payment_details.bank'
+    .row
+      .col-md.mb-10
+        = @f.text_field 'data[payment_details][field_1]',
+          class: 'form-control',
+          placeholder: t('property.payment_details.bank_1'),
+          data: { \
+            parsley_required: parsley_required,
+            parsley_error_message: t('property.error.required') }
+      .col-md.mb-10
+        = @f.text_field 'data[payment_details][field_2]',
+          class: 'form-control',
+          placeholder: t('property.payment_details.bank_2'),
+          data: { \
+            parsley_required: parsley_required,
+            parsley_error_message: t('property.error.required') }
+      .col-md.mb-10
+        = @f.text_field 'data[payment_details][field_3]',
+          class: 'form-control',
+          placeholder: t('property.payment_details.bank_3'),
+          data: { \
+            parsley_required: parsley_required,
+            parsley_error_message: t('property.error.required') }
+    .parsley-error
+
+  .form-group
+    label = t 'property.payment_details.date'
+    .input-group
+      span.input-group-addon
+        i.icon.wb-calendar aria-hidden="true"
+      = @f.text_field 'data[payment_details][date]',
+        class: 'form-control',
+        data: { \
+          parsley_required: parsley_required,
+          parsley_error_message: t('property.error.required'),
+          plugin: 'datepicker',
+          language: 'sv' }
+    .parsley-error
