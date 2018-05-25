@@ -1,78 +1,94 @@
-.property-form
-  max-width: 720px
-  margin: 0 auto 80px
+body.properties
+  .property-listing
+    .panel-body
+      padding: 21px
 
-  .nav-tabs-horizontal li a
-    padding-left: .55rem
-    padding-right: .55rem
+    table
+      border: none
 
-  .assets,
-  .debts
-    margin-left: -20px
-    margin-right: -20px
+      td
+        border: none !important
+        vertical-align: middle
 
-  .asset,
-  .debt
-    border: 1px solid #e4eaec
-    border-radius: 5px
-    padding: 19px
+        &.main
+          width: 100%
 
-    .remove-asset,
-    .remove-debt
-      display: flex
-      justify-content: center
-      align-items: center
-      width: 40px
-      height: 40px
-      margin-left: auto
 
-    .nav-tabs
-      border-bottom: none
+  .property-form
+    max-width: 720px
+    margin: 0 auto 80px
 
-      a
-        border-bottom: none !important
-        border-radius: 3px
+    .nav-tabs-horizontal li a
+      padding-left: .55rem
+      padding-right: .55rem
 
-  .assets .asset:first-of-type,
-  .debts .debt:first-of-type
-    .remove-asset,
-    .remove-debt
-      display: none !important
+    .assets,
+    .debts
+      margin-left: -20px
+      margin-right: -20px
 
-  .payment-how-much
-    display: inline-block
-    width: 150px
-    margin: 0 8px
+    .asset,
+    .debt
+      border: 1px solid #e4eaec
+      border-radius: 5px
+      padding: 19px
 
-  .payment-to-whom label
-    display: inline-block
-    margin-right: 8px
+      .remove-asset,
+      .remove-debt
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 40px
+        height: 40px
+        margin-left: auto
 
-  textarea.other-field
-    min-height: 300px
+      .nav-tabs
+        border-bottom: none
 
-  .interest-rate
-    display: inline-block
-    width: 100px
-    margin: 0 8px
+        a
+          border-bottom: none !important
+          border-radius: 3px
 
-  .if-interest-before,
-  .if-interest-after
-    overflow: hidden
+    .assets .asset:first-of-type,
+    .debts .debt:first-of-type
+      .remove-asset,
+      .remove-debt
+        display: none !important
 
-  .parsley-errors-list
-    color: #ff4c52
-    padding: 0
-    margin-top: 4px
-    list-style: none
+    .payment-how-much
+      display: inline-block
+      width: 150px
+      margin: 0 8px
 
-    li ~ li
-      display: none !important
+    .payment-to-whom label
+      display: inline-block
+      margin-right: 8px
 
-  .parsley-error
-    ul ~ ul
-      display: none !important
+    textarea.other-field
+      min-height: 300px
 
-  .faq .answer
-    p:last-of-type
-      margin-bottom: 0
+    .interest-rate
+      display: inline-block
+      width: 100px
+      margin: 0 8px
+
+    .if-interest-before,
+    .if-interest-after
+      overflow: hidden
+
+    .parsley-errors-list
+      color: #ff4c52
+      padding: 0
+      margin-top: 4px
+      list-style: none
+
+      li ~ li
+        display: none !important
+
+    .parsley-error
+      ul ~ ul
+        display: none !important
+
+    .faq .answer
+      p:last-of-type
+        margin-bottom: 0

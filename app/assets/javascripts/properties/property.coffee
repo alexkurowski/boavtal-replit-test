@@ -1,4 +1,4 @@
-$(document).ready ->
+$(document).on 'turbolinks:load', ->
   $form = $('.property-form > form')
   return unless $form.length
 
@@ -20,7 +20,7 @@ $(document).ready ->
       $form.find('.debt').remove()
 
 
-  window.Parsley.on 'form:submit', () ->
+  window.Parsley.on 'form:submit', ->
     beforeValidSubmit()
 
 
