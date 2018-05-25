@@ -30,7 +30,7 @@
           .form-group.m-0
             .row
               .col-md
-                label.mb-40 = t 'property.debts.tab.shared.owe', name: 'Mannens'
+                label.mb-40 = t 'property.debts.tab.shared.owe', name: 'Mannen'
                 = @f.range_field "data[debts][#{tab}][#{id}][husband_owe]",
                   value: @property.fetch(:debts, tab, id, :husband_owe, 0),
                   data: { \
@@ -40,7 +40,7 @@
                     maxvalue: 100 }
 
               .col-md
-                label.mb-40 = t 'property.debts.tab.shared.owe', name: 'Kvinnans'
+                label.mb-40 = t 'property.debts.tab.shared.owe', name: 'Kvinnan'
                 = @f.range_field "data[debts][#{tab}][#{id}][wife_owe]",
                   value: @property.fetch(:debts, tab, id, :wife_owe, 0),
                   data: { \
