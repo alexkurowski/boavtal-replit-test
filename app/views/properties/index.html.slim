@@ -24,3 +24,5 @@
                 td
                   = link_to property_path(property), method: :delete, class: 'btn btn-danger btn-sm', 'data-confirm' => 'Are you sure?'
                     i.fa.fa-trash
+                td
+                  = link_to 'Download PDF', property_reports_path(property), class: 'btn btn-success ml-10', target: '_blank'
