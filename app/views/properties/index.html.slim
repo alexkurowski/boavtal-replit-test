@@ -5,7 +5,7 @@
         h3.panel-title
           | Division of property forms
           .float-right.mt--8
-            = link_to properties_path, method: :post, class: 'btn btn-primary'
+            = link_to new_property_path, class: 'btn btn-primary'
               | New form
       .panel-body
         - if @properties.count.zero?
@@ -16,6 +16,10 @@
             - @properties.each do |property|
               tr
                 td.main
+                  - if property.validated?
+                    i.fa.fa-check.fa-fw.text-success
+                  - else
+                    i.fa.fa-fw.text-success
                   | Form ##{property.id}
 
                 td

@@ -6,12 +6,18 @@ class PropertiesController < ApplicationController
     @properties = Property.all.order(created_at: :desc)
   end
 
+  def new
+    @property = Property.new
+    render :form
+  end
+
   def create
-    property = Property.create
-    redirect_to edit_property_path property
+    Property.create property_params
+    redirect_to properties_path
   end
 
   def edit
+    render :form
   end
 
   def update
@@ -34,6 +40,11 @@ class PropertiesController < ApplicationController
         if params.dig(:property, :data, :compensation, :decide) == 'false'
           params[:property][:data].delete :payment
           params[:property][:data].delete :payment_details
+        end
+
+        case params[:submit_type]
+        when 'soft' then params[:property][:validated] = false
+        when 'hard' then params[:property][:validated] = true
         end
       end
 
