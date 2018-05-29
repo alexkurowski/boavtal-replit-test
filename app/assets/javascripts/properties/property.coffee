@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).ready ->
   $form = $('.property-form > form')
   return unless $form.length
 

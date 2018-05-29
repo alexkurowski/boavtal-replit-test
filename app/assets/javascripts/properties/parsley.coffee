@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).ready ->
   $form = $('form.new_property, form.edit_property')
 
   return unless $form.length
