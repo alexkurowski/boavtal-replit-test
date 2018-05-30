@@ -10,6 +10,8 @@ class PropertyReportsController < ApplicationController
     @wife_name    = 'Mary Smith'
     @wife_ssn     = '19950101-4321'
 
+    @assets       = @property.data['assets'].map { |asset| PropertyAsset.new(data_hash: asset) }
+
     ## END TODO
 
     render  pdf:        "property_report",
