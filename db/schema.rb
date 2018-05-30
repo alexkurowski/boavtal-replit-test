@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 20180529231520) do
 
   create_table "properties", force: :cascade do |t|
     t.jsonb    "data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean  "validated"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "validated",  default: false
   end
 
 end
