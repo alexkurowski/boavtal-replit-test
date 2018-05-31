@@ -9,12 +9,24 @@ class PropertyAsset
     @asset_type = asset_type
   end
 
-  def real_estate?
-    @asset_type == 'realestate'
+  def type_is?(type)
+    type == asset_type
   end
 
-  def owned_now_by(member)
-    @data["#{member}_own"].to_i
+  def percentage_share_owned_now_by(member)
+    @data["#{member}_own"].to_f
+  end
+
+  def owned_now_by?(member)
+    percentage_share_owned_now_by(member) > 0
+  end
+
+  def market_value # Marknadsvärde
+    @data['marketvalue'].to_i
+  end
+
+  def value_share_of(member)
+    market_value - market_value * (percentage_share_owned_now_by(member) / 100)
   end
 
     private
@@ -27,4 +39,38 @@ class PropertyAsset
         @data_hash[1].values[0]
       end
 
+end
+
+
+
+module RealestateAsset
+  def city
+    @data['city']
+  end
+
+  def name
+    @data['name']
+  end
+end
+
+module ApartmentAsset
+  def apartment_number
+    @data['number']
+  end
+
+  def zip
+    @data['zip']
+  end
+
+  def city
+    @data['ort']
+  end
+
+  def address
+    @data['address']
+  end
+
+  def housing_cooperative
+    @data['name']
+  end
 end

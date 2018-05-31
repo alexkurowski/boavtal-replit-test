@@ -1,4 +1,9 @@
 module PropertyReportsHelper
+
+  def load_member_var(member)
+     member == :husband ? @husband_name : @wife_name
+  end
+
   def case_number_filled_out?
     @property.data['court']['case_number'] != 'T-'
   end
@@ -17,6 +22,14 @@ module PropertyReportsHelper
 
   def any_assets?
     @property.data['assets_debts']['any_assets'] == 'true' ? true : false
+  end
+
+  def exists_and_owned_by?(asset_array, member)
+    asset_array.present? && asset_array.each { |asset| true if asset.owned_now_by?(member) }
+  end
+
+  def to_sk(number)
+    number_to_currency(number, locale: :sv)
   end
 
 end

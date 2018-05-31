@@ -5,14 +5,22 @@ h1 Tillgångar och skulder
 - elsif any_debts? || any_assets?
   p I boet finns följande tillgångar och skulder som ska fördelas:
 
-h2 #{@husband_name}
+- [:husband, :wife].each do |member|
 
-h3 Tillgångar:
+  h2
+    = load_member_var(member)
 
-- @assets.each do |asset|
-  = asset.owned_now_by(:husband)
-/
- - if asset.real_estate? && asset.owned_by(:husband) # OR asset.appartment?
-    p Fast egendom och andelar i bostadsrättsförening
+  h3 Tillgångar:
 
+  - if exists_and_owned_by?(@realestate_assets, member) || exists_and_owned_by?(@apartment_assets, member)
+    h4 Fast egendom och andelar i bostadsrättsförening
 
+    - if @realestate_assets.present?
+      - @realestate_assets.each do |asset|
+        - if asset.owned_now_by?(member)
+          p #{asset.percentage_share_owned_now_by(member).to_i} procent av fastigheten #{asset.name} i #{asset.city}: + #{to_sk(asset.value_share_of(member))} kr
+
+    - if @apartment_assets.present?
+      - @apartment_assets.each do |asset|
+        - if asset.owned_now_by?(member)
+          p #{asset.percentage_share_owned_now_by(member).to_i} procent av bostadsrätten med lägenhetsnummer #{asset.apartment_number} i Brf #{asset.housing_cooperative}, med adress #{asset.address}, #{asset.zip} #{asset.city}: + #{to_sk(asset.value_share_of(member))} kr
