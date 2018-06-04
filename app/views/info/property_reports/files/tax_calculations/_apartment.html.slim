@@ -1,0 +1,73 @@
+- @apartment_assets.each do |asset|
+  h4 Bostadsrätt:
+
+  .calc-container
+    .calc-left
+      | Marknadsvärde
+    .calc-right
+      | + #{to_sk asset.market_value}
+
+  .calc-container
+    .calc-left
+      | Anskaffningsvärde
+    .calc-right
+      | - #{to_sk asset.get_float_for('purchaseprice')}
+
+  .calc-container
+    .calc-left
+      | Mäklararvode
+    .calc-right
+      | - #{to_sk asset.get_float_for('agentfee')}
+
+  .calc-container
+    .calc-left
+      | Övriga försäljningskostnader
+    .calc-right
+      | - #{to_sk asset.get_float_for('salescosts')}
+
+  .calc-container
+    .calc-left
+      | Förbättringsutgifter
+    .calc-right
+      | - #{to_sk asset.get_float_for('improvementcost')}
+
+  .calc-container
+    .calc-left
+      | Kapitaltillskott
+    .calc-right
+      | - #{to_sk asset.get_float_for('capitalinjection')}
+
+  .calc-container
+    .calc-left
+      | Andel av inre reparationsfond vid försäljningen
+    .calc-right
+      | + #{to_sk asset.get_float_for('salefunds')}
+
+  .calc-container
+    .calc-left
+      | Reparationsfond vid köpet
+    .calc-right
+      | + #{to_sk asset.get_float_for('purchasefunds')}
+
+  .calc-container
+    .calc-left
+      | Uppskov
+    .calc-right
+      | + #{to_sk asset.get_float_for('deferral')}
+
+  .calc-container
+    .calc-left
+      strong Kapitalvinst
+    .calc-right
+      strong #{to_sk asset.calc_capital_gains}
+
+  .calc-container
+    .calc-left
+      | Kapitalvinstskatt
+    .calc-right
+      | #{to_sk asset.calc_capital_gains_tax} (22 procent av #{to_sk asset.calc_capital_gains})
+
+  br
+  p Ett fiktivt mäklararvode om #{to_sk asset.get_float_for('agentfee')} kronor ska avräknas från fastighetens marknadsvärde.
+
+  p <strong>Bostadsrättens nettovärde</strong> är därmed (#{to_rounded_sk asset.market_value} - #{to_rounded_sk asset.calc_capital_gains_tax} - #{to_rounded_sk asset.get_float_for('agentfee')}) = <strong>#{to_rounded_sk asset.calc_net_value} kronor</strong> vilket upptas i bodelningsavtalet.

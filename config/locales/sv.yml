@@ -1,0 +1,11 @@
+sv:
+  number:
+    currency:
+      format:
+        unit: 'kr'
+        delimiter: ','
+        separator: '.'
+        precision: 0
+        format: '%n %u'
+        strip_insignificant_zeros: true
+

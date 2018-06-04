@@ -1,6 +1,6 @@
 module PropertyReportsHelper
 
-  def load_member_var(member)
+  def show_member_name(member)
      member == :husband ? @husband_name : @wife_name
   end
 
@@ -29,7 +29,11 @@ module PropertyReportsHelper
   end
 
   def to_sk(number)
-    number_to_currency(number, locale: :sv)
+    "#{number_to_currency(number, locale: :sv)}"
+  end
+
+  def to_rounded_sk(number)
+    "#{number_to_currency(number, locale: :sv, unit: '', precision: 0)}"
   end
 
 end

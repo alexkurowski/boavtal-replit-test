@@ -8,7 +8,7 @@ h1 Tillgångar och skulder
 - [:husband, :wife].each do |member|
 
   h2
-    = load_member_var(member)
+    = show_member_name(member)
 
   h3 Tillgångar:
 
@@ -18,9 +18,28 @@ h1 Tillgångar och skulder
     - if @realestate_assets.present?
       - @realestate_assets.each do |asset|
         - if asset.owned_now_by?(member)
-          p #{asset.percentage_share_owned_now_by(member).to_i} procent av fastigheten #{asset.name} i #{asset.city}: + #{to_sk(asset.value_share_of(member))} kr
+          .calc-container
+            .calc-left
+              | #{asset.percentage_share_owned_now_by(member, :whole)} procent av fastigheten #{asset.name} i #{asset.city}:
+            .calc-right
+              | + #{to_sk(asset.percentage_share_owned_now_by(member, :decimal) * asset.calc_capital_gains_tax)}
 
     - if @apartment_assets.present?
       - @apartment_assets.each do |asset|
         - if asset.owned_now_by?(member)
-          p #{asset.percentage_share_owned_now_by(member).to_i} procent av bostadsrätten med lägenhetsnummer #{asset.apartment_number} i Brf #{asset.housing_cooperative}, med adress #{asset.address}, #{asset.zip} #{asset.city}: + #{to_sk(asset.value_share_of(member))} kr
+          .calc-container
+            .calc-left
+              | #{asset.percentage_share_owned_now_by(member, :whole)} procent av bostadsrätten med lägenhetsnummer #{asset.apartment_number} i Brf #{asset.housing_cooperative}, med adress #{asset.address}, #{asset.zip} #{asset.city}:
+            .calc-right
+              | + #{to_sk(asset.percentage_share_owned_now_by(member, :decimal) * asset.calc_capital_gains_tax)}
+
+
+  - if exists_and_owned_by?(@bank_assets, member)
+    h4 Bankkonton
+
+    - @bank_assets.each do |asset|
+      .calc-container
+        .calc-left
+          | #{asset.percentage_share_owned_now_by(member, :whole)} procent av bankkonto #{asset.account_number} hos #{asset.bank_name}
+        .calc-right
+          | + #{to_sk(asset.percentage_share_owned_now_by(member, :decimal) * asset.total_value)}

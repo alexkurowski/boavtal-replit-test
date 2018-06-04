@@ -1,0 +1,8 @@
+- if @realestate_assets.present? || @apartment_assets.present?
+  h1 Skatteuträkning
+
+- if @realestate_assets.present?
+  == render 'info/property_reports/files/tax_calculations/real_estate'
+
+- if @apartment_assets.present?
+  == render 'info/property_reports/files/tax_calculations/apartment'

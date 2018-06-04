@@ -38,7 +38,7 @@ class PropertyReportsController < ApplicationController
 
       def known_asset_types
         [
-          :realestate, :apartment
+          :realestate, :apartment, :bank
         ]
       end
 
