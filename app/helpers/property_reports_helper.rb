@@ -24,8 +24,10 @@ module PropertyReportsHelper
     @property.data['assets_debts']['any_assets'] == 'true' ? true : false
   end
 
-  def exists_and_owned_by?(asset_array, member)
-    asset_array.present? && asset_array.each { |asset| true if asset.owned_now_by?(member) }
+  def exists_and_owned_by?(*variable_array, member)
+    array_without_nils = variable_array.compact.flatten
+    return false if array_without_nils.empty?
+    array_without_nils.map { |asset| asset.owned_now_by?(member) }.any?
   end
 
   def to_sk(number)

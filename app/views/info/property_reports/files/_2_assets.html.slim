@@ -12,7 +12,7 @@ h1 Tillgångar och skulder
 
   h3 Tillgångar:
 
-  - if exists_and_owned_by?(@realestate_assets, member) || exists_and_owned_by?(@apartment_assets, member)
+  - if exists_and_owned_by?(@apartment_assets, @realestate_assets, member)
     h4 Fast egendom och andelar i bostadsrättsförening
 
     - if @realestate_assets.present?
@@ -33,13 +33,36 @@ h1 Tillgångar och skulder
             .calc-right
               | + #{to_sk(asset.percentage_share_owned_now_by(member, :decimal) * asset.calc_capital_gains_tax)}
 
-
   - if exists_and_owned_by?(@bank_assets, member)
     h4 Bankkonton
 
     - @bank_assets.each do |asset|
-      .calc-container
-        .calc-left
-          | #{asset.percentage_share_owned_now_by(member, :whole)} procent av bankkonto #{asset.account_number} hos #{asset.bank_name}
-        .calc-right
-          | + #{to_sk(asset.percentage_share_owned_now_by(member, :decimal) * asset.total_value)}
+      - if asset.owned_now_by?(member)
+        .calc-container
+          .calc-left
+            | #{asset.percentage_share_owned_now_by(member, :whole)} procent av bankkonto #{asset.account_number} hos #{asset.bank_name}
+          .calc-right
+            | + #{to_sk(asset.percentage_share_owned_now_by(member, :decimal) * asset.total_value)}
+
+  - if exists_and_owned_by?(@security_assets, @funds_assets, @isk_assets, @insurance_assets, member)
+    h4 Finansiella tillgångar, fonder, värdepapper, aktier
+
+    - if @security_assets.present?
+      - @security_assets.each do |asset|
+        - if asset.owned_now_by?(member)
+          h5 Security
+
+    - if @funds_assets.present?
+      - @funds_assets.each do |asset|
+        - if asset.owned_now_by?(member)
+          h5 Funds
+
+    - if @isk_assets.present?
+      - @isk_assets.each do |asset|
+        - if asset.owned_now_by?(member)
+          h5 ISK
+
+    - if @insurance_assets.present?
+      - @insurance_assets.each do |asset|
+        - if asset.owned_now_by?(member)
+          h5 Capital

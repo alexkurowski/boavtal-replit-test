@@ -39,11 +39,11 @@ class PropertyAsset
     market_value - market_value * (percentage_share_owned_now_by(member, :whole) / 100)
   end
 
-    private
+  def asset_type
+    @data_hash[0]
+  end
 
-      def asset_type
-        @data_hash[0]
-      end
+    private
 
       def asset_data
         @data_hash[1].values[0]
@@ -64,6 +64,11 @@ module BankAsset
   def bank_name
     @data['bank']
   end
+end
+
+
+module FundsAsset
+
 end
 
 

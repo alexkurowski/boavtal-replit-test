@@ -37,9 +37,8 @@ class PropertyReportsController < ApplicationController
       end
 
       def known_asset_types
-        [
-          :realestate, :apartment, :bank
-        ]
+        # [ :realestate, :apartment, :bank, :funds ]
+        @assets.map { |asset| asset.asset_type }.uniq
       end
 
       def select_assets(type)
