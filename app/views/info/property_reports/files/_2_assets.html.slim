@@ -55,7 +55,11 @@ h1 Tillgångar och skulder
     - if @funds_assets.present?
       - @funds_assets.each do |asset|
         - if asset.owned_now_by?(member)
-          h5 Funds
+          .calc-container
+            .calc-left
+              | #{asset.percentage_share_owned_now_by(member, :whole)} procent av fonder på konto #{asset.account_number} hos #{asset.bank_name}
+            .calc-right
+              | + TODO!!!
 
     - if @isk_assets.present?
       - @isk_assets.each do |asset|

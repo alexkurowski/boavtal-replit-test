@@ -52,7 +52,7 @@ class PropertyAsset
 end
 
 
-module BankAsset
+module MonetaryAssetHelper
   def total_value
     @data['total'].to_i
   end
@@ -67,8 +67,12 @@ module BankAsset
 end
 
 
-module FundsAsset
+module BankAsset
+  include MonetaryAssetHelper
+end
 
+module FundsAsset
+  include MonetaryAssetHelper
 end
 
 
@@ -82,7 +86,7 @@ module RealestateAsset
   end
 
   def calc_capital_gains
-    market_value -
+    market_value                      -
     get_float_for('purchaseprice')    -
     get_float_for('acquisitioncost')  -
     get_float_for('agentfee')         -
