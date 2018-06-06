@@ -12,9 +12,8 @@ class PropertyReportsController < ApplicationController
 
     ## END TODO
 
-    @assets = @property.data['assets'].map do |asset|
-                PropertyAsset.new(data_hash: asset)
-                             .extend(class_name_for asset[0])
+    @assets = @property.data['assets'].flat_map do |asset_type, assets| # mapping through {isk: {...}, funds: {...}, ...}
+                assets.values.map { |asset| PropertyAsset.new(data_hash: asset, asset_type: asset_type).extend(class_name_for asset_type) }
               end
 
     known_asset_types.each do |type|
@@ -37,7 +36,7 @@ class PropertyReportsController < ApplicationController
       end
 
       def known_asset_types
-        # [ :realestate, :apartment, :bank, :funds ]
+        # [ :realestate, :apartment, :bank, :funds, ... ]
         @assets.map { |asset| asset.asset_type }.uniq
       end
 

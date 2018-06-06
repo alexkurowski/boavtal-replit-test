@@ -50,6 +50,7 @@
       | #{to_sk asset.calc_capital_gains_tax} (22 procent av #{to_sk asset.calc_capital_gains})
 
   br
+
   p Ett fiktivt mäklararvode om #{to_sk asset.get_float_for('agentfee')} kronor ska avräknas från fastighetens marknadsvärde.
 
   p <strong>Fastighetens nettovärde</strong> är därmed (#{to_rounded_sk asset.market_value} - #{to_rounded_sk asset.calc_capital_gains_tax} - #{to_rounded_sk asset.get_float_for('agentfee')}) = <strong>#{to_rounded_sk asset.calc_net_value} kronor</strong> vilket upptas i bodelningsavtalet.

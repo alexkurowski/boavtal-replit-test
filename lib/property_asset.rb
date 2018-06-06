@@ -1,12 +1,12 @@
 class PropertyAsset
 
-  attr_reader :data_hash
+  attr_reader :data_hash, :asset_type
 
   def initialize(args)
     @data_hash  = args[:data_hash]
+    @asset_type = args[:asset_type]
 
     @data       = asset_data
-    @asset_type = asset_type
   end
 
   def type_is?(type)
@@ -39,14 +39,14 @@ class PropertyAsset
     market_value - market_value * (percentage_share_owned_now_by(member, :whole) / 100)
   end
 
-  def asset_type
-    @data_hash[0]
-  end
+  # def asset_type
+  #   @asset_type
+  # end
 
     private
 
       def asset_data
-        @data_hash[1].values[0]
+        @data_hash
       end
 
 end
@@ -71,10 +71,58 @@ module BankAsset
   include MonetaryAssetHelper
 end
 
+
 module FundsAsset
+  include MonetaryAssetHelper
+
+  def calc_capital_gains
+    get_float_for('salesprice') - get_float_for('costamount')
+  end
+
+  def calc_capital_gains_tax
+    calc_capital_gains * 0.3
+  end
+
+  def calc_net_value
+    get_float_for('salesprice') - calc_capital_gains_tax
+  end
+end
+
+module SecurityAsset
+  include MonetaryAssetHelper
+
+  def calc_capital_gains
+    get_float_for('salesprice') - get_float_for('costamount')
+  end
+
+  def calc_capital_gains_tax
+    calc_capital_gains * 0.3
+  end
+
+  def calc_net_value
+    get_float_for('salesprice') - calc_capital_gains_tax
+  end
+end
+
+
+module IskAsset
   include MonetaryAssetHelper
 end
 
+
+module InsuranceAsset
+  include MonetaryAssetHelper
+end
+
+module OtherAsset
+  def name
+    @data['name']
+  end
+
+  def total_value
+    @data['total'].to_i
+  end
+end
 
 module RealestateAsset
   def city
@@ -95,17 +143,14 @@ module RealestateAsset
   end
 
   def calc_capital_gains_tax
-    # Capital gains tax = Capital gains * .22
-
     calc_capital_gains * 0.22
   end
 
   def calc_net_value
-    # NET VALUE = Market value - Capital gains tax - Real estate agent fee
-
     market_value - calc_capital_gains_tax - get_float_for('agentfee')
   end
 end
+
 
 module ApartmentAsset
   def apartment_number
@@ -141,14 +186,21 @@ module ApartmentAsset
   end
 
   def calc_capital_gains_tax
-    # Capital gains tax = Capital gains * .22
-
     calc_capital_gains * 0.22
   end
 
   def calc_net_value
-    # NET VALUE = Market value - Capital gains tax - Real estate agent fee
-
     market_value - calc_capital_gains_tax - get_float_for('agentfee')
+  end
+end
+
+
+module CarAsset
+  def reg_number
+    @data['registrationnumber']
+  end
+
+  def total_value
+    @data['value'].to_i
   end
 end

@@ -1,0 +1,7 @@
+- @security_assets.each do |asset|
+  - if asset.owned_now_by?(member)
+    .calc-container
+      .calc-left
+        | #{asset.percentage_share_owned_now_by(member, :whole)} procent av värdepapper på konto #{asset.account_number} hos #{asset.bank_name}:
+      .calc-right
+        | + #{to_sk(asset.percentage_share_owned_now_by(member, :decimal) * asset.calc_net_value)}

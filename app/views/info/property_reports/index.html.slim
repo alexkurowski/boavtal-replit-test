@@ -18,5 +18,5 @@
 / 7. Underskrift - Signatures
 
 / 8. Skatteuträkning - Tax calculations
-- if @realestate_assets.present? || @apartment_assets.present? # || @securities_assets || @funds_assets
+- if @realestate_assets.present? || @apartment_assets.present? || @funds_assets.present? || @security_assets.present?
   .alwaysbreak == render 'info/property_reports/files/8_tax_calculations'

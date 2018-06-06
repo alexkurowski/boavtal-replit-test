@@ -10,63 +10,47 @@ h1 Tillgångar och skulder
   h2
     = show_member_name(member)
 
+  / TODO - display this h3 only if member.has_any_assets? (non existant function)
   h3 Tillgångar:
 
   - if exists_and_owned_by?(@apartment_assets, @realestate_assets, member)
     h4 Fast egendom och andelar i bostadsrättsförening
 
     - if @realestate_assets.present?
-      - @realestate_assets.each do |asset|
-        - if asset.owned_now_by?(member)
-          .calc-container
-            .calc-left
-              | #{asset.percentage_share_owned_now_by(member, :whole)} procent av fastigheten #{asset.name} i #{asset.city}:
-            .calc-right
-              | + #{to_sk(asset.percentage_share_owned_now_by(member, :decimal) * asset.calc_capital_gains_tax)}
+      == render 'info/property_reports/files/asset_lists/real_estate', member: member
 
     - if @apartment_assets.present?
-      - @apartment_assets.each do |asset|
-        - if asset.owned_now_by?(member)
-          .calc-container
-            .calc-left
-              | #{asset.percentage_share_owned_now_by(member, :whole)} procent av bostadsrätten med lägenhetsnummer #{asset.apartment_number} i Brf #{asset.housing_cooperative}, med adress #{asset.address}, #{asset.zip} #{asset.city}:
-            .calc-right
-              | + #{to_sk(asset.percentage_share_owned_now_by(member, :decimal) * asset.calc_capital_gains_tax)}
+      == render 'info/property_reports/files/asset_lists/apartment', member: member
+
 
   - if exists_and_owned_by?(@bank_assets, member)
-    h4 Bankkonton
+    == render 'info/property_reports/files/asset_lists/bank', member: member
 
-    - @bank_assets.each do |asset|
-      - if asset.owned_now_by?(member)
-        .calc-container
-          .calc-left
-            | #{asset.percentage_share_owned_now_by(member, :whole)} procent av bankkonto #{asset.account_number} hos #{asset.bank_name}
-          .calc-right
-            | + #{to_sk(asset.percentage_share_owned_now_by(member, :decimal) * asset.total_value)}
 
   - if exists_and_owned_by?(@security_assets, @funds_assets, @isk_assets, @insurance_assets, member)
     h4 Finansiella tillgångar, fonder, värdepapper, aktier
 
     - if @security_assets.present?
-      - @security_assets.each do |asset|
-        - if asset.owned_now_by?(member)
-          h5 Security
+      == render 'info/property_reports/files/asset_lists/security', member: member
 
     - if @funds_assets.present?
-      - @funds_assets.each do |asset|
-        - if asset.owned_now_by?(member)
-          .calc-container
-            .calc-left
-              | #{asset.percentage_share_owned_now_by(member, :whole)} procent av fonder på konto #{asset.account_number} hos #{asset.bank_name}
-            .calc-right
-              | + TODO!!!
+      == render 'info/property_reports/files/asset_lists/funds', member: member
 
     - if @isk_assets.present?
-      - @isk_assets.each do |asset|
-        - if asset.owned_now_by?(member)
-          h5 ISK
+      == render 'info/property_reports/files/asset_lists/isk', member: member
 
     - if @insurance_assets.present?
-      - @insurance_assets.each do |asset|
-        - if asset.owned_now_by?(member)
-          h5 Capital
+      == render 'info/property_reports/files/asset_lists/insurance', member: member
+
+
+  - if exists_and_owned_by?(@car_assets, member)
+    == render 'info/property_reports/files/asset_lists/car', member: member
+
+
+  - if exists_and_owned_by?(@other_assets, member)
+    == render 'info/property_reports/files/asset_lists/other', member: member
+
+  h2 Summa tillgångar:
+
+javascript:
+  console.log('asdf');

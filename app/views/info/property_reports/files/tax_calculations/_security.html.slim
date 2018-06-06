@@ -1,5 +1,5 @@
-- @funds_assets.each do |asset|
-  h4 Fonder:
+- @security_assets.each do |asset|
+  h4 Värdepapper:
 
   .calc-container
     .calc-left
@@ -27,4 +27,4 @@
 
   br
 
-  p <strong>Fondernas nettovärde</strong> är därmed (#{to_rounded_sk asset.get_float_for('salesprice')} - #{to_rounded_sk asset.calc_capital_gains_tax}) = <strong>#{to_sk asset.calc_net_value}</strong> vilket upptas i bodelningsavtalet.
+  p <strong>Värdepapperenas nettovärde</strong> är därmed (#{to_rounded_sk asset.get_float_for('salesprice')} - #{to_rounded_sk asset.calc_capital_gains_tax}) = <strong>#{to_sk asset.calc_net_value}</strong> vilket upptas i bodelningsavtalet.
