@@ -4,4 +4,4 @@
       .calc-left
         | #{asset.percentage_share_owned_now_by(member, :whole)} procent av #{asset.name}:
       .calc-right
-        | + #{to_sk(asset.total_value * asset.percentage_share_owned_now_by(member, :decimal))}
+        | + #{to_sk(asset.total_value_for(member))}

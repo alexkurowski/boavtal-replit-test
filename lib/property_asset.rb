@@ -69,6 +69,10 @@ end
 
 module BankAsset
   include MonetaryAssetHelper
+
+  def total_value_for(member)
+    percentage_share_owned_now_by(member, :decimal) * total_value
+  end
 end
 
 
@@ -86,6 +90,10 @@ module FundsAsset
   def calc_net_value
     get_float_for('salesprice') - calc_capital_gains_tax
   end
+
+  def total_value_for(member)
+    percentage_share_owned_now_by(member, :decimal) * calc_net_value
+  end
 end
 
 module SecurityAsset
@@ -102,16 +110,28 @@ module SecurityAsset
   def calc_net_value
     get_float_for('salesprice') - calc_capital_gains_tax
   end
+
+  def total_value_for(member)
+    percentage_share_owned_now_by(member, :decimal) * calc_net_value
+  end
 end
 
 
 module IskAsset
   include MonetaryAssetHelper
+
+  def total_value_for(member)
+    total_value * percentage_share_owned_now_by(member, :decimal)
+  end
 end
 
 
 module InsuranceAsset
   include MonetaryAssetHelper
+
+  def total_value_for(member)
+    total_value * percentage_share_owned_now_by(member, :decimal)
+  end
 end
 
 module OtherAsset
@@ -121,6 +141,10 @@ module OtherAsset
 
   def total_value
     @data['total'].to_i
+  end
+
+  def total_value_for(member)
+    total_value * percentage_share_owned_now_by(member, :decimal)
   end
 end
 
@@ -148,6 +172,10 @@ module RealestateAsset
 
   def calc_net_value
     market_value - calc_capital_gains_tax - get_float_for('agentfee')
+  end
+
+  def total_value_for(member)
+    percentage_share_owned_now_by(member, :decimal) * calc_capital_gains_tax
   end
 end
 
@@ -192,6 +220,10 @@ module ApartmentAsset
   def calc_net_value
     market_value - calc_capital_gains_tax - get_float_for('agentfee')
   end
+
+  def total_value_for(member)
+    percentage_share_owned_now_by(member, :decimal) * calc_capital_gains_tax
+  end
 end
 
 
@@ -202,5 +234,9 @@ module CarAsset
 
   def total_value
     @data['value'].to_i
+  end
+
+  def total_value_for(member)
+    percentage_share_owned_now_by(member, :decimal) * total_value
   end
 end

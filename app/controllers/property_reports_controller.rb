@@ -16,11 +16,11 @@ class PropertyReportsController < ApplicationController
                 assets.values.map { |asset| PropertyAsset.new(data_hash: asset, asset_type: asset_type).extend(class_name_for asset_type) }
               end
 
+    @asset_calculator = AssetCalculator.new(assets: @assets)
+
     known_asset_types.each do |type|
       instance_variable_set("@#{type}_assets", select_assets(type))
     end
-
-    # byebug
 
     render  pdf:        "property_report",
             encoding:   'UTF-8',

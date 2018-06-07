@@ -4,4 +4,4 @@
       .calc-left
         | #{asset.percentage_share_owned_now_by(member, :whole)} procent av ISK på konto #{asset.account_number} hos #{asset.bank_name}:
       .calc-right
-        | + #{to_sk(asset.total_value * asset.percentage_share_owned_now_by(member, :decimal))}
+        | + #{to_sk(asset.total_value_for(member))}

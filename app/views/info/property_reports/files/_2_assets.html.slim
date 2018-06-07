@@ -50,7 +50,4 @@ h1 Tillgångar och skulder
   - if exists_and_owned_by?(@other_assets, member)
     == render 'info/property_reports/files/asset_lists/other', member: member
 
-  h2 Summa tillgångar:
-
-javascript:
-  console.log('asdf');
+  h4 Summa tillgångar: #{to_sk @asset_calculator.total_asset_amount_for(member)}

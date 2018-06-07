@@ -6,4 +6,4 @@ h4 Fordon
       .calc-left
         | #{asset.percentage_share_owned_now_by(member, :whole)} procent av #{asset.reg_number}:
       .calc-right
-        | + #{to_sk(asset.percentage_share_owned_now_by(member, :decimal) * asset.total_value)}
+        | + #{to_sk(asset.total_value_for(member))}

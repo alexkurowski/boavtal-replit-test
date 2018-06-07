@@ -4,4 +4,4 @@
       .calc-left
         | #{asset.percentage_share_owned_now_by(member, :whole)} procent av bostadsrätten med lägenhetsnummer #{asset.apartment_number} i Brf #{asset.housing_cooperative}, med adress #{asset.address}, #{asset.zip} #{asset.city}:
       .calc-right
-        | + #{to_sk(asset.percentage_share_owned_now_by(member, :decimal) * asset.calc_capital_gains_tax)}
+        | + #{to_sk(asset.total_value_for(member))}
