@@ -8,7 +8,8 @@ class AssetCalculator
   end
 
 
-  def all_assets_for_husband
+  def all_assets_for_member
+
   end
 
 

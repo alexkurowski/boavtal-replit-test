@@ -20,6 +20,8 @@ class PropertyReportsController < ApplicationController
       instance_variable_set("@#{type}_assets", select_assets(type))
     end
 
+    # byebug
+
     render  pdf:        "property_report",
             encoding:   'UTF-8',
             layout:     'property_pdf.html.slim',

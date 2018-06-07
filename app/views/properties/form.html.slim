@@ -1,5 +1,10 @@
 .container
   .property-form
+    .panel.panel-warning.panel-line
+      .panel-heading
+        h3.panel-title Some warning title
+      .panel-body Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer necodio. Praesent libero. Sed cursus ante dapibus diam.
+
     == form_for @property do |f|
       - @f = f
       == render "form"
