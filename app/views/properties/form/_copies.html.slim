@@ -6,6 +6,9 @@
     = @f.select 'data[copies][number]',
       options_for_select(property_number_of_copies),
       { prompt: t('property.copies.copies_prompt') },
-      class: 'form-control d-inline ml-2'
+      class: 'form-control d-inline ml-2',
+      data: { \
+        parsley_required: true,
+        parsley_error_message: t('property.error.required') }
 
   = faq_section 'property.copies.faq'
