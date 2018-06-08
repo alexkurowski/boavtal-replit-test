@@ -1,5 +1,13 @@
 .row
   .col
+    == render 'properties/form/instructions'
+
+.row
+  .col
+    == render 'properties/form/members'
+
+.row
+  .col
     == render 'properties/form/court'
 
 .row
@@ -26,7 +34,7 @@
   .col
     == render 'properties/form/payment'
 
-.row.if-compensation style="#{ hidden_unless @property.data(:compensation, :decide) }"
+.row.if-compensation-details style="#{ hidden_unless_in @property.data(:compensation, :decide), ['true', 'false'] }"
   .col
     == render 'properties/form/payment_details'
 
@@ -37,6 +45,14 @@
 .row
   .col
     == render 'properties/form/other'
+
+.row
+  .col
+    == render 'properties/form/copies'
+
+.row
+  .col
+    == render 'properties/form/witnesses'
 
 = hidden_field_tag :submit_type, 'hard'
 

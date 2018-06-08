@@ -36,21 +36,24 @@ $(document).ready ->
 
 
   $form.find('input[data-slide-target]').on 'change', ->
-    target  = this.dataset.slideTarget
-    $target = $(target)
-    show    = $("input[data-slide-target='#{target}']:checked").val() == 'true'
-    if show
-      $target.slideDown()
-    else
-      $target.slideUp()
+    slideTargets = this.dataset.slideTarget.split(' ')
+    slideTargets.forEach (slideTarget) ->
+      target  = slideTarget.split(':')[0]
+      show    = slideTarget.split(':')[1] is 'show'
+      $target = $(target)
 
-    $target.find('input[data-parsley-required]').each ->
-      this.dataset.parsleyRequired = show
-      true
+      if show
+        $target.slideDown()
+      else
+        $target.slideUp()
 
-    if not show
-      $target.find('.is-invalid').removeClass('is-invalid')
-      $target.find('ul.parsley-errors-list').remove()
+      $target.find('input[data-parsley-required]').each ->
+        this.dataset.parsleyRequired = show
+        true
+
+      if not show
+        $target.find('.is-invalid').removeClass('is-invalid')
+        $target.find('ul.parsley-errors-list').remove()
 
 
   $payment_to_whom_husband = $('.payment-to-whom input').first()

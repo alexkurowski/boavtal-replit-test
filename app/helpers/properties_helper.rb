@@ -1,15 +1,43 @@
 module PropertiesHelper
-  def property_panel type, &block
+  def property_panel type, opts = {}, &block
     """
-    <div class='panel panel-bordered'>
-      <div class='panel-heading'>
+    <div class='panel panel-bordered #{opts.dig :panel, :class}'>
+      <div class='panel-heading #{opts.dig :heading, :class}'>
         <h3 class='panel-title'>#{ I18n.t "property.#{type}.header" }</h3>
       </div>
-      <div class='panel-body'>
+      <div class='panel-body #{opts.dig :body, :class}'>
         #{ capture &block }
       </div>
     </div>
     """.html_safe
+  end
+
+  def property_member_years
+    ( (Date.today.year - 100)..(Date.today.year - 12) )
+      .map { |year| [year, year] }
+  end
+
+  def property_member_months
+    I18n.t('date.month_names', locale: :sv)
+      .compact
+      .each_with_index
+      .map { |month, index| ["#{month} (#{index + 1})", index + 1] }
+  end
+
+  def property_member_days
+    ( 1..31 )
+      .map { |day| [day, day] }
+  end
+
+  def property_number_of_copies
+    recommended = 4
+    ( 2..10 )
+      .map { |n|
+        if n == recommended
+        then ["#{n} (#{t 'property.copies.copies_recommended'})", n]
+        else [n, n]
+        end
+      }
   end
 
   def prop_type_match type, tab
@@ -18,6 +46,10 @@ module PropertiesHelper
 
   def hidden_unless data_value
     'display: none;' unless data_value == 'true'
+  end
+
+  def hidden_unless_in data_value, true_options
+    'display: none;' unless true_options.include? data_value
   end
 
   def asset_partial id = nil, type = ''

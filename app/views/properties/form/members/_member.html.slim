@@ -1,0 +1,61 @@
+h4 = t "property.members.#{member}"
+
+.form-group
+  .row
+    .col-md
+      label = t 'property.members.firstname'
+      = @f.text_field "data[#{member}][firstname]",
+        class: 'form-control',
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required') }
+
+    .col-md
+      label = t 'property.members.lastname'
+      = @f.text_field "data[#{member}][lastname]",
+        class: 'form-control',
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required') }
+
+.form-group
+  label = t 'property.members.ssn'
+  .row
+    .col-sm
+      = @f.select "data[#{member}][datebirth][1i]",
+        options_for_select(property_member_years),
+        { prompt: t('property.members.year') },
+        class: 'form-control',
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required') }
+
+    .col-sm
+      = @f.select "data[#{member}][datebirth][2i]",
+        options_for_select(property_member_months),
+        { prompt: t('property.members.month') },
+        class: 'form-control',
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required') }
+
+    .col-sm
+      = @f.select "data[#{member}][datebirth][3i]",
+        options_for_select(property_member_days),
+        { prompt: t('property.members.day') },
+        class: 'form-control',
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required') }
+
+    .col-sm
+      = @f.text_field "data[#{member}][ssn2]",
+        type: 'tel',
+        pattern: '^\d+$',
+        class: 'form-control',
+        placeholder: '1234',
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required') }
+
+  .parsley-error

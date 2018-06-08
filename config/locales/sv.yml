@@ -8,4 +8,33 @@ sv:
         precision: 0
         format: '%n %u'
         strip_insignificant_zeros: true
+  date:
+    abbr_month_names:
+      -
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - Maj
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Okt
+      - Nov
+      - Dec
+    month_names:
+      -
+      - Januari
+      - Februari
+      - Mars
+      - April
+      - Maj
+      - Juni
+      - Juli
+      - Augusti
+      - September
+      - Oktober
+      - November
+      - December
 

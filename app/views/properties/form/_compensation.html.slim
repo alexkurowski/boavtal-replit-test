@@ -4,19 +4,26 @@
 
   .form-group.mb-40
     .radio-custom.radio-primary
-      = @f.radio_button 'data[compensation][decide]', true,
+      = @f.radio_button 'data[compensation][decide]', 'true',
         data: { \
           parsley_required: true,
           parsley_error_message: t('property.error.required'),
-          slide_target: '.if-compensation' }
-      = @f.label 'data[compensation][decide]_true', t('yes').capitalize
+          slide_target: '.if-compensation:show .if-compensation-details:show' }
+      = @f.label 'data[compensation][decide]_true', t('property.compensation.decide.yes')
     .radio-custom.radio-primary
-      = @f.radio_button 'data[compensation][decide]', false,
+      = @f.radio_button 'data[compensation][decide]', 'false',
         data: { \
           parsley_required: true,
           parsley_error_message: t('property.error.required'),
-          slide_target: '.if-compensation' }
-      = @f.label 'data[compensation][decide]_false', t('no').capitalize
+          slide_target: '.if-compensation:hide .if-compensation-details:show' }
+      = @f.label 'data[compensation][decide]_false', t('property.compensation.decide.no')
+    .radio-custom.radio-primary
+      = @f.radio_button 'data[compensation][decide]', 'none',
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required'),
+          slide_target: '.if-compensation:hide .if-compensation-details:hide' }
+      = @f.label 'data[compensation][decide]_none', t('property.compensation.decide.none')
     .parsley-error
 
   = faq_section 'property.compensation.faq'

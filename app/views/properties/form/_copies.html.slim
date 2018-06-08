@@ -1,0 +1,11 @@
+= property_panel 'copies' do
+  p = t 'property.copies.info'
+
+  .form-group.text-nowrap
+    label = "#{t 'property.copies.label'}: "
+    = @f.select 'data[copies][number]',
+      options_for_select(property_number_of_copies),
+      { prompt: t('property.copies.copies_prompt') },
+      class: 'form-control d-inline ml-2'
+
+  = faq_section 'property.copies.faq'

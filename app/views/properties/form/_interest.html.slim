@@ -12,15 +12,15 @@
         data: { \
           parsley_required: true,
           parsley_error_message: t('property.error.required'),
-          slide_target: '.if-interest-before' }
-      = @f.label 'data[interest][before_payment]_true', t('yes').capitalize
+          slide_target: '.if-interest-before:show' }
+      = @f.label 'data[interest][before_payment]_true', t('property.common.yes').capitalize
     .radio-custom.radio-primary
       = @f.radio_button 'data[interest][before_payment]', false,
         data: { \
           parsley_required: true,
           parsley_error_message: t('property.error.required'),
-          slide_target: '.if-interest-before' }
-      = @f.label 'data[interest][before_payment]_false', t('no').capitalize
+          slide_target: '.if-interest-before:hide' }
+      = @f.label 'data[interest][before_payment]_false', t('property.common.no').capitalize
     .parsley-error
 
   .if-interest-before style="#{ hidden_unless @property.data(:interest, :before_payment) }"
@@ -46,15 +46,15 @@
         data: { \
           parsley_required: true,
           parsley_error_message: t('property.error.required'),
-          slide_target: '.if-interest-after' }
-      = @f.label 'data[interest][after_payment]_true', t('yes').capitalize
+          slide_target: '.if-interest-after:show' }
+      = @f.label 'data[interest][after_payment]_true', t('property.common.yes').capitalize
     .radio-custom.radio-primary
       = @f.radio_button 'data[interest][after_payment]', false,
         data: { \
           parsley_required: true,
           parsley_error_message: t('property.error.required'),
-          slide_target: '.if-interest-after' }
-      = @f.label 'data[interest][after_payment]_false', t('no').capitalize
+          slide_target: '.if-interest-after:hide' }
+      = @f.label 'data[interest][after_payment]_false', t('property.common.no').capitalize
     .parsley-error
 
   .if-interest-after style="#{ hidden_unless @property.data(:interest, :after_payment) }"
