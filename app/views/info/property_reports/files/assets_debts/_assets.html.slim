@@ -1,0 +1,40 @@
+h3 Tillgångar:
+
+- if exists_and_owned_by?(@apartment_assets, @realestate_assets, member)
+  h4 Fast egendom och andelar i bostadsrättsförening
+
+  - if @realestate_assets.present?
+    == render 'info/property_reports/files/asset_lists/real_estate', member: member
+
+  - if @apartment_assets.present?
+    == render 'info/property_reports/files/asset_lists/apartment', member: member
+
+
+- if exists_and_owned_by?(@bank_assets, member)
+  == render 'info/property_reports/files/asset_lists/bank', member: member
+
+
+- if exists_and_owned_by?(@security_assets, @funds_assets, @isk_assets, @insurance_assets, member)
+  h4 Finansiella tillgångar, fonder, värdepapper, aktier
+
+  - if @security_assets.present?
+    == render 'info/property_reports/files/asset_lists/security', member: member
+
+  - if @funds_assets.present?
+    == render 'info/property_reports/files/asset_lists/funds', member: member
+
+  - if @isk_assets.present?
+    == render 'info/property_reports/files/asset_lists/isk', member: member
+
+  - if @insurance_assets.present?
+    == render 'info/property_reports/files/asset_lists/insurance', member: member
+
+
+- if exists_and_owned_by?(@car_assets, member)
+  == render 'info/property_reports/files/asset_lists/car', member: member
+
+
+- if exists_and_owned_by?(@other_assets, member)
+  == render 'info/property_reports/files/asset_lists/other', member: member
+
+h4 Summa tillgångar: #{to_sk @asset_calculator.total_asset_amount_for(member)}

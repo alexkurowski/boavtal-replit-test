@@ -16,11 +16,20 @@ class PropertyReportsController < ApplicationController
                 assets.values.map { |asset| PropertyAsset.new(data_hash: asset, asset_type: asset_type).extend(class_name_for asset_type) }
               end
 
-    @asset_calculator = AssetCalculator.new(assets: @assets)
+    @debts = @property.data['debts'].flat_map do |debt_type, debts|
+                debts.values.map { |debt| PropertyDebt.new(data_hash: debt, asset_type: debt_type).extend(DebtModule) }
+              end
 
-    known_asset_types.each do |type|
-      instance_variable_set("@#{type}_assets", select_assets(type))
+    @asset_calculator = AssetAndDebtCalculator.new(assets: @assets, debts: @debts)
+
+    known_types(@assets).each do |type|
+      instance_variable_set("@#{type}_assets", select_assets_or_debts(@assets, type))
     end
+
+    known_types(@debts).each do |type|
+      instance_variable_set("@#{type}_debts", select_assets_or_debts(@debts, type))
+    end
+
 
     render  pdf:        "property_report",
             encoding:   'UTF-8',
@@ -37,13 +46,13 @@ class PropertyReportsController < ApplicationController
         "#{asset_type.capitalize}Asset".constantize
       end
 
-      def known_asset_types
+      def known_types(collection)
         # [ :realestate, :apartment, :bank, :funds, ... ]
-        @assets.map { |asset| asset.asset_type }.uniq
+        collection.map { |asset| asset.asset_type }.uniq
       end
 
-      def select_assets(type)
-        @assets.select { |asset| asset.type_is?(type.to_s) }
+      def select_assets_or_debts(collection, type)
+        collection.select { |asset| asset.type_is?(type.to_s) }
       end
 
 end

@@ -1,0 +1,22 @@
+h1 Tillgångar och skulder
+
+- if !any_debts? && !any_assets?
+  p Parterna är överens om att det inte föreligger något giftorättsgods att uppta till bodelning. Parterna har således inga tillgångar och skulder som ska fördelas.
+- elsif any_debts? || any_assets?
+  p I boet finns följande tillgångar och skulder som ska fördelas:
+
+- [:husband, :wife].each do |member|
+  h2
+    = show_member_name(member)
+
+  - if @asset_calculator.assets_exist_for?(member)
+    == render 'info/property_reports/files/assets_debts/assets', member: member
+  - else # NO ASSETS FOR THIS MEMBER
+    p
+      strong #{show_member_name member} har inga tillgångar som ska fördelas.
+
+  - if @asset_calculator.debts_exist_for?(member)
+    == render 'info/property_reports/files/assets_debts/debts', member: member
+  - else
+    p
+      strong #{show_member_name member} har inga skulder att ta upp.
