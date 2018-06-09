@@ -155,6 +155,8 @@ $(document).ready ->
       $form.find('.debt a.nav-link.active').click()
     , 0)
 
+    updatePropertyRemoveButtons()
+
 
   addProperty = (type) ->
     id = String(Date.now())
@@ -214,6 +216,17 @@ $(document).ready ->
       $(entry).find('a.panel-title').text("#{name} ##{index + 1}")
 
 
+  updatePropertyRemoveButtons = ->
+    ['.assets', '.debts'].forEach (propClass) ->
+      $parent = $(propClass)
+      single  = $parent.children().length <= 1
+
+      if single
+        $parent.addClass('single')
+      else
+        $parent.removeClass('single')
+
+
   $form.on 'click', '.asset a[data-toggle="tab"], .debt a[data-toggle="tab"]', ->
     $parent = $(this).closest('.asset, .debt')
     $parent.find('.tab-content.d-none').removeClass('d-none')
@@ -222,21 +235,25 @@ $(document).ready ->
   $form.on 'click', '.add-asset a', (e) ->
     e.preventDefault()
     addProperty('asset')
+    updatePropertyRemoveButtons()
 
 
   $form.on 'click', '.add-debt a', (e) ->
     e.preventDefault()
     addProperty('debt')
+    updatePropertyRemoveButtons()
 
 
   $form.on 'click', '.remove-asset', (e) ->
     e.preventDefault()
     $(this).closest('.asset').remove()
+    updatePropertyRemoveButtons()
 
 
   $form.on 'click', '.remove-debt', (e) ->
     e.preventDefault()
     $(this).closest('.debt').remove()
+    updatePropertyRemoveButtons()
 
 
   $form.on 'change', 'input[name="property[data[assets_debts][any_assets]]"]', () ->
