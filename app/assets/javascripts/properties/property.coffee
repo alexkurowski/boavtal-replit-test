@@ -127,12 +127,28 @@ $(document).ready ->
         .empty()
   }
 
+  numericalSettings = {
+    alias: 'integer',
+    regex: '\\d*',
+    rightAlign: false,
+    allowPlus: false,
+    allowMinus: false,
+    autoGroup: true,
+    groupSeparator: ' ',
+    removeMaskOnSubmit: true
+  }
+
 
   initProperties = ->
     $form
       .find('input[type="range"]')
       .filter (i, node) -> node.id.indexOf('template') is -1
       .asRange(rangeSettings)
+
+    $form
+      .find('.numerical')
+      .filter (i, node) -> node.id.indexOf('template') is -1
+      .inputmask(numericalSettings)
 
     setTimeout( ->
       $form.find('.asset a.nav-link.active').click()
@@ -173,6 +189,8 @@ $(document).ready ->
     $prop.find('input[data-plugin="datepicker"]').datepicker({
       container: '.page'
     })
+
+    $prop.find('.numerical').inputmask(numericalSettings)
 
     $prop.find('input').each (i, input) ->
       old_name = $(input).attr('name')
