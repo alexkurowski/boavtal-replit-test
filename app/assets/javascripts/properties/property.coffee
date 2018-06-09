@@ -68,6 +68,12 @@ $(document).ready ->
   })
 
 
+  $form.find('.ssn2').inputmask('9{4}', {
+    numericInput: true,
+    jitMasking: true
+  })
+
+
   $form.find('.case-number-field').inputmask('T-*{*}', {
     clearMaskOnLostFocus: false
   })
