@@ -13,7 +13,7 @@ class PropertiesController < ApplicationController
 
   def create
     Property.create property_params
-    redirect_to properties_path
+    redirect_to properties_path, flash: { notice: 'Form was saved successfully' }
   end
 
   def edit
@@ -22,7 +22,7 @@ class PropertiesController < ApplicationController
 
   def update
     @property.update_attributes property_params
-    redirect_to properties_path
+    redirect_to properties_path, flash: { notice: 'Form was saved successfully' }
   end
 
   def destroy

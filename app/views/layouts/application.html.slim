@@ -25,6 +25,7 @@ html
 
     .page role='main'
       .page-content.container-fluid
+        == render 'layouts/flash_messages'
         = yield
 
     = javascript_include_tag 'theme', 'data-turbolinks-track': 'reload'

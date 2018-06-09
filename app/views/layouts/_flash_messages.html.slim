@@ -1,0 +1,3 @@
+- flash.each do |name, msg|
+  - if msg.is_a?(String)
+    .pnotify-flash data-type="#{name}" data-message="#{msg}" style="display: none"
