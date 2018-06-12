@@ -2,6 +2,6 @@
   - if asset.owned_now_by?(member)
     .calc-container
       .calc-left
-        | #{asset.percentage_share_owned_now_by(member, :whole)} procent av fastigheten #{asset.name} i #{asset.city}:
+        | #{asset.percentage_share_owned_by(member, :whole)} procent av fastigheten #{asset.name} i #{asset.city}:
       .calc-right
         | + #{to_sk(asset.total_value_for(member))}

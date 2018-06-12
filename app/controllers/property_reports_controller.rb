@@ -12,11 +12,11 @@ class PropertyReportsController < ApplicationController
 
     ## END TODO
 
-    @assets = @property.data['assets'].flat_map do |asset_type, assets| # mapping through {isk: {...}, funds: {...}, ...}
+    @assets = @property.data['assets']&.flat_map do |asset_type, assets| # mapping through {isk: {...}, funds: {...}, ...}
                 assets.values.map { |asset| PropertyAsset.new(data_hash: asset, asset_type: asset_type).extend(class_name_for asset_type) }
               end
 
-    @debts = @property.data['debts'].flat_map do |debt_type, debts|
+    @debts = @property.data['debts']&.flat_map do |debt_type, debts|
                 debts.values.map { |debt| PropertyDebt.new(data_hash: debt, asset_type: debt_type).extend(DebtModule) }
               end
 
@@ -24,11 +24,11 @@ class PropertyReportsController < ApplicationController
 
     known_types(@assets).each do |type|
       instance_variable_set("@#{type}_assets", select_assets_or_debts(@assets, type))
-    end
+    end if @assets.present?
 
     known_types(@debts).each do |type|
       instance_variable_set("@#{type}_debts", select_assets_or_debts(@debts, type))
-    end
+    end if @debts.present?
 
 
     render  pdf:        "property_report",

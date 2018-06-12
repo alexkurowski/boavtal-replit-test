@@ -1,0 +1,11 @@
+h1 Andelsberäkning
+
+- [:husband, :wife].each do |member|
+  p
+    strong Nettotillgång #{show_member_name member}: #{to_sk @asset_calculator.net_worth_for(member)}
+
+p
+  strong Nettotillgångar i boet: #{to_sk @asset_calculator.cumulative_net_worth}
+
+p
+  strong Vardera makes hälftendel av nettotillgångarna i boet är: #{to_sk @asset_calculator.divided_net_worth}

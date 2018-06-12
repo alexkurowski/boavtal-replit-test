@@ -6,10 +6,12 @@ h2 Development console:
 strong
   = @property.data
 
-h4
-  - @assets.each do |a|
-    = a
+- if @assets.present?
+  h4
+    - @assets.each do |a|
+      = a
 
-h4
-  - @debts.each do |d|
-    = d
+- if @debts.present?
+  h4
+    - @debts.each do |d|
+      = d

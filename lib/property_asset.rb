@@ -13,14 +13,14 @@ class PropertyAsset
     type == asset_type
   end
 
-  def percentage_share_owned_now_by(member, output)
-    num = @data["#{member}_own"].to_f
+  def percentage_share_owned_by(member, output, currently = true)
+    num = currently ? @data["#{member}_own"].to_f : @data["#{member}_after"].to_f
     num = (num / 100) if output == :decimal
     output == :whole ? num.to_i : num
   end
 
   def owned_now_by?(member)
-    percentage_share_owned_now_by(member, :whole) > 0
+    percentage_share_owned_by(member, :whole) > 0
   end
 
   def market_value # Marknadsvärde
@@ -36,7 +36,7 @@ class PropertyAsset
   end
 
   def value_share_of(member)
-    market_value - market_value * (percentage_share_owned_now_by(member, :whole) / 100)
+    market_value - market_value * (percentage_share_owned_by(member, :whole) / 100)
   end
 
   # def asset_type
@@ -57,8 +57,8 @@ class PropertyDebt < PropertyAsset
     return @asset_type
   end
 
-  def percentage_share_owed_now_by(member, output)
-    num = @data["#{member}_owe"].to_f
+  def percentage_share_owed_now_by(member, output, currently = true)
+    num = currently ? @data["#{member}_owe"].to_f : @data["#{member}_after"].to_f
     num = (num / 100) if output == :decimal
     output == :whole ? num.to_i : num
   end
@@ -112,7 +112,7 @@ module BankAsset
   include MonetaryAssetHelper
 
   def total_value_for(member)
-    percentage_share_owned_now_by(member, :decimal) * total_value
+    percentage_share_owned_by(member, :decimal) * total_value
   end
 end
 
@@ -133,7 +133,7 @@ module FundsAsset
   end
 
   def total_value_for(member)
-    percentage_share_owned_now_by(member, :decimal) * calc_net_value
+    percentage_share_owned_by(member, :decimal) * calc_net_value
   end
 end
 
@@ -153,7 +153,7 @@ module SecurityAsset
   end
 
   def total_value_for(member)
-    percentage_share_owned_now_by(member, :decimal) * calc_net_value
+    percentage_share_owned_by(member, :decimal) * calc_net_value
   end
 end
 
@@ -162,7 +162,7 @@ module IskAsset
   include MonetaryAssetHelper
 
   def total_value_for(member)
-    total_value * percentage_share_owned_now_by(member, :decimal)
+    total_value * percentage_share_owned_by(member, :decimal)
   end
 end
 
@@ -171,7 +171,7 @@ module InsuranceAsset
   include MonetaryAssetHelper
 
   def total_value_for(member)
-    total_value * percentage_share_owned_now_by(member, :decimal)
+    total_value * percentage_share_owned_by(member, :decimal)
   end
 end
 
@@ -185,7 +185,7 @@ module OtherAsset
   end
 
   def total_value_for(member)
-    total_value * percentage_share_owned_now_by(member, :decimal)
+    total_value * percentage_share_owned_by(member, :decimal)
   end
 end
 
@@ -216,7 +216,7 @@ module RealestateAsset
   end
 
   def total_value_for(member)
-    percentage_share_owned_now_by(member, :decimal) * calc_capital_gains_tax
+    percentage_share_owned_by(member, :decimal) * calc_capital_gains_tax
   end
 end
 
@@ -263,7 +263,7 @@ module ApartmentAsset
   end
 
   def total_value_for(member)
-    percentage_share_owned_now_by(member, :decimal) * calc_capital_gains_tax
+    percentage_share_owned_by(member, :decimal) * calc_capital_gains_tax
   end
 end
 
@@ -278,7 +278,7 @@ module CarAsset
   end
 
   def total_value_for(member)
-    percentage_share_owned_now_by(member, :decimal) * total_value
+    percentage_share_owned_by(member, :decimal) * total_value
   end
 end
 

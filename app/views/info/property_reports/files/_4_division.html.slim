@@ -1,0 +1,20 @@
+h1 Bodelning
+
+- if @assets.blank? && @debts.blank?
+
+ p Undertecknade är överens om att samtliga tillgångar och skulder som var part äger och har ska behållas av respektive part vid bodelningen. Denna bodelning är fullständig och parterna förklarar sig genom sitt undertecknade inte ha några krav på varandra, av vad slag än må vara, med anledning av det avslutade äktenskapet och reglerna om bodelning i Äktenskapsbalken.
+
+- else
+  p Undertecknade är överens om att boets tillgångar och skulder ska fördelas enligt följande vid bodelningen.
+
+  - [:husband, :wife].each do |member|
+    h2 #{show_member_name member} tilldelning
+
+    - if @asset_calculator.transitory_assets_exist_for?(member)
+
+      p #{show_member_name member} ska erhålla följande tillgångar samt betalningsansvaret för följande skulder i och med bodelningen:
+
+      == render 'info/property_reports/files/assets_debts/assets', member: member, asdf: false
+
+    - else # member gets no ASSETS after divorce
+      p -
