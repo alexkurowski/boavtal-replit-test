@@ -13,14 +13,18 @@ class PropertyAsset
     type == asset_type
   end
 
-  def percentage_share_owned_by(member, output, currently = true)
-    num = currently ? @data["#{member}_own"].to_f : @data["#{member}_after"].to_f
+  def percentage_share_owned_by(member, output, timeframe)
+    num = (timeframe == :now) ? @data["#{member}_own"].to_f : @data["#{member}_after"].to_f
     num = (num / 100) if output == :decimal
     output == :whole ? num.to_i : num
   end
 
   def owned_now_by?(member)
-    percentage_share_owned_by(member, :whole) > 0
+    percentage_share_owned_by(member, :whole, :now) > 0
+  end
+
+  def owned_after_by?(member)
+    percentage_share_owned_by(member, :whole, :after) > 0
   end
 
   def market_value # Marknadsvärde
@@ -36,7 +40,7 @@ class PropertyAsset
   end
 
   def value_share_of(member)
-    market_value - market_value * (percentage_share_owned_by(member, :whole) / 100)
+    market_value - market_value * (percentage_share_owned_by(member, :whole, :now) / 100)
   end
 
   # def asset_type
@@ -57,14 +61,18 @@ class PropertyDebt < PropertyAsset
     return @asset_type
   end
 
-  def percentage_share_owed_now_by(member, output, currently = true)
-    num = currently ? @data["#{member}_owe"].to_f : @data["#{member}_after"].to_f
+  def percentage_share_owed_by(member, output, timeframe)
+    num = (timeframe == :now) ? @data["#{member}_owe"].to_f : @data["#{member}_after"].to_f
     num = (num / 100) if output == :decimal
     output == :whole ? num.to_i : num
   end
 
   def owed_now_by?(member)
-    percentage_share_owed_now_by(member, :whole) > 0
+    percentage_share_owed_now_by(member, :whole, :now) > 0
+  end
+
+  def owed_after_by?(member)
+    percentage_share_owed_now_by(member, :whole, :after) > 0
   end
 
   def bank_name
@@ -87,8 +95,8 @@ class PropertyDebt < PropertyAsset
     @data['amount'].to_i
   end
 
-  def total_value_for(member)
-    percentage_share_owed_now_by(member, :decimal) * total_value
+  def total_value_for(member, timeframe)
+    percentage_share_owed_by(member, :decimal, timeframe) * total_value
   end
 end
 
@@ -111,8 +119,8 @@ end
 module BankAsset
   include MonetaryAssetHelper
 
-  def total_value_for(member)
-    percentage_share_owned_by(member, :decimal) * total_value
+  def total_value_for(member, timeframe)
+    percentage_share_owned_by(member, :decimal, timeframe) * total_value
   end
 end
 
@@ -132,8 +140,8 @@ module FundsAsset
     get_float_for('salesprice') - calc_capital_gains_tax
   end
 
-  def total_value_for(member)
-    percentage_share_owned_by(member, :decimal) * calc_net_value
+  def total_value_for(member, timeframe)
+    percentage_share_owned_by(member, :decimal, timeframe) * calc_net_value
   end
 end
 
@@ -152,8 +160,8 @@ module SecurityAsset
     get_float_for('salesprice') - calc_capital_gains_tax
   end
 
-  def total_value_for(member)
-    percentage_share_owned_by(member, :decimal) * calc_net_value
+  def total_value_for(member, timeframe)
+    percentage_share_owned_by(member, :decimal, timeframe) * calc_net_value
   end
 end
 
@@ -161,8 +169,8 @@ end
 module IskAsset
   include MonetaryAssetHelper
 
-  def total_value_for(member)
-    total_value * percentage_share_owned_by(member, :decimal)
+  def total_value_for(member, timeframe)
+    total_value * percentage_share_owned_by(member, :decimal, timeframe)
   end
 end
 
@@ -170,8 +178,8 @@ end
 module InsuranceAsset
   include MonetaryAssetHelper
 
-  def total_value_for(member)
-    total_value * percentage_share_owned_by(member, :decimal)
+  def total_value_for(member, timeframe)
+    total_value * percentage_share_owned_by(member, :decimal, timeframe)
   end
 end
 
@@ -184,8 +192,8 @@ module OtherAsset
     @data['total'].to_i
   end
 
-  def total_value_for(member)
-    total_value * percentage_share_owned_by(member, :decimal)
+  def total_value_for(member, timeframe)
+    total_value * percentage_share_owned_by(member, :decimal, timeframe)
   end
 end
 
@@ -215,8 +223,8 @@ module RealestateAsset
     market_value - calc_capital_gains_tax - get_float_for('agentfee')
   end
 
-  def total_value_for(member)
-    percentage_share_owned_by(member, :decimal) * calc_capital_gains_tax
+  def total_value_for(member, timeframe)
+    percentage_share_owned_by(member, :decimal, timeframe) * calc_capital_gains_tax
   end
 end
 
@@ -262,8 +270,8 @@ module ApartmentAsset
     market_value - calc_capital_gains_tax - get_float_for('agentfee')
   end
 
-  def total_value_for(member)
-    percentage_share_owned_by(member, :decimal) * calc_capital_gains_tax
+  def total_value_for(member, timeframe)
+    percentage_share_owned_by(member, :decimal, timeframe) * calc_capital_gains_tax
   end
 end
 
@@ -277,8 +285,8 @@ module CarAsset
     @data['value'].to_i
   end
 
-  def total_value_for(member)
-    percentage_share_owned_by(member, :decimal) * total_value
+  def total_value_for(member, timeframe)
+    percentage_share_owned_by(member, :decimal, timeframe) * total_value
   end
 end
 

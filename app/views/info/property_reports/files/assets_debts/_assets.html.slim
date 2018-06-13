@@ -1,6 +1,8 @@
+- @timeframe = timeframe
+
 h3 Tillgångar:
 
-- if exists_and_owned_by?(@apartment_assets, @realestate_assets, member)
+- if exists_and_owned_by?(@apartment_assets, @realestate_assets, member, @timeframe)
   h4 Fast egendom och andelar i bostadsrättsförening
 
   - if @realestate_assets.present?
@@ -10,11 +12,11 @@ h3 Tillgångar:
     == render 'info/property_reports/files/asset_lists/apartment', member: member
 
 
-- if exists_and_owned_by?(@bank_assets, member)
+- if exists_and_owned_by?(@bank_assets, member, @timeframe)
   == render 'info/property_reports/files/asset_lists/bank', member: member
 
 
-- if exists_and_owned_by?(@security_assets, @funds_assets, @isk_assets, @insurance_assets, member)
+- if exists_and_owned_by?(@security_assets, @funds_assets, @isk_assets, @insurance_assets, member, @timeframe)
   h4 Finansiella tillgångar, fonder, värdepapper, aktier
 
   - if @security_assets.present?
@@ -30,11 +32,9 @@ h3 Tillgångar:
     == render 'info/property_reports/files/asset_lists/insurance', member: member
 
 
-- if exists_and_owned_by?(@car_assets, member)
+- if exists_and_owned_by?(@car_assets, member, @timeframe)
   == render 'info/property_reports/files/asset_lists/car', member: member
 
 
-- if exists_and_owned_by?(@other_assets, member)
+- if exists_and_owned_by?(@other_assets, member, @timeframe)
   == render 'info/property_reports/files/asset_lists/other', member: member
-
-h4 Summa tillgångar: #{to_sk @asset_calculator.total_asset_amount_for(member)}

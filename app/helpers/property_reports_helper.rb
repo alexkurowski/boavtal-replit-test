@@ -24,10 +24,14 @@ module PropertyReportsHelper
     @property.data['assets_debts']['any_assets'] == 'true' ? true : false
   end
 
-  def exists_and_owned_by?(*variable_array, member)
+  def exists_and_owned_by?(*variable_array, member, timeframe) # timeframe can either be :NOW or :AFTER
     array_without_nils = variable_array.compact.flatten
     return false if array_without_nils.empty?
-    array_without_nils.map { |asset| asset.owned_now_by?(member) }.any?
+    if timeframe == :now
+      array_without_nils.map { |asset| asset.owned_now_by?(member) }.any?
+    elsif timeframe == :after
+      array_without_nils.map { |asset| asset.owned_after_by?(member) }.any?
+    end
   end
 
   def to_sk(number)

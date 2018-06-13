@@ -1,7 +1,7 @@
 - @security_assets.each do |asset|
-  - if asset.owned_now_by?(member)
+  - if asset.send("owned_#{@timeframe}_by?", member)
     .calc-container
       .calc-left
-        | #{asset.percentage_share_owned_by(member, :whole)} procent av värdepapper på konto #{asset.account_number} hos #{asset.bank_name}:
+        | #{asset.percentage_share_owned_by(member, :whole, @timeframe)} procent av värdepapper på konto #{asset.account_number} hos #{asset.bank_name}:
       .calc-right
-        | + #{to_sk(asset.total_value_for(member))}
+        | + #{to_sk(asset.total_value_for(member, @timeframe))}

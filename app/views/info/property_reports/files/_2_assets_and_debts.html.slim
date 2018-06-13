@@ -10,8 +10,11 @@ h1 Tillgångar och skulder
     = show_member_name(member)
 
   - if @assets.present? && @asset_calculator.assets_exist_for?(member)
-    == render 'info/property_reports/files/assets_debts/assets', member: member
-  - else # NO ASSETS FOR THIS MEMBER
+    == render 'info/property_reports/files/assets_debts/assets', member: member, timeframe: :now
+    p
+      strong Summa tillgångar: #{to_sk @asset_calculator.total_asset_amount_for(member, :now)}
+
+  - else # NO assets BEFORE divorce
     p
       strong #{show_member_name member} har inga tillgångar som ska fördelas.
 

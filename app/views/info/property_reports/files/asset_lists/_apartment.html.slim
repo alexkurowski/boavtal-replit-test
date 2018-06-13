@@ -1,7 +1,7 @@
 - @apartment_assets.each do |asset|
-  - if asset.owned_now_by?(member)
+  - if asset.send("owned_#{@timeframe}_by?", member)
     .calc-container
       .calc-left
-        | #{asset.percentage_share_owned_by(member, :whole)} procent av bostadsrätten med lägenhetsnummer #{asset.apartment_number} i Brf #{asset.housing_cooperative}, med adress #{asset.address}, #{asset.zip} #{asset.city}:
+        | #{asset.percentage_share_owned_by(member, :whole, @timeframe)} procent av bostadsrätten med lägenhetsnummer #{asset.apartment_number} i Brf #{asset.housing_cooperative}, med adress #{asset.address}, #{asset.zip} #{asset.city}:
       .calc-right
-        | + #{to_sk(asset.total_value_for(member))}
+        | + #{to_sk(asset.total_value_for(member, @timeframe))}

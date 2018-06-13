@@ -14,7 +14,10 @@ h1 Bodelning
 
       p #{show_member_name member} ska erhålla följande tillgångar samt betalningsansvaret för följande skulder i och med bodelningen:
 
-      == render 'info/property_reports/files/assets_debts/assets', member: member, asdf: false
+      == render 'info/property_reports/files/assets_debts/assets', member: member, timeframe: :after
+
+      p
+        strong Tillgångar vid bodelning: #{to_sk @asset_calculator.total_transitory_asset_amount_for(member, @timeframe)}
 
     - else # member gets no ASSETS after divorce
       p -
