@@ -22,4 +22,14 @@ class Property < ApplicationRecord
 
     raise NoMethodError, "undefined method `#{method}` for #{self.class.name}"
   end
+
+  def compensate_by_law?
+    compensation = data['compensation']['decide']
+    true if compensation == 'false'
+  end
+
+  def witness_to_sign?
+    witness_to_sign = data['witnesses']['to_sign']
+    true if witness_to_sign == 'true'
+  end
 end

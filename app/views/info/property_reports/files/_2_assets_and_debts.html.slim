@@ -19,7 +19,11 @@ h1 Tillgångar och skulder
       strong #{show_member_name member} har inga tillgångar som ska fördelas.
 
   - if @debts.present? && @asset_calculator.debts_exist_for?(member)
-    == render 'info/property_reports/files/assets_debts/debts', member: member
+    h3 Skulder:
+
+    == render 'info/property_reports/files/assets_debts/debts', member: member, timeframe: :now
+    h4 Summa skulder: - #{to_sk @asset_calculator.total_debt_amount_for(member, @timeframe)}
+
   - else
     p
       strong #{show_member_name member} har inga skulder att ta upp.

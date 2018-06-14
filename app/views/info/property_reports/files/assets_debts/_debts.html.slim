@@ -1,22 +1,18 @@
-h3 Skulder:
-
 - if @loan_debts.present?
   - @loan_debts.each do |debt|
-    - if debt.owed_now_by?(member)
+    - if debt.send("owed_#{@timeframe}_by?", member)
       .calc-container
         .calc-left
-          | #{debt.percentage_share_owed_now_by(member, :whole)} procent av lån #{debt.account_number} hos #{debt.bank_name}:
+          | #{debt.percentage_share_owed_by(member, :whole, @timeframe)} procent av lån #{debt.account_number} hos #{debt.bank_name}:
         .calc-right
-          | - #{to_sk debt.total_value_for(member)}
+          | - #{to_sk debt.total_value_for(member, @timeframe)}
 
 
 - if @bill_debts.present?
   - @bill_debts.each do |debt|
-    - if debt.owed_now_by?(member)
+    - if debt.send("owed_#{@timeframe}_by?", member)
       .calc-container
         .calc-left
-          | #{debt.percentage_share_owed_now_by(member, :whole)} procent av lån till #{debt.owner} enligt skuldebrev #{debt.due_date}:
+          | #{debt.percentage_share_owed_now_by(member, :whole, @timeframe)} procent av lån till #{debt.owner} enligt skuldebrev #{debt.due_date}:
         .calc-right
-          | - #{to_sk debt.total_value_for(member)}
-
-h4 Summa skulder: - #{to_sk @asset_calculator.total_debt_amount_for(member)}
+          | - #{to_sk debt.total_value_for(member, @timeframe)}

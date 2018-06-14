@@ -15,10 +15,18 @@
 
 / 5. Bodelningslikvid - Anyone paying the other anything
 
+
 / 6. Övrigt - Misc
+- unless @property.data['other'].empty?
+  .alwaysbreak == render 'info/property_reports/files/6_other'
 
 / 7. Underskrift - Signatures
+.alwaysbreak == render 'info/property_reports/files/7_signatures'
+
+/ 8. Witness signatures
+- if @property.witness_to_sign?
+  .alwaysbreak == render 'info/property_reports/files/8_witnesses'
 
 / 8. Skatteuträkning - Tax calculations
 - if @realestate_assets.present? || @apartment_assets.present? || @funds_assets.present? || @security_assets.present?
-  .alwaysbreak == render 'info/property_reports/files/8_tax_calculations'
+  .alwaysbreak == render 'info/property_reports/files/9_tax_calculations'

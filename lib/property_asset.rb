@@ -68,11 +68,11 @@ class PropertyDebt < PropertyAsset
   end
 
   def owed_now_by?(member)
-    percentage_share_owed_now_by(member, :whole, :now) > 0
+    percentage_share_owed_by(member, :whole, :now) > 0
   end
 
   def owed_after_by?(member)
-    percentage_share_owed_now_by(member, :whole, :after) > 0
+    percentage_share_owed_by(member, :whole, :after) > 0
   end
 
   def bank_name
