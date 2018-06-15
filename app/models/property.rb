@@ -47,6 +47,40 @@ class Property < ApplicationRecord
     data['payment_details']['date']
   end
 
+  def compensation_clearing
+    data['payment_details']['field_1']
+  end
+
+  def compensation_account
+    data['payment_details']['field_2']
+  end
+
+  def compensation_bank_name
+    data['payment_details']['field_3']
+  end
+
+  def compensation_details_filled?
+    !compensation_clearing.blank? &&
+    !compensation_account.blank?  &&
+    !compensation_bank_name.blank?
+  end
+
+  def interest_before?
+    data['interest']['before_payment'] == 'true'
+  end
+
+  def interest_after?
+    data['interest']['after_payment'] == 'true'
+  end
+
+  def interest_rate_before
+    data['interest']['before_payment_rate']
+  end
+
+  def interest_rate_after
+    data['interest']['after_payment_rate']
+  end
+
   def witness_to_sign?
     witness_to_sign = data['witnesses']['to_sign']
     true if witness_to_sign == 'true'
