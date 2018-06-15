@@ -23,9 +23,28 @@ class Property < ApplicationRecord
     raise NoMethodError, "undefined method `#{method}` for #{self.class.name}"
   end
 
+  def property_compensation
+    data['compensation']['decide']
+  end
+
+  def compensation_amount
+    data['payment']['how_much']
+  end
+
+  def compensation_reciever
+    data['payment']['to_whom'].to_sym
+  end
+
+  def compensation_giver
+    compensation_reciever == :husband ? :wife : :husband
+  end
+
   def compensate_by_law?
-    compensation = data['compensation']['decide']
-    true if compensation == 'false'
+    true if property_compensation == 'false'
+  end
+
+  def compensation_due_date
+    data['payment_details']['date']
   end
 
   def witness_to_sign?

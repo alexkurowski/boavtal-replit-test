@@ -37,10 +37,15 @@ class PropertiesController < ApplicationController
       end
 
       def clean_property_params
-        if params.dig(:property, :data, :compensation, :decide) == 'false'
+        # TODO COPY BELOW TO MAIN APP
+        unless params.dig(:property, :data, :compensation, :decide) == 'true'
           params[:property][:data].delete :payment
+        end
+
+        if params.dig(:property, :data, :compensation, :decide) == 'none'
           params[:property][:data].delete :payment_details
         end
+        # END TODO
 
         case params[:submit_type]
         when 'soft' then params[:property][:validated] = false
