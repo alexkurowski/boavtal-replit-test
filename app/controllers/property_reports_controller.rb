@@ -1,6 +1,9 @@
 class PropertyReportsController < ApplicationController
   def index
     @property = Property.find(params[:property_id])
+
+    redirect_if_incomplete and return
+
     @court    = Court.find(@property.data['court']['court'])
 
     ## TODO - import from incoming order
@@ -53,6 +56,12 @@ class PropertyReportsController < ApplicationController
 
       def select_assets_or_debts(collection, type)
         collection.select { |asset| asset.type_is?(type.to_s) }
+      end
+
+      def redirect_if_incomplete
+        unless @property.validated?
+          redirect_to properties_path, flash: { notice: 'You need to complete the form first.' }
+        end
       end
 
 end

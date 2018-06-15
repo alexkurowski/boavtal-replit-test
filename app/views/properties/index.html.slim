@@ -28,5 +28,20 @@
                 td
                   = link_to property_path(property), method: :delete, class: 'btn btn-danger btn-sm', 'data-confirm' => 'Are you sure?'
                     i.fa.fa-trash
-                td
-                  = link_to 'Download PDF', property_reports_path(property), class: 'btn btn-success ml-10', target: '_blank'
+                - if property.validated?
+                  td
+                    = link_to 'Download PDF', property_reports_path(property), class: 'btn btn-success ml-10', target: '_blank'
+                - else
+                  td
+                    = link_to 'Download PDF', '#', class: 'btn btn-success disabled ml-10 tool-tip', data: {:"original-title" => "Please complete the form to generate the files", :toggle => "tooltip", :placement => 'bottom'}
+
+
+css:
+  .btn {
+    pointer-events: all !important;
+  }
+
+javascript:
+  $(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
