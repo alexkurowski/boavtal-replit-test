@@ -28,6 +28,7 @@
       span = t 'property.interest.before_payment_rate_label'
       = @f.number_field 'data[interest][before_payment_rate]',
         class: 'form-control interest-rate',
+        in: 0..100,
         data: { \
           parsley_required: parsley_required_before_rate,
           parsley_error_message: t('property.error.required') }
@@ -62,6 +63,7 @@
       span = t 'property.interest.after_payment_rate_label'
       = @f.number_field 'data[interest][after_payment_rate]',
         class: 'form-control interest-rate',
+        in: 0..100,
         data: { \
           parsley_required: parsley_required_after_rate,
           parsley_error_message: t('property.error.required') }
