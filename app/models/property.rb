@@ -85,4 +85,8 @@ class Property < ApplicationRecord
     witness_to_sign = data['witnesses']['to_sign']
     true if witness_to_sign == 'true'
   end
+
+  def validated? # remove if moving away from heroku
+    validated
+  end
 end
