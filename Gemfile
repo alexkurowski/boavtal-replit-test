@@ -24,6 +24,7 @@ gem 'coffee-rails', '~> 4.2'
 
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-heroku' # heroku ONLY
 
 gem 'slim-rails'
 
