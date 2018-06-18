@@ -92,4 +92,5 @@ class AssetAndDebtCalculator
     cumulative_net_worth(timeframe) / 2
   end
 
+
 end

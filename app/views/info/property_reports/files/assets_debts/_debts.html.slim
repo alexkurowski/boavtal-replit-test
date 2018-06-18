@@ -13,6 +13,6 @@
     - if debt.send("owed_#{@timeframe}_by?", member)
       .calc-container
         .calc-left
-          | #{debt.percentage_share_owed_now_by(member, :whole, @timeframe)} procent av lån till #{debt.owner} enligt skuldebrev #{debt.due_date}:
+          | #{debt.percentage_share_owed_by(member, :whole, @timeframe)} procent av lån till #{debt.owner} enligt skuldebrev #{debt.due_date}:
         .calc-right
           | - #{to_sk debt.total_value_for(member, @timeframe)}
