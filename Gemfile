@@ -23,8 +23,9 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
-gem 'wkhtmltopdf-heroku' # heroku ONLY
+# gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-binary-edge'
+# gem 'wkhtmltopdf-heroku' # heroku ONLY
 
 gem 'slim-rails'
 
