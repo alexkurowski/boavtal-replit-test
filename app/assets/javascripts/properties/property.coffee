@@ -68,6 +68,17 @@ $(document).ready ->
   })
 
 
+  $form.find('.interest-rate').on 'input', (event) ->
+    min = parseInt this.min
+    max = parseInt this.max
+    val = parseInt this.value
+
+    if val < min
+      this.value = this.min
+    else if val > max
+      this.value = this.max
+
+
   $form.find('.ssn2').inputmask('9{4}', {
     numericInput: true,
     jitMasking: true
