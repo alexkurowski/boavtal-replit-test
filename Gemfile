@@ -24,8 +24,8 @@ gem 'coffee-rails', '~> 4.2'
 
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary',       group: [:development]
-gem 'wkhtmltopdf-binary-edge',  group: [:production, :staging]
-# gem 'wkhtmltopdf-heroku', group: [:production, :staging]
+# gem 'wkhtmltopdf-binary-edge',  group: [:production, :staging]
+
 
 
 # gem 'wkhtmltopdf-binary-edge'

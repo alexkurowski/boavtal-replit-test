@@ -12,11 +12,11 @@ html
 
 
 - if Rails.env.production?
-  css:
+  scss:
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Times, serif;
       font-size: 18px;
-      line-height: 20px;
+      line-height: 22px;
     }
 
     div.alwaysbreak { page-break-before: always; }
@@ -38,4 +38,17 @@ html
       max-width: 30%;
       text-align: right;
       float: right;
+    }
+
+    .signature-container {
+      display: inline-block;
+      text-align: left;
+      margin-right: 35px;
+
+      .signature-inner-box {
+        margin-top: 25px;
+        p {
+          margin: 0;
+        }
+      }
     }
