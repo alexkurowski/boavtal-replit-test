@@ -32,3 +32,8 @@ h1 Bodelning
 
   - if @property.compensate_by_law?
 
+    - if total_difference_to_pay.zero?
+      p Enligt ovanstående beräkning ska ingen bodelningslikvid utges.
+    - else
+      p Enligt ovanstående beräkning ska #{show_member_name giving_spouse} kompensera #{show_member_name receiving_spouse} med en bodelningslikvid om: #{to_sk total_difference_to_pay}
+

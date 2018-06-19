@@ -42,4 +42,18 @@ module PropertyReportsHelper
     "#{number_to_currency(number, locale: :sv, unit: '', precision: 0)}"
   end
 
+  def total_difference_to_pay
+    arr = [:husband, :wife].map { |member| @asset_calculator.divided_net_worth(:now) - @asset_calculator.transitory_net_worth_for(member, :after) }
+    arr.uniq.count <= 1 ? 0 : arr.max
+  end
+
+  def giving_spouse
+    h = {husband: @asset_calculator.transitory_net_worth_for(:husband, :after), wife: @asset_calculator.transitory_net_worth_for(:wife, :after)}
+    h.key(h.values.max)
+  end
+
+  def receiving_spouse
+    giving_spouse == :husband ? :wife : :husband
+  end
+
 end
