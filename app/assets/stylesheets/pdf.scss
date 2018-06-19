@@ -1,3 +1,26 @@
+div.alwaysbreak { page-break-before: always; }
+div.nobreak:before { clear:both; }
+div.nobreak { page-break-inside: avoid; }
+
+div.calc-container {
+  margin-bottom: 10px;
+}
+
+div.calc-left {
+  // background: red;
+  display: inline-block;
+  max-width: 70%;
+  text-align: left;
+}
+
+div.calc-right {
+  // background: blue;
+  display: inline-block;
+  max-width: 30%;
+  text-align: right;
+  float: right;
+}
+
 .page-break {
   page-break-before: always;
 }
@@ -11,8 +34,8 @@
   height: 250mm;
   position: relative;
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 13px;
+  // font-family: Arial, Helvetica, sans-serif;
+  // font-size: 13px;
   line-height: 15px;
 
   ul.unordered {
