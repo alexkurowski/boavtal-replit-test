@@ -1,7 +1,11 @@
 module PropertyReportsHelper
 
   def show_member_name(member)
-     member == :husband ? @husband_name : @wife_name
+    member == :husband ? @property.full_name_for(:husband) : @property.full_name_for(:wife)
+  end
+
+  def show_ssn_for(member)
+    member == :husband ? @property.data['husband']['ssn2'] : @property.data['wife']['ssn2']
   end
 
   def case_number_filled_out?

@@ -89,4 +89,8 @@ class Property < ApplicationRecord
   def validated? # remove if moving away from heroku
     validated
   end
+
+  def full_name_for(member)
+    "#{data[member.to_s]['firstname']} #{data[member.to_s]['lastname']}"
+  end
 end
