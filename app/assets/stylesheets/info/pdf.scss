@@ -2,6 +2,10 @@ div.alwaysbreak { page-break-before: always; }
 div.nobreak:before { clear:both; }
 div.nobreak { page-break-inside: avoid; }
 
+.mt-10 {
+  padding-top: 20px;
+}
+
 div.calc-container {
   margin-bottom: 10px;
 }
