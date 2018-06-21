@@ -28,7 +28,7 @@ class PropertyReportsController < ApplicationController
             encoding:   'UTF-8',
             layout:     'property_pdf.html.slim',
             template:   'info/property_reports/index',
-            header:    { right: '[page] of [topage]' }
+            footer:    { left: 'Sida [page]/[topage]' }
   end
 
 
