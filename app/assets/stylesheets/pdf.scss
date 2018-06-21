@@ -1,7 +1,5 @@
-.nopagebreak {
-  page-break-before: avoid;
-  display: "inline-block";
-}
+div.nobreak:before { clear:both; }
+div.nobreak{ page-break-inside: avoid;}
 
 .page-break {
   page-break-before: always;
