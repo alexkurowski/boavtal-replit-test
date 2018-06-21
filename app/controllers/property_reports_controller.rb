@@ -28,6 +28,8 @@ class PropertyReportsController < ApplicationController
             encoding:   'UTF-8',
             layout:     'property_pdf.html.slim',
             template:   'info/property_reports/index',
+            page_offset: -1,
+            cover:      t('pdf.cover.heading') + t('pdf.cover.body'), # this is to avoid footer/header on the first page of the document
             footer:    { left: 'Sida [page]/[topage]' }
   end
 
