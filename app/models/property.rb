@@ -48,15 +48,15 @@ class Property < ApplicationRecord
   end
 
   def compensation_clearing
-    data['payment_details']['field_1']
+    data.dig('payment_details', 'field_1')
   end
 
   def compensation_account
-    data['payment_details']['field_2']
+    data.dig('payment_details', 'field_2')
   end
 
   def compensation_bank_name
-    data['payment_details']['field_3']
+    data.dig('payment_details', 'field_3')
   end
 
   def compensation_details_filled?
