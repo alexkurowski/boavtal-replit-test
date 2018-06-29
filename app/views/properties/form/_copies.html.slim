@@ -4,7 +4,7 @@
   .form-group.text-nowrap
     label = "#{t 'property.copies.label'}: "
     = @f.select 'data[copies][number]',
-      options_for_select(property_number_of_copies),
+      options_for_select(property_number_of_copies, @property.data(:copies, :number)),
       { prompt: t('property.copies.copies_prompt') },
       class: 'form-control d-inline ml-2',
       data: { \
