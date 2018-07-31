@@ -3,7 +3,22 @@
     .panel.panel-warning.panel-line
       .panel-heading
         h3.panel-title Some warning title
-      .panel-body Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer necodio. Praesent libero. Sed cursus ante dapibus diam.
+      .panel-body
+        #property-warning.cut
+          .content
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus nulla, varius vel pellentesque quis, porta a magna. Nunc non fringilla urna. Proin tincidunt dui vitae consectetur posuere. Fusce lacinia erat sed dignissim sollicitudin. Aliquam a eleifend lorem, at sagittis lacus. Etiam in arcu in velit lacinia eleifend. In hac habitasse platea dictumst. Fusce non ligula tellus. Vestibulum pharetra accumsan est, in dapibus nisl semper quis. Duis at placerat nulla, et lacinia magna. Nulla consequat tincidunt neque, at tincidunt lorem hendrerit non. Duis gravida interdum eros sed tincidunt. Proin et augue ut erat finibus feugiat at sit amet lacus. Aliquam euismod turpis a nunc aliquam, a accumsan urna ultrices.
+            p Duis egestas viverra lorem non auctor. Vestibulum facilisis, orci vitae feugiat faucibus, lacus enim fringilla felis, sit amet dapibus lorem diam non nisl. In consectetur metus sit amet quam sodales elementum. Vivamus velit nisl, luctus id diam ut, vulputate venenatis arcu. Vivamus a eros in ligula molestie vehicula eget at enim. Integer libero orci, porta efficitur tellus sed, euismod posuere est. Phasellus posuere magna quam, nec condimentum nibh lacinia sit amet. Aenean eget purus in metus eleifend bibendum ac vel sem. Mauris sed ante nec justo mollis ultricies in eu ante. Aliquam iaculis sit amet turpis quis consectetur. Fusce euismod tortor vel sem ultricies, a bibendum nisi sodales. Mauris molestie porta elementum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consectetur lectus et velit efficitur, eu pharetra est ultrices. Phasellus hendrerit varius neque, eu interdum tortor bibendum id.
+            p Phasellus vel odio sit amet sapien finibus efficitur eu non turpis. Suspendisse potenti. Sed rhoncus ornare risus aliquam ultrices. Etiam mattis mollis faucibus. Etiam laoreet lacus nec nisi aliquet, ultrices suscipit nulla tincidunt. Nam ullamcorper pretium rutrum. Pellentesque sem lectus, consequat vitae dui ac, mattis pretium lectus. Suspendisse malesuada luctus viverra. Praesent convallis ultrices dolor, eu tristique neque condimentum eu. Morbi vulputate orci ex. Fusce metus nisl, molestie vitae tortor vitae, tempus lacinia velit. Fusce vel mauris sodales, vehicula quam id, tincidunt nulla. Cras a gravida tortor.
+      .panel-footer
+        .text-right
+          = link_to '#',
+            class: 'btn btn-link',
+            data: { \
+              toggle: 'cut',
+              target: '#property-warning',
+              text_show: 'Visa mer',
+              text_hide: 'Visa mindre' }
+            | Visa mer
 
     == form_for @property do |f|
       - @f = f
