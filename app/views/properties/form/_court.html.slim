@@ -21,7 +21,7 @@
     label = t 'property.court.court'
 
     = @f.select 'data[court][court]',
-      options_for_select(Court.pluck(:name, :id)),
+      options_for_select(Court.pluck(:name, :id), @property.data(:court, :court)),
       { prompt: t('property.court.court_prompt') },
       { class: "form-control",
         data: { \

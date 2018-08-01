@@ -23,7 +23,7 @@ h4 = t "property.members.#{member}"
   .row
     .col-sm
       = @f.select "data[#{member}][datebirth][1i]",
-        options_for_select(property_member_years),
+        options_for_select(property_member_years, @property.data(member, :datebirth, '1i')),
         { prompt: t('property.members.year') },
         class: 'form-control',
         data: { \
@@ -32,7 +32,7 @@ h4 = t "property.members.#{member}"
 
     .col-sm
       = @f.select "data[#{member}][datebirth][2i]",
-        options_for_select(property_member_months),
+        options_for_select(property_member_months, @property.data(member, :datebirth, '2i')),
         { prompt: t('property.members.month') },
         class: 'form-control',
         data: { \
@@ -41,7 +41,7 @@ h4 = t "property.members.#{member}"
 
     .col-sm
       = @f.select "data[#{member}][datebirth][3i]",
-        options_for_select(property_member_days),
+        options_for_select(property_member_days, @property.data(member, :datebirth, '3i')),
         { prompt: t('property.members.day') },
         class: 'form-control',
         data: { \

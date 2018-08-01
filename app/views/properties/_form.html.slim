@@ -38,7 +38,7 @@
   .col
     == render 'properties/form/payment_details'
 
-.row
+.row.if-compensation-details style="#{ hidden_unless_in @property.data(:compensation, :decide), ['true', 'false'] }"
   .col
     == render 'properties/form/interest'
 

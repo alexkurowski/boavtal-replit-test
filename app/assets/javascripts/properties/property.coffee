@@ -3,6 +3,63 @@ $(document).ready ->
   return unless $form.length
 
 
+  rangeSettings = {
+    namespace: 'rangeUi',
+    min: 0,
+    max: 100,
+    step: 1,
+    scale: false,
+    onChange: () ->
+      element = this.element
+      $this   = $(element)
+      $other  = $this
+        .closest('.row')
+        .find('input[type="range"]')
+        .filter (i, node) -> node isnt element
+
+      this_value  = $this.asRange('get')
+      other_value = $other.asRange('get')
+
+      entangled = element.dataset.entangled == 'true'
+      max       = parseInt element.dataset.maxvalue
+
+      if entangled or this_value + other_value > max
+        $other.asRange('set', max - this_value)
+
+      $asset = $this.closest('.asset')
+      if $asset.length
+        this_value  = $this.asRange('get')
+        other_value = $other.asRange('get')
+
+        $after_full = $asset.find('.after-full')
+        $after_part = $asset.find('.after-part')
+
+        if this_value + other_value >= max
+          $after_full.removeClass('d-none')
+          $after_part.addClass('d-none')
+        else
+          $after_full.addClass('d-none')
+          $after_part.removeClass('d-none')
+          $after_part.find('.after-part-percent').text(this_value + other_value)
+
+      $this
+        .closest('.form-group')
+        .find('.parsley-error')
+        .empty()
+  }
+
+  numericalSettings = {
+    alias: 'integer',
+    regex: '\\d*',
+    rightAlign: false,
+    allowPlus: false,
+    allowMinus: false,
+    autoGroup: true,
+    groupSeparator: ' ',
+    removeMaskOnSubmit: true
+  }
+
+
   beforeValidSubmit = ->
     $form.find('.template .asset').remove()
     $form.find('.template .debt').remove()
@@ -90,64 +147,16 @@ $(document).ready ->
   })
 
 
+  $form.find('.payment-how-much').inputmask(numericalSettings)
+
+
+  $form.on 'focus', '[type=tel]', ->
+    isInputmask = $(this).inputmask('hasMaskedValue')
+    isAndroid = /(android)/i.test navigator.userAgent
+    this.type = 'number' if isInputmask and isAndroid
+
+
   # ASSETS AND DEBTS
-
-
-  rangeSettings = {
-    namespace: 'rangeUi',
-    min: 0,
-    max: 100,
-    step: 1,
-    scale: false,
-    onChange: () ->
-      element = this.element
-      $this   = $(element)
-      $other  = $this
-        .closest('.row')
-        .find('input[type="range"]')
-        .filter (i, node) -> node isnt element
-
-      this_value  = $this.asRange('get')
-      other_value = $other.asRange('get')
-
-      entangled = element.dataset.entangled == 'true'
-      max       = parseInt element.dataset.maxvalue
-
-      if entangled or this_value + other_value > max
-        $other.asRange('set', max - this_value)
-
-      $asset = $this.closest('.asset')
-      if $asset.length
-        this_value  = $this.asRange('get')
-        other_value = $other.asRange('get')
-
-        $after_full = $asset.find('.after-full')
-        $after_part = $asset.find('.after-part')
-
-        if this_value + other_value >= max
-          $after_full.removeClass('d-none')
-          $after_part.addClass('d-none')
-        else
-          $after_full.addClass('d-none')
-          $after_part.removeClass('d-none')
-          $after_part.find('.after-part-percent').text(this_value + other_value)
-
-      $this
-        .closest('.form-group')
-        .find('.parsley-error')
-        .empty()
-  }
-
-  numericalSettings = {
-    alias: 'integer',
-    regex: '\\d*',
-    rightAlign: false,
-    allowPlus: false,
-    allowMinus: false,
-    autoGroup: true,
-    groupSeparator: ' ',
-    removeMaskOnSubmit: true
-  }
 
 
   initProperties = ->

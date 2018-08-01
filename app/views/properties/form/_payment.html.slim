@@ -3,7 +3,8 @@
 = property_panel 'payment' do
   .form-group
     span = t 'property.payment.how_much'
-    = @f.number_field 'data[payment][how_much]',
+    = @f.text_field 'data[payment][how_much]',
+      type: 'tel',
       class: 'form-control payment-how-much',
       data: { \
         parsley_required: parsley_required,
