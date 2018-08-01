@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: [:edit, :update, :destroy]
-  before_action :clean_property_params, only: [:update]
+  before_action :clean_property_params, only: [:create, :update]
 
   def index
     @properties = Property.all.order(created_at: :desc)
@@ -37,7 +37,6 @@ class PropertiesController < ApplicationController
       end
 
       def clean_property_params
-        # TODO COPY BELOW TO MAIN APP
         unless params.dig(:property, :data, :compensation, :decide) == 'true'
           params[:property][:data].delete :payment
         end
@@ -45,7 +44,6 @@ class PropertiesController < ApplicationController
         if params.dig(:property, :data, :compensation, :decide) == 'none'
           params[:property][:data].delete :payment_details
         end
-        # END TODO
 
         case params[:submit_type]
         when 'soft' then params[:property][:validated] = false

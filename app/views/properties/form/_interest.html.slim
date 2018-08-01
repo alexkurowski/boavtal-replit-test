@@ -1,3 +1,5 @@
+- parsley_required = ['true', 'false'].include? @property.data(:compensation, :decide)
+
 - parsley_required_before_rate = @property.data(:interest, :before_payment) == 'true'
 - parsley_required_after_rate = @property.data(:interest, :after_payment) == 'true'
 
@@ -10,14 +12,14 @@
     .radio-custom.radio-primary
       = @f.radio_button 'data[interest][before_payment]', true,
         data: { \
-          parsley_required: true,
+          parsley_required: parsley_required,
           parsley_error_message: t('property.error.required'),
           slide_target: '.if-interest-before:show' }
       = @f.label 'data[interest][before_payment]_true', t('property.common.yes').capitalize
     .radio-custom.radio-primary
       = @f.radio_button 'data[interest][before_payment]', false,
         data: { \
-          parsley_required: true,
+          parsley_required: parsley_required,
           parsley_error_message: t('property.error.required'),
           slide_target: '.if-interest-before:hide' }
       = @f.label 'data[interest][before_payment]_false', t('property.common.no').capitalize
@@ -30,7 +32,7 @@
         class: 'form-control interest-rate',
         in: 0..100,
         data: { \
-          parsley_required: parsley_required_before_rate,
+          parsley_required: parsley_required && parsley_required_before_rate,
           parsley_error_message: t('property.error.required') }
       span = t 'property.interest.before_payment_rate_percent'
       .parsley-error
@@ -45,14 +47,14 @@
     .radio-custom.radio-primary
       = @f.radio_button 'data[interest][after_payment]', true,
         data: { \
-          parsley_required: true,
+          parsley_required: parsley_required,
           parsley_error_message: t('property.error.required'),
           slide_target: '.if-interest-after:show' }
       = @f.label 'data[interest][after_payment]_true', t('property.common.yes').capitalize
     .radio-custom.radio-primary
       = @f.radio_button 'data[interest][after_payment]', false,
         data: { \
-          parsley_required: true,
+          parsley_required: parsley_required,
           parsley_error_message: t('property.error.required'),
           slide_target: '.if-interest-after:hide' }
       = @f.label 'data[interest][after_payment]_false', t('property.common.no').capitalize
@@ -65,7 +67,7 @@
         class: 'form-control interest-rate',
         in: 0..100,
         data: { \
-          parsley_required: parsley_required_after_rate,
+          parsley_required: parsley_required && parsley_required_after_rate,
           parsley_error_message: t('property.error.required') }
       span = t 'property.interest.after_payment_rate_percent'
       .parsley-error

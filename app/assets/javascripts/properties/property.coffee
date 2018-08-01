@@ -105,7 +105,7 @@ $(document).ready ->
         $target.slideUp()
 
       $target.find('input[data-parsley-required]').each ->
-        this.dataset.parsleyRequired = show
+        this.dataset.parsleyRequired = show if $(this).is(':visible')
         true
 
       if not show
