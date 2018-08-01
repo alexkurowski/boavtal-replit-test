@@ -96,6 +96,12 @@ $(document).ready ->
   })
 
 
+  $form.on 'focus', '[type=tel]', ->
+    isInputmask = $(this).inputmask('hasMaskedValue')
+    isAndroid = /(android)/i.test navigator.userAgent
+    this.type = 'number' if isInputmask and isAndroid
+
+
   # ASSETS AND DEBTS
 
 
