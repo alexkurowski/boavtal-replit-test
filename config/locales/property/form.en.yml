@@ -3,9 +3,14 @@ sv: &sv
     instructions:
       header: INSTRUKTIONER
       body:
-        - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget mauris pharetra et ultrices neque ornare aenean. Leo vel orci porta non pulvinar neque laoreet suspendisse. Sem nulla pharetra diam sit amet nisl suscipit adipiscing. Purus faucibus ornare suspendisse sed nisi. Adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus. Vitae elementum curabitur vitae nunc sed velit dignissim. Sed felis eget velit aliquet sagittis id consectetur purus ut.
-        - Auctor eu augue ut lectus arcu bibendum at varius. Scelerisque varius morbi enim nunc. Auctor elit sed vulputate mi sit amet. Ipsum dolor sit amet consectetur adipiscing. Velit ut tortor pretium viverra suspendisse potenti nullam.
-        - Tellus rutrum tellus pellentesque eu. Viverra orci sagittis eu volutpat odio facilisis mauris. Ornare suspendisse sed nisi lacus sed. Sit amet porttitor eget dolor morbi non arcu. Molestie a iaculis at erat pellentesque adipiscing commodo. At volutpat diam ut venenatis tellus.
+        - Använd verktyget nedan för att skapa ert bodelningsavtal.
+        - Vi föreslår att ni först testar verktyget för att se hur ert bodelningsavtal ser ut, baserat på de svar ni precis angivit. Är det något ni inte gillar kan ni bara gå tillbaka och ändra era svar. Inget är skrivet i sten förrän ni signerat era avtal. Ni kan kostnadsfritt göra ändringar i ert avtal hur många gånger ni vill.
+        - Under många av frågorna finns “Vanliga frågor”. Klicka där för extra hjälp med att förstå frågan.
+        - Det finns två sätt att göra en bodelning på.
+        - Antingen kommer ni själva överens om vem som ska ha vad. Lagen är dispositiv och tillåter att man själv bestämmer detta, så länge det inte är till nackdel för en parts borgenärer. Då kan bodelning komma att återgå.
+        - Ni kan också svara i verktyget att ni vill låta vårt verktyg göra er uppdelning lagens regler. Tänk dock på att det finns regler om jämkning om man varit gifta i mindre än 5 år/resultatet är uppenbart oskäligt. Verktyget hanterar inte jämkningar om det är något ni vill räkna ut.
+        - Testa verktyget först, innan ni eventuellt kontaktar supporten. Det är helt riskfritt att testa verktyget. Mycket blir klart när man väl testat det.
+        - Vill ni ha manuell hjälp istället kan ni alltid anlita oss per timme istället.
 
     members:
       header: NAMN OCH PERSONNUMMER
