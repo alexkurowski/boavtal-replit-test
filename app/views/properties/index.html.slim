@@ -6,7 +6,7 @@
           | Division of property forms
           .float-right.mt--8
             = link_to new_property_path, class: 'btn btn-primary'
-              | New form
+              | Create new bodelningsavtal
       .panel-body
         - if @properties.count.zero?
           .h5.text-center.my-10
@@ -20,7 +20,7 @@
                     i.fa.fa-check.fa-fw.text-success
                   - else
                     i.fa.fa-fw.text-success
-                  | Form ##{property.id}
+                  | Bodelningsavtal ##{property.id}
 
                 td
                   = link_to edit_property_path(property), class: 'btn btn-primary btn-sm'

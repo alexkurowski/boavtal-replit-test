@@ -23,7 +23,7 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary',       group: [:development]
+# gem 'wkhtmltopdf-binary',       group: [:development]
 gem 'wkhtmltopdf-binary-edge',  group: [:production, :staging]
 
 

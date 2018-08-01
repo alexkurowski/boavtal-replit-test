@@ -5,7 +5,11 @@ module PropertyReportsHelper
   end
 
   def show_ssn_for(member)
-    member == :husband ? @property.data['husband']['ssn2'] : @property.data['wife']['ssn2']
+    # member == :husband ? @property.data['husband']['ssn2'] : @property.data['wife']['ssn2']
+    @property.data[member.to_s]['datebirth']['1i'] +
+    add_zero(@property.data[member.to_s]['datebirth']['2i']) +
+    add_zero(@property.data[member.to_s]['datebirth']['3i']) + '-' +
+    @property.data[member.to_s]['ssn2']
   end
 
   def case_number_filled_out?
@@ -59,5 +63,11 @@ module PropertyReportsHelper
   def receiving_spouse
     giving_spouse == :husband ? :wife : :husband
   end
+
+    private
+
+      def add_zero(num)
+        num.to_i < 10 ? "0#{num}" : num
+      end
 
 end

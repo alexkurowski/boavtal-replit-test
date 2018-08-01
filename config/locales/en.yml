@@ -23,5 +23,17 @@ en:
   hello: 'Hello world'
   pdf:
     cover:
-      heading: <h1>FAQ</h1>
-      body: <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      heading:
+        <h1>Ert bodelningsavtal - Vanliga frågor & svar</h1>
+      body:
+        <h2>Måste banken godkänna vårt bodelningsavtal innan vi skriver under?</h2>
+        <p>Beror på vilka sorts lån ni har hos banken. Är t.ex. möjligt att de vägrar godkänna att en av er tar över alla bolån. Innan ni undertecknar bodelningsavtalet är det därför viktigt att ni hör efter med er bank om er lösning är godtagbar för dem, innan ni skriver under.</p>
+
+        <h2>Var skriver vi under?</h2>
+        <p>Skriv under längst bak i avtalet. Finns plats för era signaturer. Glöm inte signera varje sida med era initialer längst ned i ena hörnet också. </p>
+
+        <h2>Hur byter vi lagfart?</h2>
+        <p>Om bodelningen innebär att en fastighet övergår från den ena till den andra maken måste bodelningsavtalet registreras hos Lantmäteriet för att den nya ägaren ska få lagfart på fastigheten och därmed registreras som ägare. Ni hittar blanketter för att byta lagfart på www.lantmateriet.se. </p>
+
+        <h2>Måste vi registrera bodelningsavtalet någonstans?</h2>
+        <p>Ett bodelningsavtal i samband med skilsmässa behöver inte registreras hos Skatteverket för att vara giltigt, men det går bra att göra det om man vill. Registrering kan vara bra för det fall någon av er går i privat konkurs eller om ett företag delas upp genom bodelningen. Bodelningsavtalet blir då offentligt och eventuella borgenärer har en frist på sig att klandra avtalet. Mer information om registrering av bodelningsavtal hittar du på www.skatteverket.se. Bodelningsavtalet ska INTE skickas till tingsrätten.</p>
