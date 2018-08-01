@@ -90,6 +90,12 @@ $(document).ready ->
   })
 
 
+  $form.find('.payment-how-much').inputmask('9{*}', {
+    numericInput: true,
+    jitMasking: true
+  })
+
+
   # ASSETS AND DEBTS
 
 
