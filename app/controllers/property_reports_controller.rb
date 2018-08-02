@@ -30,7 +30,13 @@ class PropertyReportsController < ApplicationController
             template:   'info/property_reports/index',
             page_offset: -1,
             cover:      t('pdf.cover.heading') + t('pdf.cover.body'), # this is to avoid footer/header on the first page of the document
-            footer:    { left: 'Sida [page]/[topage]' }
+            # footer:    { left: 'Sida [page]/[topage]', right: '___________ INITIALER' }
+            margin:     { bottom: 20 },
+            footer:     {
+                          left: 'Sida [page]/[topage]',
+                          html: { template: 'info/property_reports/files/footer.html.slim' }
+                        }
+
   end
 
 
