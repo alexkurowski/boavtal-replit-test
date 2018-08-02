@@ -10,13 +10,9 @@
   .assets
     - if @property.data(:assets).blank?
       = asset_partial
-
-    - asset_types = @property.data(:assets)
-    - unless asset_types.blank?
-      - asset_types.each do |type, assets|
-        - unless assets.blank?
-          - assets.each do |id, asset|
-            = asset_partial id, type
+    - else
+      - @property.sorted_assets.each do |id, asset|
+        = asset_partial id, asset['type']
 
   .add-asset.mx-20.mt-60
     label.label.h4.mr-10 = t 'property.assets.add.label'

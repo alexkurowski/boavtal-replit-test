@@ -8,15 +8,11 @@
     = debt_partial 'template'
 
   .debts
-    - @property.data(:debts).blank?
+    - if @property.data(:debts).blank?
       = debt_partial
-
-    - debt_types = @property.data(:debts)
-    - unless debt_types.blank?
-      - debt_types.each do |type, debts|
-        - unless debts.blank?
-          - debts.each do |id, debt|
-            = debt_partial id, type
+    - else
+      - @property.sorted_debts.each do |id, debt|
+        = debt_partial id, debt['type']
 
   .add-debt.mx-20.mt-60
     label.label.h4.mr-10 = t 'property.debts.add.label'

@@ -23,6 +23,24 @@ class Property < ApplicationRecord
     raise NoMethodError, "undefined method `#{method}` for #{self.class.name}"
   end
 
+  def sorted property_type
+    return {} if data(property_type).blank?
+
+    data(property_type)
+      .inject({}) do |result, (type, properties)|
+        properties.each do |id, property|
+          result[id] = property
+          result[id]['type'] = type
+        end
+        result
+      end
+      .sort_by { |k, v| k }
+      .to_h
+  end
+
+  def sorted_assets; sorted :assets end
+  def sorted_debts;  sorted :debts  end
+
   def property_compensation
     data['compensation']['decide']
   end
