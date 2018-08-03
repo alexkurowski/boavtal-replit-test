@@ -6,14 +6,20 @@
       = @f.radio_button 'data[assets_debts][any_debts]', true,
         data: { \
           parsley_required: true,
-          parsley_error_message: t('property.error.required'),
+          parsley_any_debts: true,
+          parsley_required_message: t('property.error.required'),
+          parsley_any_debts_message: t('property.error.debts_empty'),
+          parsley_trigger: '',
           slide_target: '.if-any-debts:show' }
       = @f.label 'data[assets_debts][any_debts]_true', t('property.common.yes').capitalize
     .radio-custom.radio-primary
       = @f.radio_button 'data[assets_debts][any_debts]', false,
         data: { \
           parsley_required: true,
-          parsley_error_message: t('property.error.required'),
+          parsley_any_debts: true,
+          parsley_required_message: t('property.error.required'),
+          parsley_any_debts_message: t('property.error.debts_empty'),
+          parsley_trigger: '',
           slide_target: '.if-any-debts:hide' }
       = @f.label 'data[assets_debts][any_debts]_false', t('property.common.no').capitalize
     .parsley-error

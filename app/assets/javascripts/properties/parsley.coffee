@@ -42,5 +42,17 @@ $(document).ready ->
       return value.length > 0
   })
 
+  window.Parsley.addValidator('anyAssets', {
+    validateString: (value, _, field) ->
+      return true if value is 'false'
+      $('.assets .asset li.nav-item .active').length > 0
+  })
+
+  window.Parsley.addValidator('anyDebts', {
+    validateString: (value, _, field) ->
+      return true if value is 'false'
+      $('.debts .debt li.nav-item .active').length > 0
+  })
+
   $form.on 'changeDate', (e) ->
     $(e.target).trigger('input')
