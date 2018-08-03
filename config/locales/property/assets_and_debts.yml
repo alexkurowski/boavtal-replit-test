@@ -149,7 +149,7 @@ sv: &sv
           - 'Ett investeringssparkonto (ISK) är en schablonbeskattad sparform, vilket innebär att du betalar en viss procentsats i kapitalvinstskatt per år.'
         total:
           - 'Ange värde:'
-          - 'TEXT_FIELD'
+          - 'NUMERICAL_FIELD'
         account:
           - 'Konto:'
           - 'TEXT_FIELD'
@@ -161,7 +161,7 @@ sv: &sv
           - 'En kapitalförsäkring är ett sparande i en försäkring och beskattas en gång per år baserat på värdet av ditt sparande, samt de inbetalningar som du har gjort under året. Kapitalvinstskatten regleras direkt ur försäkringens värde av det försäkringsbolag där du har ditt sparande.'
         total:
           - 'Ange värde:'
-          - 'TEXT_FIELD'
+          - 'NUMERICAL_FIELD'
         account:
           - 'Konto:'
           - 'TEXT_FIELD'
