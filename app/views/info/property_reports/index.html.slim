@@ -5,7 +5,8 @@
 .alwaysbreak == render 'info/property_reports/files/2_assets_and_debts'
 
 / 3. Andelsberäkning - Calculating net worth
-.alwaysbreak == render 'info/property_reports/files/3_net_worth'
+- if (any_debts? || any_assets?) && @property.compensate_by_law?
+  .alwaysbreak == render 'info/property_reports/files/3_net_worth'
 
 / 4. Bodelning - Who gets what
 .alwaysbreak == render 'info/property_reports/files/4_division'

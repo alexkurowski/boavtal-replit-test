@@ -1,3 +1,5 @@
+- @timeframe = timeframe
+
 - if @loan_debts.present?
   - @loan_debts.each do |debt|
     - if debt.send("owed_#{@timeframe}_by?", member)
