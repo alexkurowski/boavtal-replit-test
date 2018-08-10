@@ -1,144 +1,49 @@
-// div.nobreak:before { clear:both; }
-// div.nobreak{ page-break-inside: avoid;}
+div.alwaysbreak { page-break-before: always; }
+div.nobreak:before { clear:both; }
+div.nobreak { page-break-inside: avoid; }
 
-// .page-break {
-//   page-break-before: always;
-// }
+body {
+  font-family: Times, serif;
+  font-size: 18px;
+  line-height: 22px;
+}
 
-// .mt-10 {
-//   margin-top: 10px;
-// }
+.mt-10 {
+  padding-top: 20px;
+}
 
-// .report-container {
-//   // margin-top: 0px;
-//   margin: 0;
-//   padding: 0;
-//   // height: 269mm;
-//   // height: 264mm;
-//   height: 250mm;
-//   position: relative;
+div.calc-container {
+  margin-bottom: 10px;
+}
 
-//   font-family: Arial, Helvetica, sans-serif;
-//   font-size: 13px;
-//   line-height: 15px;
+div.calc-left {
+  display: inline-block;
+  align-self: auto;
+  text-align: left;
+}
 
-//   ul.unordered {
-//     margin-left: -15px;
-//     li {
-//       list-style-type: disc;
-//     }
-//   }
+div.calc-right {
+  display: inline-block;
+  align-self: auto;
+  text-align: right;
+  float: right;
+}
 
-//   .nested-children {
-//     list-style: none !important;
-//     margin-left: 10px;
-//   }
+.signature-container {
+  display: inline-block;
+  text-align: left;
+  margin-right: 35px;
 
-//   .address-table {
-//     display: inline-block;
-//     vertical-align: top;
-//     margin-right: 30px;
+  .signature-inner-box {
+    margin-top: 25px;
+    p {
+      margin: 0;
+    }
+  }
+}
 
-//     ul {
-//       list-style: none;
-//       padding: 0;
-//       line-height: 20px;
-//     }
-
-//     ul li {
-//       margin-left: 0;
-//     }
-//   }
-
-
-//   p {
-//     margin: 10px 0 20px;
-//   }
-
-//   .zero-bottom-marg {
-//     margin-bottom: 0;
-//   }
-
-//   .no-margins {
-//     margin: 0;
-//   }
-
-//   // .neg-bottom-m {
-//   //   margin-bottom: -15px;
-//   // }
-
-//   .no-marg-p p {
-//     margin: 0;
-//   }
-
-//   ol {
-//     margin-left: -20px;
-//   }
-
-//   ol li {
-//     list-style-type: decimal;
-//   }
-
-//   h1 {
-//     font-family: Helvetica;
-//     font-size: 20px;
-//     margin: 4px 0;
-//     line-height: 30px;
-//   }
-
-//   h2 {
-//     font-weight: bold;
-//   }
-
-//   h5 {
-//     font-weight: bold;
-//     font-size: 14px;
-//     margin-top: 15px;
-//   }
-
-//   .fix-right {
-//     position: absolute;
-//     right: 0;
-//   }
-
-//   .space-out {
-//     width: 40px;
-//   }
-
-//   .report-signatures {
-//     display: inline-block;
-//     margin-right: 20px;
-
-//     span {
-//       display: block;
-//     }
-//   }
-
-//   .sarlevnads-table {
-//     border-collapse: separate;
-//     border-spacing: 0px 50px;
-
-//     .space-out {
-//       padding-right: 105px;
-//     }
-//   }
-
-//   strong { font-weight: bold; }
-//   em { font-style: italic; }
-
-//   .questions {
-//     p {
-//       margin: 5px 0px;
-//     }
-
-//     p.question {
-//       margin-top: 15px;
-//     }
-//   }
-// }
-
-// .stick-to-bottom {
-//   position: absolute;
-//   bottom: 10mm;
-// }
-
+.bottom-signature {
+  float: right;
+  span {display: block; text-align: center;}
+  font-size: 18px;
+}

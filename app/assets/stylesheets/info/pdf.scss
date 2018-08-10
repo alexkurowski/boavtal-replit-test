@@ -1,46 +1,49 @@
-div.alwaysbreak { page-break-before: always; }
-div.nobreak:before { clear:both; }
-div.nobreak { page-break-inside: avoid; }
+// div.alwaysbreak { page-break-before: always; }
+// div.nobreak:before { clear:both; }
+// div.nobreak { page-break-inside: avoid; }
 
-.mt-10 {
-  padding-top: 20px;
-}
+// body {
+//   font-family: Times, serif;
+//   font-size: 18px;
+//   line-height: 22px;
+// }
 
-div.calc-container {
-  margin-bottom: 10px;
-  display: flexbox;
-  justify-content: space-between;
+// .mt-10 {
+//   padding-top: 20px;
+// }
 
-}
+// div.calc-container {
+//   margin-bottom: 10px;
+// }
 
-div.calc-left {
-  display: inline-block;
-  align-self: auto;
-  text-align: left;
-}
+// div.calc-left {
+//   display: inline-block;
+//   align-self: auto;
+//   text-align: left;
+// }
 
-div.calc-right {
-  display: inline-block;
-  align-self: auto;
-  text-align: right;
-  float: right;
-}
+// div.calc-right {
+//   display: inline-block;
+//   align-self: auto;
+//   text-align: right;
+//   float: right;
+// }
 
-.signature-container {
-  display: inline-block;
-  text-align: left;
-  margin-right: 35px;
+// .signature-container {
+//   display: inline-block;
+//   text-align: left;
+//   margin-right: 35px;
 
-  .signature-inner-box {
-    margin-top: 25px;
-    p {
-      margin: 0;
-    }
-  }
-}
+//   .signature-inner-box {
+//     margin-top: 25px;
+//     p {
+//       margin: 0;
+//     }
+//   }
+// }
 
-.bottom-signature {
-  float: right;
-  span {display: block; text-align: center;}
-  font-size: 18px;
-}
+// .bottom-signature {
+//   float: right;
+//   span {display: block; text-align: center;}
+//   font-size: 18px;
+// }

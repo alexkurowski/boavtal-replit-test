@@ -3,70 +3,11 @@ html
   head
     meta charset='utf-8'
 
-    = wicked_pdf_stylesheet_link_tag "info/pdf.css"
+    - if Rails.env.development?
+      = wicked_pdf_stylesheet_link_tag "pdf"
     / = javascript_include_tag wicked_pdf_asset_base64("number_pages")
     /= stylesheet_link_tag stylesheet_link_tag wicked_pdf_asset_base64("info/pdf")
 
   body onload='number_pages()'
     div id="content"
       = yield
-
-
-- if Rails.env.production?
-  scss:
-    body {
-      font-family: Times, serif;
-      font-size: 18px;
-      line-height: 22px;
-    }
-
-    .bottom-signature {
-      float: right;
-      span {display: block; text-align: center;}
-      font-size: 18px;
-    }
-
-    .line-height-30 {
-      line-height: 30px;
-    }
-
-    .mt-10 {
-      padding-top: 20px;
-    }
-
-    div.alwaysbreak { page-break-before: always; }
-    div.nobreak:before { clear:both; }
-    div.nobreak { page-break-inside: avoid; }
-
-    div.calc-container {
-      margin-bottom: 10px;
-      display: flexbox;
-      justify-content: space-between;
-
-    }
-
-    div.calc-left {
-      display: inline-block;
-      align-self: auto;
-      text-align: left;
-    }
-
-    div.calc-right {
-      display: inline-block;
-      align-self: auto;
-      text-align: right;
-      float: right;
-    }
-
-    .signature-container {
-      display: inline-block;
-      text-align: left;
-      margin-right: 35px;
-
-      .signature-inner-box {
-        margin-top: 25px;
-        p {
-          margin: 0;
-        }
-      }
-    }
