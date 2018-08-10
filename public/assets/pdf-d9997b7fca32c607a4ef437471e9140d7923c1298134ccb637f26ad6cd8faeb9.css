@@ -1,0 +1,72 @@
+/* line 1, /Users/Denis/Repositories/bodeling/app/assets/stylesheets/pdf.scss */
+div.alwaysbreak {
+  page-break-before: always;
+}
+
+/* line 2, /Users/Denis/Repositories/bodeling/app/assets/stylesheets/pdf.scss */
+div.nobreak:before {
+  clear: both;
+}
+
+/* line 3, /Users/Denis/Repositories/bodeling/app/assets/stylesheets/pdf.scss */
+div.nobreak {
+  page-break-inside: avoid;
+}
+
+/* line 5, /Users/Denis/Repositories/bodeling/app/assets/stylesheets/pdf.scss */
+body {
+  font-family: Times, serif !important;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+/* line 11, /Users/Denis/Repositories/bodeling/app/assets/stylesheets/pdf.scss */
+.mt-10 {
+  padding-top: 20px;
+}
+
+/* line 15, /Users/Denis/Repositories/bodeling/app/assets/stylesheets/pdf.scss */
+div.calc-container {
+  margin-bottom: 10px;
+}
+
+/* line 19, /Users/Denis/Repositories/bodeling/app/assets/stylesheets/pdf.scss */
+div.calc-left {
+  display: inline-block;
+  align-self: auto;
+  text-align: left;
+}
+
+/* line 25, /Users/Denis/Repositories/bodeling/app/assets/stylesheets/pdf.scss */
+div.calc-right {
+  display: inline-block;
+  align-self: auto;
+  text-align: right;
+  float: right;
+}
+
+/* line 32, /Users/Denis/Repositories/bodeling/app/assets/stylesheets/pdf.scss */
+.signature-container {
+  display: inline-block;
+  text-align: left;
+  margin-right: 35px;
+}
+/* line 37, /Users/Denis/Repositories/bodeling/app/assets/stylesheets/pdf.scss */
+.signature-container .signature-inner-box {
+  margin-top: 25px;
+}
+/* line 39, /Users/Denis/Repositories/bodeling/app/assets/stylesheets/pdf.scss */
+.signature-container .signature-inner-box p {
+  margin: 0;
+}
+
+/* line 45, /Users/Denis/Repositories/bodeling/app/assets/stylesheets/pdf.scss */
+.bottom-signature {
+  float: right;
+  font-size: 18px;
+}
+/* line 47, /Users/Denis/Repositories/bodeling/app/assets/stylesheets/pdf.scss */
+.bottom-signature span {
+  display: block;
+  text-align: center;
+}

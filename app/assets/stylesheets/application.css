@@ -29,4 +29,5 @@
  *= require theme/web-icons
 
  *= require_tree ./properties
+ *= require_self
  */
