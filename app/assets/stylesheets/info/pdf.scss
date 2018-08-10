@@ -8,20 +8,22 @@ div.nobreak { page-break-inside: avoid; }
 
 div.calc-container {
   margin-bottom: 10px;
+  display: flexbox;
+  justify-content: space-between;
+
 }
 
 div.calc-left {
   display: inline-block;
+  align-self: auto;
   text-align: left;
-  vertical-align: top;
 }
 
 div.calc-right {
   display: inline-block;
-  max-width: 30%;
-  float: right;
+  align-self: auto;
   text-align: right;
-  vertical-align: top;
+  float: right;
 }
 
 .signature-container {
