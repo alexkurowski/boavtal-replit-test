@@ -5,6 +5,9 @@ html
 
     - if Rails.env.development?
       = wicked_pdf_stylesheet_link_tag "pdf"
+    - elsif Rails.env.production?
+      = stylesheet_link_tag "pdf"
+
     / = javascript_include_tag wicked_pdf_asset_base64("number_pages")
     /= stylesheet_link_tag stylesheet_link_tag wicked_pdf_asset_base64("info/pdf")
 
