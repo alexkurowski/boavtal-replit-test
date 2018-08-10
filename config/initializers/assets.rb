@@ -15,4 +15,4 @@ Rails.application.config.assets.paths << Rails.root.join('vendor', 'node_modules
 
 Rails.application.config.assets.precompile += %w( theme.js )
 
-Rails.application.config.assets.precompile += %w( *.svg .eot .woff .ttf )
+Rails.application.config.assets.precompile += %w( *.svg .eot .woff .ttf pdf.scss)
