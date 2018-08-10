@@ -3,7 +3,7 @@ div.nobreak:before { clear:both; }
 div.nobreak { page-break-inside: avoid; }
 
 body {
-  font-family: Times, serif;
+  font-family: Times, serif !important;
   font-size: 18px;
   line-height: 22px;
 }
