@@ -179,7 +179,7 @@ module RealestateAsset
   end
 
   def total_value_for(member, timeframe)
-    percentage_share_owned_by(member, :decimal, timeframe) * calc_capital_gains_tax
+    percentage_share_owned_by(member, :decimal, timeframe) * calc_net_value
   end
 end
 

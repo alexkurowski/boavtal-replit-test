@@ -4,6 +4,6 @@ h4 Fordon
   - if asset.send("owned_#{@timeframe}_by?", member)
     .calc-container
       .calc-left
-        | #{asset.percentage_share_owned_by(member, :whole, @timeframe)} procent av #{asset.reg_number}:
+        | #{asset.percentage_share_owned_by(member, :whole, @timeframe)} procent av bilen med registreringsnummer #{asset.reg_number}:
       .calc-right
         | + #{to_sk(asset.total_value_for(member, @timeframe))}
