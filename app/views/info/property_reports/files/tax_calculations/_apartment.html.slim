@@ -1,5 +1,5 @@
 - @apartment_assets.each do |asset|
-  h4 Bostadsrätt:
+  h4 Bostadsrätt: #{asset.housing_cooperative} med lägenhetsnummer #{asset.apartment_number}
 
   .calc-container
     .calc-left
@@ -41,7 +41,7 @@
     .calc-left
       | Andel av inre reparationsfond vid försäljningen
     .calc-right
-      | + #{to_sk asset.get_float_for('salefunds')}
+      | - #{to_sk asset.get_float_for('salefunds')}
 
   .calc-container
     .calc-left

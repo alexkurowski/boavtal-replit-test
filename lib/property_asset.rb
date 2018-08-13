@@ -84,7 +84,8 @@ module FundsAsset
   include MonetaryAssetHelper
 
   def calc_capital_gains
-    get_float_for('salesprice') - get_float_for('costamount')
+    capital_gains = get_float_for('salesprice') - get_float_for('costamount')
+    capital_gains < 0 ? 0 : capital_gains
   end
 
   def calc_capital_gains_tax
@@ -104,7 +105,8 @@ module SecurityAsset
   include MonetaryAssetHelper
 
   def calc_capital_gains
-    get_float_for('salesprice') - get_float_for('costamount')
+    capital_gains = get_float_for('salesprice') - get_float_for('costamount')
+    capital_gains < 0 ? 0 : capital_gains
   end
 
   def calc_capital_gains_tax
@@ -162,12 +164,14 @@ module RealestateAsset
   end
 
   def calc_capital_gains
-    market_value                      -
-    get_float_for('purchaseprice')    -
-    get_float_for('acquisitioncost')  -
-    get_float_for('agentfee')         -
-    get_float_for('improvementcost')  +
-    get_float_for('deferral')
+    capital_gains = market_value                      -
+                    get_float_for('purchaseprice')    -
+                    get_float_for('acquisitioncost')  -
+                    get_float_for('agentfee')         -
+                    get_float_for('improvementcost')  +
+                    get_float_for('deferral')
+
+    capital_gains < 0 ? 0 : capital_gains
   end
 
   def calc_capital_gains_tax
@@ -206,15 +210,17 @@ module ApartmentAsset
   end
 
   def calc_capital_gains
-    market_value                      -
-    get_float_for('purchaseprice')    -
-    get_float_for('agentfee')         -
-    get_float_for('salescosts')       -
-    get_float_for('improvementcost')  -
-    get_float_for('capitalinjection') +
-    get_float_for('salefunds')        +
-    get_float_for('purchasefunds')    +
-    get_float_for('deferral')
+    capital_gains = market_value                      -
+                    get_float_for('purchaseprice')    -
+                    get_float_for('agentfee')         -
+                    get_float_for('salescosts')       -
+                    get_float_for('improvementcost')  -
+                    get_float_for('capitalinjection') +
+                    get_float_for('salefunds')        +
+                    get_float_for('purchasefunds')    +
+                    get_float_for('deferral')
+
+    capital_gains < 0 ? 0 : capital_gains
   end
 
   def calc_capital_gains_tax
@@ -226,7 +232,7 @@ module ApartmentAsset
   end
 
   def total_value_for(member, timeframe)
-    percentage_share_owned_by(member, :decimal, timeframe) * calc_capital_gains_tax
+    percentage_share_owned_by(member, :decimal, timeframe) * calc_net_value
   end
 end
 
