@@ -77,11 +77,28 @@ $(document).ready ->
       $form.find('.debt').remove()
 
 
+  disableSubmitButtons = ->
+    $form.find('.soft-submit').get(0).disabled = true
+    $form.find('.hard-submit').get(0).disabled = true
+
+  enableSubmitButtons = ->
+    $form.find('.soft-submit').get(0).disabled = false
+    $form.find('.hard-submit').get(0).disabled = false
+
+
   window.Parsley.on 'form:submit', ->
     beforeValidSubmit()
 
 
+  window.Parsley.on 'form:validated', ->
+    enableSubmitButtons()
+    $invalid = $('.is-invalid:first').closest('.form-group')
+    return true if $invalid.length is 0
+    window.scrollTo 0, $invalid.offset().top - window.innerHeight * 0.4
+
+
   $form.find('.soft-submit').on 'click', ->
+    disableSubmitButtons()
     $form.find('#submit_type').val('soft')
     $form.off('submit.Parsley')
     $form.off('form:validate')
@@ -89,7 +106,9 @@ $(document).ready ->
 
 
   $form.find('.hard-submit').on 'click', ->
+    disableSubmitButtons()
     $form.find('#submit_type').val('hard')
+    $form.submit()
 
 
   $form.find('input[data-slide-target]').on 'change', ->
