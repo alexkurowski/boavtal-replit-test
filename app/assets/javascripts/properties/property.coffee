@@ -103,6 +103,7 @@ $(document).ready ->
     $form.off('submit.Parsley')
     $form.off('form:validate')
     beforeValidSubmit()
+    $form.submit()
 
 
   $form.find('.hard-submit').on 'click', ->
