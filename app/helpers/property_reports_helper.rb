@@ -1,7 +1,7 @@
 module PropertyReportsHelper
 
   def show_member_name(member)
-    member == :husband ? @property.full_name_for(:husband) : @property.full_name_for(:wife)
+    @property.full_name_for(member)
   end
 
   def show_ssn_for(member)
