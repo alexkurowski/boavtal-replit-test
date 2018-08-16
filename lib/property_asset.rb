@@ -183,7 +183,15 @@ module RealestateAsset
   end
 
   def total_value_for(member, timeframe)
-    percentage_share_owned_by(member, :decimal, timeframe) * calc_net_value
+    percentage_share_owned_by(member, :decimal, timeframe) * (calc_net_value * maximum_allowed_percentage(timeframe))
+  end
+
+  def maximum_allowed_percentage(timeframe)
+    if timeframe == :now
+      1
+    else
+      percentage_share_owned_by(:husband, :decimal, :now) + percentage_share_owned_by(:wife, :decimal, :now)
+    end
   end
 end
 
