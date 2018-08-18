@@ -24,6 +24,8 @@ h1 Tillgångar och skulder
     == render 'info/property_reports/files/assets_debts/debts', member: member, timeframe: :now
     h4 Summa skulder: - #{to_sk @asset_calculator.total_debt_amount_for(member, @timeframe)}
 
+    br
+
   - else
     p
       strong #{show_member_name member} har inga skulder att ta upp.
