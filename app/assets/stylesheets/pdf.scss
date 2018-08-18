@@ -3,7 +3,8 @@ div.nobreak:before { clear:both; }
 div.nobreak { page-break-inside: avoid; }
 
 body {
-  font-family: Times, serif !important;
+  // font-family: Times, serif;
+  font-family: Helvetica Neue, Helvetica,Arial;
   font-size: 18px;
   line-height: 22px;
 }
