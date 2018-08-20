@@ -19,6 +19,14 @@ class PropertyAsset
     output == :whole ? num.to_i : num
   end
 
+  def maximum_allowed_percentage(timeframe)
+    if timeframe == :now
+      1
+    else
+      percentage_share_owned_by(:husband, :decimal, :now) + percentage_share_owned_by(:wife, :decimal, :now)
+    end
+  end
+
   def owned_now_by?(member)
     percentage_share_owned_by(member, :whole, :now) > 0
   end
@@ -75,7 +83,7 @@ module BankAsset
   include MonetaryAssetHelper
 
   def total_value_for(member, timeframe)
-    percentage_share_owned_by(member, :decimal, timeframe) * total_value
+    percentage_share_owned_by(member, :decimal, timeframe) * (total_value * maximum_allowed_percentage(timeframe))
   end
 end
 
@@ -97,7 +105,7 @@ module FundsAsset
   end
 
   def total_value_for(member, timeframe)
-    percentage_share_owned_by(member, :decimal, timeframe) * calc_net_value
+    percentage_share_owned_by(member, :decimal, timeframe) * (calc_net_value * maximum_allowed_percentage(timeframe))
   end
 end
 
@@ -118,7 +126,7 @@ module SecurityAsset
   end
 
   def total_value_for(member, timeframe)
-    percentage_share_owned_by(member, :decimal, timeframe) * calc_net_value
+    percentage_share_owned_by(member, :decimal, timeframe) * (calc_net_value * maximum_allowed_percentage(timeframe))
   end
 end
 
@@ -127,7 +135,7 @@ module IskAsset
   include MonetaryAssetHelper
 
   def total_value_for(member, timeframe)
-    total_value * percentage_share_owned_by(member, :decimal, timeframe)
+    percentage_share_owned_by(member, :decimal, timeframe) * (total_value * maximum_allowed_percentage(timeframe))
   end
 end
 
@@ -136,7 +144,7 @@ module InsuranceAsset
   include MonetaryAssetHelper
 
   def total_value_for(member, timeframe)
-    total_value * percentage_share_owned_by(member, :decimal, timeframe)
+    percentage_share_owned_by(member, :decimal, timeframe) * (total_value * maximum_allowed_percentage(timeframe))
   end
 end
 
@@ -150,7 +158,7 @@ module OtherAsset
   end
 
   def total_value_for(member, timeframe)
-    total_value * percentage_share_owned_by(member, :decimal, timeframe)
+    percentage_share_owned_by(member, :decimal, timeframe) * (total_value * maximum_allowed_percentage(timeframe))
   end
 end
 
@@ -184,14 +192,6 @@ module RealestateAsset
 
   def total_value_for(member, timeframe)
     percentage_share_owned_by(member, :decimal, timeframe) * (calc_net_value * maximum_allowed_percentage(timeframe))
-  end
-
-  def maximum_allowed_percentage(timeframe)
-    if timeframe == :now
-      1
-    else
-      percentage_share_owned_by(:husband, :decimal, :now) + percentage_share_owned_by(:wife, :decimal, :now)
-    end
   end
 end
 
@@ -240,7 +240,7 @@ module ApartmentAsset
   end
 
   def total_value_for(member, timeframe)
-    percentage_share_owned_by(member, :decimal, timeframe) * calc_net_value
+    percentage_share_owned_by(member, :decimal, timeframe) * (calc_net_value * maximum_allowed_percentage(timeframe))
   end
 end
 
@@ -255,7 +255,7 @@ module CarAsset
   end
 
   def total_value_for(member, timeframe)
-    percentage_share_owned_by(member, :decimal, timeframe) * total_value
+    percentage_share_owned_by(member, :decimal, timeframe) * (total_value * maximum_allowed_percentage(timeframe))
   end
 end
 
