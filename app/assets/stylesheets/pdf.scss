@@ -45,7 +45,15 @@ div.calc-right {
 }
 
 .bottom-signature {
-  float: right;
-  span {display: block; text-align: center;}
-  font-size: 18px;
+  // display: block;
+  // height: 200px;
+  // background-color: red;
+  position: relative;
+  .initialer {
+    position: absolute;
+    right: 0;
+    top: -15px;
+    // float: right;
+    span {display: block; text-align: center;}
+  }
 }
