@@ -4,6 +4,7 @@ sv: &sv
       required: Ni måste svara på frågan.
       assets_empty: Ni svarade att ni hade tillgångar ni ville lägga till. Skriv ner tillgången/tillgångarna här eller ändra ert svar till "nej" ovan under "Tillgångar".
       debts_empty: Ni svarade att ni hade skulder ni ville ta upp till. Skriv ner skulden/skulderna här eller ändra ert svar till "nej" ovan under "Skulder".
+      interest: Var god svara på frågan. Använd endast nummer, komma eller punkt. Exempelvis "2,4", "3" eller "3.5".
 
 en:
   <<: *sv
