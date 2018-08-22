@@ -223,7 +223,7 @@ module ApartmentAsset
                     get_float_for('agentfee')         -
                     get_float_for('salescosts')       -
                     get_float_for('improvementcost')  -
-                    get_float_for('capitalinjection') +
+                    get_float_for('capitalinjection') -
                     get_float_for('salefunds')        +
                     get_float_for('purchasefunds')    +
                     get_float_for('deferral')
