@@ -54,5 +54,12 @@ $(document).ready ->
       $('.debts .debt li.nav-item .active').length > 0
   })
 
+  window.Parsley.addValidator('interestRate', {
+    validateString: (value, _, field) ->
+      return true if field.element.dataset.parsleyRequired is 'false'
+      /^\d{1,3}$/.test(value) ||
+      /^\d{1,3}[,.]\d{1,2}$/.test(value)
+  })
+
   $form.on 'changeDate', (e) ->
     $(e.target).trigger('input')

@@ -145,15 +145,18 @@ $(document).ready ->
   })
 
 
+  $form.find('.interest-rate').on 'keypress', (event) ->
+    '0123456789,.'.indexOf(event.key) isnt -1
+
   $form.find('.interest-rate').on 'input', (event) ->
-    min = parseInt this.min
-    max = parseInt this.max
-    val = parseInt this.value
+    min = parseInt this.dataset.min
+    max = parseInt this.dataset.max
+    val = parseFloat this.value.replace(',', '.')
 
     if val < min
-      this.value = this.min
+      this.value = this.dataset.min
     else if val > max
-      this.value = this.max
+      this.value = this.dataset.max
 
 
   $form.find('.ssn2').inputmask('9{4}', {
