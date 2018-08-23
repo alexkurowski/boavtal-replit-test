@@ -67,7 +67,7 @@
   .if-interest-after style="#{ hidden_unless @property.data(:interest, :after_payment) }"
     .form-group.mb-20
       span = t 'property.interest.after_payment_rate_label'
-      = @f.number_field 'data[interest][after_payment_rate]',
+      = @f.text_field 'data[interest][after_payment_rate]',
         class: 'form-control interest-rate',
         data: { \
           min: 0,
