@@ -3,11 +3,19 @@ h1 Skatteuträkning
 - if @realestate_assets.present?
   == render 'info/property_reports/files/tax_calculations/real_estate'
 
+  hr.m-10
+
 - if @apartment_assets.present?
   == render 'info/property_reports/files/tax_calculations/apartment'
+
+  hr.m-10
 
 - if @security_assets.present?
   == render 'info/property_reports/files/tax_calculations/security'
 
+  hr.m-10
+
 - if @funds_assets.present?
   == render 'info/property_reports/files/tax_calculations/funds'
+
+  hr.m-10
