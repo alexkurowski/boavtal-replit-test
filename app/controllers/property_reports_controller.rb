@@ -29,7 +29,7 @@ class PropertyReportsController < ApplicationController
             layout:     'property_pdf.html.slim',
             template:   'info/property_reports/index',
             page_offset: -1,
-            cover:       render_to_string('info/property_reports/cover.pdf.slim'),
+            cover:       render_to_string('info/property_reports/faq.pdf.slim'),
             margin:     { bottom: 30, top: 10 },
             dpi:         '300',
             header:     {
