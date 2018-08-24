@@ -6,26 +6,39 @@ h1 Tillgångar och skulder
   p I boet finns följande tillgångar och skulder som ska fördelas:
 
 - [:husband, :wife].each do |member|
+
+  hr.m-10
+
   h2
     = show_member_name(member)
 
   - if @assets.present? && @asset_calculator.assets_exist_for?(member)
     == render 'info/property_reports/files/assets_debts/assets', member: member, timeframe: :now
-    p
-      strong Summa tillgångar: #{to_sk @asset_calculator.total_asset_amount_for(member, :now)}
+    .calc-container
+      .calc-left
+        strong Summa tillgångar:
+      .calc-right
+        strong.upper-border + #{to_sk @asset_calculator.total_asset_amount_for(member, :now)}
 
   - else # NO assets BEFORE divorce
     p
       strong #{show_member_name member} har inga tillgångar som ska fördelas.
 
   - if @debts.present? && @asset_calculator.debts_exist_for?(member)
-    h3 Skulder:
+    h3.underline Skulder:
 
     == render 'info/property_reports/files/assets_debts/debts', member: member, timeframe: :now
-    h4 Summa skulder: - #{to_sk @asset_calculator.total_debt_amount_for(member, @timeframe)}
+
+    .calc-container
+      .calc-left
+        strong Summa skulder:
+      .calc-right
+        strong - #{to_sk @asset_calculator.total_debt_amount_for(member, @timeframe)}
 
     br
 
   - else
     p
       strong #{show_member_name member} har inga skulder att ta upp.
+
+hr.m-10
