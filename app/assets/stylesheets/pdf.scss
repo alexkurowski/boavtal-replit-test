@@ -2,10 +2,14 @@ div.alwaysbreak { page-break-before: always; }
 div.nobreak:before { clear:both; }
 div.nobreak { page-break-inside: avoid; }
 
+*, p, strong {
+
+}
+
 body {
+  font-size: 19px;
+  line-height: 23px;
   font-family: Times, serif;
-  font-size: 18px;
-  line-height: 22px;
 
   h1 {
     padding-bottom: 25px;

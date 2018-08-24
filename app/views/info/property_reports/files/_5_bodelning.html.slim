@@ -16,8 +16,7 @@ h1 Bodelningslikvid
   p Vid försenad betalning utgår en årlig dröjsmålsränta med en räntesats om #{@property.interest_rate_after} procentenheter över Riksbankens vid var tid gällande referensränta.
 
 - if @property.compensation_details_filled?
-  p
-    strong Bodelningslikviden ska erläggas till:
+  p Bodelningslikviden ska erläggas till:
   p Clearingnummer: #{@property.compensation_clearing}
   p Kontonummer:    #{@property.compensation_account}
   p Bank:           #{@property.compensation_bank_name}
