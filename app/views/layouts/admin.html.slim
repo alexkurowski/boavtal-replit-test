@@ -19,9 +19,13 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
 
-  body class="admin_#{controller.controller_name} #{content_for :body_class}"
+  body.admin.site-menubar-fold.site-menubar-keep.page-aside-left class="admin_#{controller.controller_name} #{content_for :body_class}"
 
-    .page role='main'
+    - if user_signed_in?
+      = render 'layouts/admin_header'
+      = render 'layouts/admin_aside'
+
+    .page role='main' class="#{content_for :page_class}"
       .page-content.container-fluid class="#{content_for :page_content_class}"
         == render 'layouts/flash_messages'
         = yield

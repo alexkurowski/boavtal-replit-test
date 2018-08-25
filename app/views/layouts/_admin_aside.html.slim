@@ -1,0 +1,15 @@
+.site-menubar.site-menubar-light
+  .site-menubar-body
+    .scrollable-container
+      .scrollable-content
+        ul.site-menu [ data-plugin='menu' ]
+
+          li.site-menu-item class="#{'active' if controller.is_a? Admin::OrdersController}"
+            = link_to admin_orders_path
+              i.wb.wb-list.site-menu-icon
+              span.site-menu-title Orders
+
+          li.site-menu-item class="#{'active' if controller.is_a? Admin::UsersController}"
+            = link_to admin_users_path
+              i.wb.wb-users.site-menu-icon
+              span.site-menu-title Users

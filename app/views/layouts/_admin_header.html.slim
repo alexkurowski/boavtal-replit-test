@@ -1,0 +1,26 @@
+nav.site-navbar.navbar.navbar-default.navbar-fixed-top.navbar-mega.navbar-inverse [ role='navigation' ]
+  .navbar-header
+    button.navbar-toggler.hamburger.hamburger-close.navbar-toggler-left.hided [ type='button' data-toggle='menubar' ]
+      span.sr-only toggle navigation
+      span.hamburger-bar
+    .navbar-brand.navbar-brand-center.site-gridmenu-toggle.active
+      .navbar-brand-text.hidden-xs-down
+        | Bodelningsverktyg
+
+  .navbar-container.container-fluid
+    .collapse.navbar-collapse.navbar-collapse-toolbar
+      ul.nav.navbar-toolbar
+        li.nav-item
+          a.nav-link [ href='#' data-toggle='menubar' role='button' ]
+            i.icon.hamburger.hamburger-arrow-left.hided.unfolded
+              span.sr-only toggle menubar
+              span.hamburger-bar
+
+      ul.nav.navbar-toolbar.navbar-right.navbar-toolbar-right
+        li.nav-item.dropdown
+          a.nav-link [ href='#' data-toggle='dropdown' role='button' data-animation='scale-up' ]
+            span = current_user.email
+          .dropdown-menu [ role='menu' ]
+            = link_to destroy_user_session_path, method: :delete, class: 'dropdown-item', role: 'menuitem'
+              i.fa.fa-sign-out.icon
+              | log out
