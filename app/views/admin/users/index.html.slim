@@ -1,0 +1,55 @@
+.page-header
+  .order-heading
+    h1.page-title Admin user management
+
+.page-content.container-fluid.vertical-align-middle
+  .row
+    .col-xxl-4.col-lg-8
+
+      .panel
+        .panel-heading
+          h3.panel-title Existing users
+
+        .panel-body
+          table.table.table-striped.users-table
+            thead
+              tr
+                th.w-50p Login
+                th.w-50p User email
+                th.text-center Action
+            tbody
+              - @users.each do |user|
+                tr
+                  td #{user.username}
+                  td #{user.email}
+                  td
+                    = link_to 'Remove', admin_user_path(user), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs'
+
+
+    .col-xxl-4.col-lg-4
+      .panel
+        .panel-heading
+          h3.panel-title Create a user
+
+        .panel-body
+          = form_for User.new,
+            remote: true,
+            url: admin_users_path,
+            html: { \
+              role: :form,
+              autocomplete: 'off',
+              data: { \
+                model: 'user',
+                type: 'json' } }  do |f|
+
+            .col-xs-12.form-group
+              = f.text_field :username, class: "form-control", placeholder: "Username"
+
+            .col-xs-12.form-group
+              = f.text_field :email, class: "form-control", placeholder: "Email"
+
+            .col-xs-12.form-group
+              = f.password_field :password, class: "form-control", placeholder: "Password", autocomplete: 'new-password'
+
+            .form-group
+              button.btn.btn-success type="submit"  Create user
