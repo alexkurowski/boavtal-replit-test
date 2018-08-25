@@ -1,0 +1,25 @@
+/*
+ *= require font-awesome
+
+ *= require pnotify/dist/pnotify.css
+ *= require pnotify/dist/pnotify.brighttheme.css
+ *= require pnotify/dist/pnotify.buttons.css
+ *= require pnotify/dist/pnotify.nonblock.css
+ *= require pnotify/dist/pnotify.mobile.css
+
+ *= require theme/bootstrap
+ *= require theme/bootstrap-extend
+ *= require theme/bootstrap-datepicker
+ *= require theme/site
+ *= require theme/teal
+ *= require theme/animsition
+ *= require theme/asScrollable
+ *= require theme/asRange
+ *= require theme/jquery-labelauty
+ *= require theme/switchery
+ *= require theme/slidePanel
+ *= require theme/web-icons
+
+ *= require_tree ./admin
+ *= require_self
+ */
