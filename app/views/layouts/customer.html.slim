@@ -19,12 +19,10 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
 
-  body.customer class="customer_#{controller.controller_name} #{content_for :body_class}"
+  body.customer class="customer_#{controller.controller_name} #{content_for :body_class} #{ 'layout-boxed' if customer_signed_in? }"
 
     - if customer_signed_in?
-      signed in
-      / = render 'layouts/admin_header'
-      / = render 'layouts/admin_aside'
+      = render 'layouts/customer_header'
 
     .page role='main' class="#{content_for :page_class}"
       .page-content.container-fluid class="#{content_for :page_content_class}"

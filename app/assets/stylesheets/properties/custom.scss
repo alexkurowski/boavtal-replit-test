@@ -1,35 +1,10 @@
 @import "font-awesome";
 
-.navbar-default .navbar-toolbar > .nav-item > a {
-  padding-bottom: 19px;
-  border-bottom: 3px solid transparent;
-  border-left: 1px solid transparent;
-  border-right: 1px solid transparent;
-}
-
-.navbar-default .navbar-toolbar > .nav-item.active > a {
-  color: #007bff;
-  background: transparent;
-  border-bottom: 3px solid #007bff;
-}
-
 .customer-login {
   padding: 4px 8px 3px;
   margin: -5px 0 -4px;
   font-weight: 500;
   letter-spacing: 1.4px;
-}
-
-.site-navbar .navbar-container {
-  margin-left: 0;
-}
-
-.site-navbar .navbar-header {
-  width: initial;
-}
-
-.page {
-  min-height: 100%;
 }
 
 input.labelauty + label > span.labelauty-unchecked-image {

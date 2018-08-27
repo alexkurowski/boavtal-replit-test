@@ -1,0 +1,21 @@
+nav.site-navbar.navbar.navbar-default.navbar-fixed-top.navbar-mega.navbar-expand-md [ role='navigation' ]
+  .navbar-header
+    button.navbar-toggler data-target='#info-navbar' data-toggle='collapse' type='button' aria-expanded='false'
+      i.icon.wb-more-horizontal aria-hidden='true'
+
+    = link_to root_path, class: 'navbar-brand navbar-brand-center site-gridmenu-toggle active ml-0' do
+      | Bodelningsavtal.se
+
+  .navbar-container.container-fluid
+    #info-navbar.collapse.navbar-collapse.navbar-collapse-toolbar
+      ul.nav.navbar-toolbar
+        li.nav-item
+
+      ul.nav.navbar-toolbar.navbar-right.navbar-toolbar-right
+        li.nav-item.dropdown
+          a.nav-link [ href='#' data-toggle='dropdown' role='button' data-animation='scale-up' ]
+            span = current_customer.email
+          .dropdown-menu [ role='menu' ]
+            = link_to destroy_customer_session_path, method: :delete, class: 'dropdown-item', role: 'menuitem'
+              i.fa.fa-sign-out.icon
+              | log out
