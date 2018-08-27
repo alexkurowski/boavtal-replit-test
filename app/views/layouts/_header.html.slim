@@ -9,7 +9,7 @@ nav.site-navbar.navbar.navbar-default.navbar-fixed-top.navbar-mega.navbar-expand
   .navbar-container.container-fluid
     #info-navbar.collapse.navbar-collapse.navbar-collapse-toolbar
       ul.nav.navbar-toolbar
-        li.nav-item.active
+        li.nav-item class="#{ 'active' if controller_name == 'properties' }"
           = link_to properties_path, class: 'nav-link' do
             | Bodelningsverktyg
 
