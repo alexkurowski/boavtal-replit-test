@@ -18,8 +18,9 @@
  *= require theme/switchery
  *= require theme/slidePanel
  *= require theme/web-icons
+ *= require theme/login-v2
 
  *= require_tree ./shared
- *= require_tree ./admin
+ *= require_tree ./customer
  *= require_self
  */

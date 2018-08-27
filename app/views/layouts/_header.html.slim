@@ -12,3 +12,9 @@ nav.site-navbar.navbar.navbar-default.navbar-fixed-top.navbar-mega.navbar-expand
         li.nav-item.active
           = link_to properties_path, class: 'nav-link' do
             | Bodelningsverktyg
+
+      ul.nav.navbar-toolbar.navbar-right.navbar-toolbar-right
+        li.nav-item
+          .nav-link
+            = link_to new_customer_session_path, class: 'btn btn-outline-success btn-xs px-2 customer-login' do
+              | KUNDINLOGGNING

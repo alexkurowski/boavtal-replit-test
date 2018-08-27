@@ -1,0 +1,25 @@
+- content_for :body_class, 'layout-full'
+- content_for :page_class, 'vertical-align'
+- content_for :page_content_class, 'vertical-align-middle animation-slide-top animation-duration-1'
+
+.panel.devise-panel
+  .panel-body
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+      = devise_error_messages!
+      = f.hidden_field :reset_password_token
+
+      .form-group.form-material.floating[data-plugin='formMaterial']
+        = f.password_field :password, class: 'form-control empty', autofocus: true, autocomplete: "new-password"
+        = f.label :password, "New password", class: 'floating-label'
+        - if @minimum_password_length
+          em = "(#{ @minimum_password_length } characters minimum)"
+
+      .form-group.form-material.floating[data-plugin='formMaterial']
+        = f.password_field :password_confirmation, class: 'form-control empty', autocomplete: "off"
+        = f.label :password_confirmation, "Confirm new password", class: 'floating-label'
+
+      .actions
+        = f.submit "Change my password", class: 'btn btn-primary btn-block btn-lg mt-40'
+
+    .mt-30.text-right
+      = render "devise/shared/links"

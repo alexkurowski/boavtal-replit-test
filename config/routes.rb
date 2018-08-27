@@ -11,6 +11,18 @@ Rails.application.routes.draw do
     },
     skip: [:registration]
 
+  devise_for :customers,
+    path: 'customer',
+    path_names: {
+      sign_in: 'login',
+      sign_out: 'logout'
+    },
+    controllers: {
+      sessions: 'customers/sessions',
+      passwords: 'customers/passwords'
+    },
+    skip: [:registration]
+
   root 'properties#index'
 
   get '/home' => 'pages#home'
@@ -24,5 +36,9 @@ Rails.application.routes.draw do
 
     resources :orders, only: [:index]
     resources :users, except: [:show]
+  end
+
+  namespace :customers, path: 'customer' do
+    root to: 'main#placeholder'
   end
 end

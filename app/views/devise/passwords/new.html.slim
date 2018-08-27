@@ -1,0 +1,18 @@
+- content_for :body_class, 'layout-full'
+- content_for :page_class, 'vertical-align'
+- content_for :page_content_class, 'vertical-align-middle animation-slide-top animation-duration-1'
+
+.panel.devise-panel
+  .panel-body
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = devise_error_messages!
+
+      .form-group.form-material.floating[data-plugin='formMaterial']
+        = f.text_field :email, class: 'form-control empty', autofocus: true, autocomplete: 'email'
+        = f.label :email, class: 'floating-label'
+
+      .actions
+        = f.submit "Send me reset password instructions", class: 'btn btn-primary btn-block btn-lg mt-40'
+
+    .mt-30.text-right
+      = render "devise/shared/links"

@@ -1,0 +1,39 @@
+- content_for :body_class, 'page-login-v2 layout-full page-dark'
+
+.page-brand-info
+  .brand
+    h2.brand-text.font-size-40 Bodelning
+    p.font-size-20.ml-20 Hantera dina handlingar här.
+
+.page-login-main.animation-slide-right.animation-duration-1
+  .brand.hidden-md-up
+    h3.brand-text.font-size-40 Bodelning
+
+  h3.font-size-24 Logga in
+  p Använd samma epost som vid din beställning.
+
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .form-group
+      = f.label :email, class: 'sr-only'
+      = f.text_field :email,
+                     label: false,
+                     class: 'form-control',
+                     placeholder: 'Epost'
+    .form-group
+      = f.label :password, class: 'sr-only'
+      = f.password_field :password,
+                         label: false,
+                         class: 'form-control',
+                         placeholder: 'Lösenord'
+
+    .form-group.clearfix
+      - if devise_mapping.rememberable?
+        .checkbox-custom.checkbox-inline.checkbox-primary.float-left
+          = f.check_box :remember_me
+          = f.label :remember_me
+
+      - if devise_mapping.recoverable?
+        = link_to 'Glömt ditt lösenord?', new_customer_password_path, class: 'float-right'
+
+    .form-group.mt-40
+      = f.submit 'Logga in', class: 'btn btn-primary btn-block'

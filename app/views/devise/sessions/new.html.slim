@@ -1,19 +1,5 @@
-- content_for :body_class, 'layout-full'
-- content_for :page_class, 'vertical-align'
-- content_for :page_content_class, 'vertical-align-middle animation-slide-top animation-duration-1'
+- if resource.is_a? User
+  = render 'user'
 
-.panel
-  .panel-body
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .form-group.form-material.floating[data-plugin="formMaterial"]
-        = f.text_field :username, class: 'form-control empty', autofocus: true, autocomplete: 'username'
-        = f.label :username, class: 'floating-label'
-      .form-group.form-material.floating[data-plugin="formMaterial"]
-        = f.password_field :password, class: 'form-control empty', autocomplete: 'current-password'
-        = f.label :password, class: 'floating-label'
-      .form-group.clearfix
-        - if devise_mapping.rememberable?
-          .checkbox-custom.checkbox-inline.checkbox-primary.checkbox-lg.float-left
-            = f.check_box :remember_me
-            = f.label :remember_me, for: 'user_remember_me'
-      = f.submit 'Sign in', class: 'btn btn-primary btn-block btn-lg mt-40'
+- elsif resource.is_a? Customer
+  = render 'customer'

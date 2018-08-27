@@ -27,6 +27,7 @@
  *= require theme/slidePanel
  *= require theme/web-icons
 
+ *= require_tree ./shared
  *= require_tree ./properties
  *= require_self
  */
