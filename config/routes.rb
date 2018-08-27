@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   root 'properties#index'
 
+  get '/home' => 'pages#home'
+
   resources :properties do
     resources :property_reports, only: [:index], as: 'reports'
   end
