@@ -12,7 +12,7 @@ class PropertiesController < ApplicationController
   end
 
   def create
-    create_customer if params[:customer].present?
+    create_customer if params[:customer].present? and not customer_signed_in?
     Property.create property_params
 
     @redirect_path ||= properties_path
