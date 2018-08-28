@@ -12,8 +12,11 @@ class PropertiesController < ApplicationController
   end
 
   def create
+    create_customer if params[:customer].present?
     Property.create property_params
-    redirect_to properties_path, flash: { notice: 'Form was saved successfully' }
+
+    @redirect_path ||= properties_path
+    redirect_to @redirect_path, flash: { notice: 'Form was saved successfully' }
   end
 
   def edit
@@ -51,9 +54,22 @@ class PropertiesController < ApplicationController
         end
       end
 
+      def create_customer
+        @customer = Customer.create customer_params
+        sign_in @customer, scope: :customer
+        params[:property][:customer_id] = @customer.id
+        @redirect_path = customers_root_path
+      end
+
       def property_params
         params
           .require(:property)
           .permit!
+      end
+
+      def customer_params
+        params
+          .require(:customer)
+          .permit([:email, :password])
       end
 end

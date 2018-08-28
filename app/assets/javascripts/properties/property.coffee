@@ -112,6 +112,24 @@ $(document).ready ->
     $form.submit()
 
 
+  $form.find('.signup-submit').on 'click', (e) ->
+    e.preventDefault()
+    email = $('#customer_email')
+    password = $('#customer_password')
+    email.parsley().validate()
+    password.parsley().validate()
+
+    valid = email.parsley().isValid() && password.parsley().isValid()
+    return unless valid
+
+    $form.find('.signup-submit').get(0).disabled = true
+    $form.find('#submit_type').val('soft')
+    $form.off('submit.Parsley')
+    $form.off('form:validate')
+    beforeValidSubmit()
+    $form.submit()
+
+
   $form.find('input[data-slide-target]').on 'change', ->
     slideTargets = this.dataset.slideTarget.split(' ')
     slideTargets.forEach (slideTarget) ->

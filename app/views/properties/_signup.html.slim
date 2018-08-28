@@ -1,0 +1,22 @@
+= property_panel 'signup' do
+  .row
+    .col-md
+      .form-group
+        label = t('property.signup.email')
+        = email_field_tag 'customer[email]', nil,
+          class: 'form-control',
+          data: { \
+            parsley_required: true,
+            parsley_validate_if_empty: true,
+            parsley_error_message: t('property.error.required') }
+
+    .col-md
+      .form-group
+        label = t('property.signup.password')
+        = password_field_tag 'customer[password]', nil,
+          class: 'form-control',
+          autocomplete: 'new-password',
+          data: { \
+            parsley_required: true,
+            parsley_validate_if_empty: true,
+            parsley_error_message: t('property.error.required') }

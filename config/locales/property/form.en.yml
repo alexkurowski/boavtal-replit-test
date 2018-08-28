@@ -170,12 +170,18 @@ sv: &sv
       info: Ett bodelningsavtal måste inte bevittnas för att bli giltigt. Ni kan själva välja om ni vill ha vittnen i syfte att intyga vilka som signerat bodelningsavtalet, att det skett av egen fri vilja och att ni båda var vid era sinnens fulla bruk vid undertecknandet.
       label: Vill ni att bodelningsavtalet som skapas ska ha plats för vittnen att skriva under också?
 
+    signup:
+      header: CREATE MY ACCOUNT
+      email: Epost
+      password: Lösenord
+
     faq:
       label: Vanliga frågor och svar
 
     submit:
       soft: Spara och fortsätt senare
       hard: Spara och skapa dokument
+      signup: Create account and continue
 
     common:
       'yes': Ja

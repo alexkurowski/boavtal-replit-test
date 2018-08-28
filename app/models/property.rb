@@ -1,4 +1,6 @@
 class Property < ApplicationRecord
+  belongs_to :customer, optional: true
+
   def data *path
     if path.empty?
       self[:data]
