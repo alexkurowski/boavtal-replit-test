@@ -40,6 +40,6 @@ Rails.application.routes.draw do
   end
 
   namespace :customers, path: 'customer' do
-    root to: 'main#placeholder'
+    root to: 'properties#index'
   end
 end
