@@ -1,0 +1,18 @@
+.panel.panel-warning.panel-line
+  .panel-heading
+    h3.panel-title = t('property.warning.header')
+  .panel-body
+    #property-warning.cut
+      .content
+        - t('property.warning.body').each do |line|
+          p = line
+  .panel-footer
+    .text-right
+      = link_to '#',
+        class: 'btn btn-link',
+        data: { \
+          toggle: 'cut',
+          target: '#property-warning',
+          text_show: t('property.warning.show'),
+          text_hide: t('property.warning.hide') }
+        = t('property.warning.show')

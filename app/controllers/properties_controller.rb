@@ -13,10 +13,9 @@ class PropertiesController < ApplicationController
 
   def create
     create_customer if params[:customer].present? and not customer_signed_in?
+    set_customer if customer_signed_in?
     Property.create property_params
-
-    @redirect_path ||= properties_path
-    redirect_to @redirect_path, flash: { notice: 'Form was saved successfully' }
+    redirect_to after_form_path, flash: { notice: 'Form was saved successfully' }
   end
 
   def edit
@@ -25,12 +24,12 @@ class PropertiesController < ApplicationController
 
   def update
     @property.update_attributes property_params
-    redirect_to properties_path, flash: { notice: 'Form was saved successfully' }
+    redirect_to after_form_path, flash: { notice: 'Form was saved successfully' }
   end
 
   def destroy
     @property.destroy
-    redirect_to properties_path
+    redirect_to after_form_path
   end
 
     private
@@ -57,8 +56,18 @@ class PropertiesController < ApplicationController
       def create_customer
         @customer = Customer.create customer_params
         sign_in @customer, scope: :customer
-        params[:property][:customer_id] = @customer.id
-        @redirect_path = customers_root_path
+      end
+
+      def set_customer
+        params[:property][:customer_id] = current_customer.id
+      end
+
+      def after_form_path
+        if customer_signed_in?
+          customers_root_path
+        else
+          properties_path
+        end
       end
 
       def property_params

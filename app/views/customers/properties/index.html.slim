@@ -1,0 +1,31 @@
+.container
+  .property-listing
+    .panel.panel-bordered
+      .panel-body
+        - if @properties.count.zero?
+          .text-right.p-2
+            = link_to new_property_path, class: 'btn btn-primary'
+              | Create new bodelningsavtal
+        - else
+          table.table
+            - @properties.each do |property|
+              tr
+                td.main
+                  - if property.validated?
+                    i.fa.fa-check.fa-fw.text-success
+                  - else
+                    i.fa.fa-fw.text-success
+                  | Bodelningsavtal ##{property.id}
+
+                td
+                  = link_to edit_property_path(property), class: 'btn btn-primary btn-sm'
+                    i.fa.fa-pencil
+                td
+                  = link_to property_path(property), method: :delete, class: 'btn btn-danger btn-sm', 'data-confirm' => 'Are you sure?'
+                    i.fa.fa-trash
+                - if property.validated?
+                  td
+                    = link_to 'Download PDF', property_reports_path(property), class: 'btn btn-success ml-10', target: '_blank'
+                - else
+                  td
+                    = link_to 'Download PDF', '#', class: 'btn btn-success disabled ml-10 tool-tip', data: {:"original-title" => "Please complete the form to generate the files", :toggle => "tooltip", :placement => 'bottom'}
