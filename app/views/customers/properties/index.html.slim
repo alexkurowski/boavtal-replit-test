@@ -3,8 +3,9 @@
     .panel.panel-bordered
       .panel-body
         - if @properties.count.zero?
-          .h5.text-center.my-10
-            | No forms here yet
+          .text-right.p-2
+            = link_to new_property_path, class: 'btn btn-primary'
+              | Create new bodelningsavtal
         - else
           table.table
             - @properties.each do |property|
@@ -28,14 +29,3 @@
                 - else
                   td
                     = link_to 'Download PDF', '#', class: 'btn btn-success disabled ml-10 tool-tip', data: {:"original-title" => "Please complete the form to generate the files", :toggle => "tooltip", :placement => 'bottom'}
-
-
-css:
-  .btn {
-    pointer-events: all !important;
-  }
-
-javascript:
-  $(document).ready(function() {
-    $('[data-toggle="tooltip"]').tooltip();
-  });
