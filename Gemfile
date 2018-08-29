@@ -28,6 +28,8 @@ gem 'wkhtmltopdf-binary'
 
 gem 'slim-rails'
 
+gem 'mailcatcher', require: false
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

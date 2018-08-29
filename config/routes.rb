@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get '/home' => 'pages#home'
 
   get '/bodelningsavtal' => 'properties#new', as: :new_property
+
   resources :properties, except: [:new] do
     resources :property_reports, only: [:index], as: 'reports'
   end
