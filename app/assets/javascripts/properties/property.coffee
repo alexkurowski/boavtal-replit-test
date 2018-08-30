@@ -3,6 +3,8 @@ $(document).ready ->
   return unless $form.length
 
 
+  submitting = false
+
   rangeSettings = {
     namespace: 'rangeUi',
     min: 0,
@@ -60,7 +62,7 @@ $(document).ready ->
   }
 
 
-  beforeValidSubmit = ->
+  beforeSubmit = ->
     $form.find('.template .asset').remove()
     $form.find('.template .debt').remove()
 
@@ -77,39 +79,46 @@ $(document).ready ->
       $form.find('.debt').remove()
 
 
+  forceSubmit = ->
+    $form.off('submit.Parsley')
+    $form.off('form:validate')
+    beforeSubmit()
+    $form.submit()
+
+
   disableSubmitButtons = ->
-    $form.find('.soft-submit').get(0).disabled = true
-    $form.find('.hard-submit').get(0).disabled = true
+    $('.soft-submit, .hard-submit').prop('disabled', true)
 
   enableSubmitButtons = ->
-    $form.find('.soft-submit').get(0).disabled = false
-    $form.find('.hard-submit').get(0).disabled = false
-
-
-  window.Parsley.on 'form:submit', ->
-    beforeValidSubmit()
+    $('.soft-submit, .hard-submit').prop('disabled', false)
 
 
   window.Parsley.on 'form:validated', ->
     enableSubmitButtons()
-    $invalid = $('.is-invalid:first').closest('.form-group')
-    return true if $invalid.length is 0
-    window.scrollTo 0, $invalid.offset().top - window.innerHeight * 0.4
+
+    if $form.parsley().isValid()
+      if submitting
+        forceSubmit()
+
+    else
+      $invalid = $('.is-invalid:first').closest('.form-group')
+      if $invalid.length
+        window.scrollTo 0, $invalid.offset().top - window.innerHeight * 0.4
 
 
-  $form.find('.soft-submit').on 'click', ->
+  $form.find('.soft-submit').on 'click', (e) ->
+    e.preventDefault()
     disableSubmitButtons()
     $form.find('#submit_type').val('soft')
-    $form.off('submit.Parsley')
-    $form.off('form:validate')
-    beforeValidSubmit()
-    $form.submit()
+    forceSubmit()
 
 
-  $form.find('.hard-submit').on 'click', ->
+  $form.find('.hard-submit').on 'click', (e) ->
+    e.preventDefault()
     disableSubmitButtons()
+    submitting = true
     $form.find('#submit_type').val('hard')
-    $form.submit()
+    $form.parsley().validate()
 
 
   $form.find('.signup-submit').on 'click', (e) ->
@@ -124,10 +133,7 @@ $(document).ready ->
 
     $form.find('.signup-submit').get(0).disabled = true
     $form.find('#submit_type').val('soft')
-    $form.off('submit.Parsley')
-    $form.off('form:validate')
-    beforeValidSubmit()
-    $form.submit()
+    forceSubmit()
 
 
   $form.find('input[data-slide-target]').on 'change', ->
