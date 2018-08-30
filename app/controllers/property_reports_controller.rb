@@ -1,6 +1,11 @@
 class PropertyReportsController < ApplicationController
   def index
-    @property = Property.find(params[:property_id])
+    @property =
+      if params[:property_id].present?
+        Property.find(params[:property_id])
+      elsif customer_signed_in?
+        current_customer.properties.first
+      end
 
     redirect_if_incomplete and return
 

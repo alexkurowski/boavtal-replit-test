@@ -32,6 +32,9 @@ Rails.application.routes.draw do
     resources :property_reports, only: [:index], as: 'reports'
   end
 
+  resource :property, only: [:edit, :update, :destroy], as: :customers_property
+  get '/property_report' => 'property_reports#index', as: :customers_property_report
+
   namespace :admin do
     root to: 'orders#index'
 

@@ -35,7 +35,12 @@ class PropertiesController < ApplicationController
     private
 
       def set_property
-        @property = Property.find params[:id]
+        @property =
+          if params[:id].present?
+            Property.find params[:id]
+          elsif customer_signed_in?
+            current_customer.properties.first
+          end
       end
 
       def clean_property_params
