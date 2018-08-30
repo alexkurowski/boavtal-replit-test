@@ -6,6 +6,10 @@ div.nobreak { page-break-inside: avoid; }
 
 }
 
+html {
+  height: 0;
+}
+
 body {
   font-size: 20px;
   line-height: 24px;
