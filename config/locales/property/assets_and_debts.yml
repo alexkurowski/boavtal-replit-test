@@ -31,7 +31,7 @@ sv: &sv
           - 'NUMERICAL_FIELD'
         deferral:
           - 'Uppskov:'
-          - 'Uppskov är att skjuta upp betalning av vinstskatt efter försäljning av bostad. När försäljningen deklareras kan skatten antingen betalas direkt eller skjutas upp. Om du inte har något uppskov så fyller du i fältet med en nolla.'
+          - 'Med uppskov menas här att du ska ta upp eventuellt uppskov på kapitalvinstskatt efter tidigare försäljning av bostad. När försäljningen deklareras kan skatten antingen betalas direkt eller skjutas upp. Har du beviljats uppskov tidigare så skall uppskovet återföras till beskattning vid kommande försäljning. Har du inte något uppskov så fyller du i fältet med en nolla.'
           - 'NUMERICAL_FIELD'
         name:
           - 'Fastighetsbeteckning:'
@@ -79,7 +79,7 @@ sv: &sv
           - 'NUMERICAL_FIELD'
         deferral:
           - 'Uppskov:'
-          - 'Uppskov är att skjuta upp betalning av vinstskatt efter försäljning av bostad. När försäljningen deklareras kan skatten antingen betalas direkt eller skjutas upp. Om du inte har något uppskov så fyller du i fältet med en nolla.'
+          - 'Med uppskov menas här att du ska ta upp eventuellt uppskov på kapitalvinstskatt efter tidigare försäljning av bostad. När försäljningen deklareras kan skatten antingen betalas direkt eller skjutas upp. Har du beviljats uppskov tidigare så skall uppskovet återföras till beskattning vid kommande försäljning. Har du inte något uppskov så fyller du i fältet med en nolla.'
           - 'NUMERICAL_FIELD'
         number:
           - 'Lägenhetsnummer:'
