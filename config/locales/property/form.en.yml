@@ -12,14 +12,13 @@ sv: &sv
     instructions:
       header: INSTRUKTIONER
       body:
-        - Använd verktyget nedan för att skapa ert bodelningsavtal.
-        - Vi föreslår att ni först testar verktyget för att se hur ert bodelningsavtal ser ut, baserat på de svar ni precis angivit. Är det något ni inte gillar kan ni bara gå tillbaka och ändra era svar. Inget är skrivet i sten förrän ni signerat era avtal. Ni kan kostnadsfritt göra ändringar i ert avtal hur många gånger ni vill.
+        - Använd verktyget nedan för att skapa ert bodelningsavtal automatiskt.
+        - Vi föreslår att ni först testar verktyget för att se hur ert bodelningsavtal ser ut, baserat på de svar ni precis angivit. Är det något ni inte gillar kan ni bara gå tillbaka och ändra era svar. Inget är slutgitligt förrän ni signerat avtalet.
+        - Har ni inte tid att fylla i alla uppgifter på en gång kan ni bara klicka på "Spara" och fortsätta fylla i formuläret senare.
         - Under många av frågorna finns “Vanliga frågor”. Klicka där för extra hjälp med att förstå frågan.
-        - Det finns två sätt att göra en bodelning på.
-        - Antingen kommer ni själva överens om vem som ska ha vad. Lagen är dispositiv och tillåter att man själv bestämmer detta, så länge det inte är till nackdel för en parts borgenärer. Då kan bodelning komma att återgå.
-        - Ni kan också svara i verktyget att ni vill låta vårt verktyg göra er uppdelning lagens regler. Tänk dock på att det finns regler om jämkning om man varit gifta i mindre än 5 år/resultatet är uppenbart oskäligt. Verktyget hanterar inte jämkningar om det är något ni vill räkna ut.
-        - Testa verktyget först, innan ni eventuellt kontaktar supporten. Det är helt riskfritt att testa verktyget. Mycket blir klart när man väl testat det.
-        - Vill ni ha manuell hjälp istället kan ni alltid anlita oss per timme istället.
+        - Det finns två sätt att göra en bodelning på. Antingen kommer ni själva överens om vem som ska ha vad. Lagen tillåter att man själv bestämmer detta, så länge det inte är till nackdel för en parts borgenärer. Då kan bodelningen komma att återgå.
+        - Man kan också göra er uppdelning enligt lagens 50/50-regler. Verktyget har inte detta alternativ i nuvarande version. Utan det är till för er som redan är överens om vem som ska ha vad. Det finns också regler om jämkning om man varit gifta i mindre än 5 år eller resultatet är uppenbart oskäligt. Verktyget hanterar inte jämkningar om det är något ni vill räkna ut. Det krävs som sagt att ni redan är överens om vem som ska ha vad.
+        - Är ni inte överens och istället vill dela upp era tillgångar enligt lagens regler så kontakta supporten.
 
     members:
       header: NAMN OCH PERSONNUMMER
@@ -104,10 +103,11 @@ sv: &sv
     compensation:
       header: KOMPENSATION
       info:
-        - 'Bodelningslikvid enligt lag eller överenskommelse'
-        - 'Om en av er ska behålla egendom till ett högre värde än den andra så har hen rätt till kompensation för detta. Denna kompensation kallas för bodelningslikvid. Om ni är överens kan ni dock välja att ingen bodelningslikvid ska betalas mellan er, trots att ni har fått olika mycket egendom.'
+        - 'Bodelningslikvid'
+        - 'Om en av er ska behålla egendom till ett högre värde än den andra och man delar upp sina tillgångar enligt lagens 50/50-regler så har hen rätt till kompensation för detta. Denna kompensation kallas för bodelningslikvid.'
         - 'Reglerna om hur mycket den ena maken ska utbetala till den andra som kompensation i samband med bodelningen är dispositiva. Det betyder att ni är fria att avtala om en annan summa än den som gäller enligt lag.'
-        - 'Vill ni bestämma en egen bodelningslikvid?'
+        - 'Om ni är överens kan ni välja att ingen bodelningslikvid ska betalas mellan er, trots att ni har fått olika mycket egendom. Eller bestämma ett valfritt belopp.'
+        - 'Vill ni att en bodelningslikvid ska betalas till någon av er?'
       decide:
         'yes': Ja, vi vill bestämma summan själva.
         'no': Nej, vi vill att bodelningslikviden bestäms enligt lagen.

@@ -16,7 +16,7 @@
           parsley_required: true,
           parsley_error_message: t('property.error.required'),
           slide_target: '.if-compensation:hide .if-compensation-details:show' }
-      = @f.label 'data[compensation][decide]_false', t('property.compensation.decide.no')
+      /= @f.label 'data[compensation][decide]_false', t('property.compensation.decide.no')
     .radio-custom.radio-primary
       = @f.radio_button 'data[compensation][decide]', 'none',
         data: { \
