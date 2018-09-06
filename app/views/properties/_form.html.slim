@@ -56,7 +56,7 @@
 
 = hidden_field_tag :submit_type, 'hard'
 
-- if customer_signed_in?
+- if customer_signed_in? or Rails.env.production?
   = @f.submit t('property.submit.hard'),
     class: 'hard-submit float-right btn btn-success ml-10'
 
