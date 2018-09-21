@@ -42,11 +42,13 @@ h1 Bodelning
     p
       strong Nettotillgångar vid bodelning #{show_member_name member}: #{to_rounded_sk @asset_calculator.transitory_net_worth_for(member, @timeframe)} kronor
 
-  hr.m-10
 
   - if @property.compensate_by_law?
 
     - if total_difference_to_pay.zero?
+      hr.m-10
       p Enligt ovanstående beräkning ska ingen bodelningslikvid utges.
+
     - else
+      hr.m-10
       p Enligt ovanstående beräkning ska #{show_member_name giving_spouse} kompensera #{show_member_name receiving_spouse} med en bodelningslikvid om: #{to_sk total_difference_to_pay}
