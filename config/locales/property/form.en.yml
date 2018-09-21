@@ -113,9 +113,6 @@ sv: &sv
         'no': Nej, vi vill att bodelningslikviden bestäms enligt lagen.
         none: Ingen bodelningslikvid ska betalas till någon av makarna.
       faq:
-        q1: 'Vilket svar passar oss?'
-        a1: 'Om ni har kommit överens om en annan summa än den som gäller enligt lag så ska ni välja ”Ja”.'
-        a2: 'Om ni vill att kompensation ska betalas mellan er i enlighet med vad som gäller enligt lag ska ni välja ”Nej”.'
         q3: 'Kan vi bestämma vilken summa vi vill?'
         a3: 'Ja, lagen är dispositiv och ni kan bestämman summan själva. Alternativt att ingen summa alls ska betalas. Tänk dock på en överenskommelse som innebär att ena maken gör en eftergift, som är till nackdel för dennes borgenärer, kan bodelningen komma att återgå. Det innebär att egendom flyttas tillbaka till maken som hade egendomen ursprungligen så att den kan användas som betalning för dennes skulder.'
 
