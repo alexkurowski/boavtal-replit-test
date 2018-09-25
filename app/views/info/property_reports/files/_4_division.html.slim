@@ -8,39 +8,55 @@ h1 Bodelning
   p Undertecknade är överens om att boets tillgångar och skulder ska fördelas enligt följande vid bodelningen.
 
   - [:husband, :wife].each do |member|
+    - @bodelningslikvid = calculate_bodelningslikvid(member)
 
     hr.m-10
 
     h2 #{show_member_name member} tilldelning
-
     - if @asset_calculator.transitory_assets_exist_for?(member)
 
       p #{show_member_name member} ska erhålla följande tillgångar samt betalningsansvaret för följande skulder i och med bodelningen:
 
       == render 'info/property_reports/files/assets_debts/assets', member: member, timeframe: :after
 
+      - if @bodelningslikvid > 0
+        == render 'info/property_reports/files/assets_debts/bodelningslikvid', member: member, with_sum: false, type: :asset
+
       .calc-container
         .calc-left
           strong Tillgångar vid bodelning:
         .calc-right
-          strong.upper-border + #{to_sk @asset_calculator.total_transitory_asset_amount_for(member, @timeframe)}
+          strong.upper-border + #{to_sk @asset_calculator.total_transitory_asset_amount_for(member, @timeframe, add_bodelning_if_positive)}
 
     - else # member gets no ASSETS after divorce
-      p -
+      - if @bodelningslikvid.zero?
+        p -
+      - else
+        h3.underline Tillgångar:
+        == render 'info/property_reports/files/assets_debts/bodelningslikvid', member: member, with_sum: true, type: :asset
+
+      - if @bodelningslikvid.zero?
+        p -
 
     - if @asset_calculator.transitory_debts_exist_for?(member)
-
-      h3.underline Skulder:
       == render 'info/property_reports/files/assets_debts/debts', member: member, timeframe: :after
+
+      - if @bodelningslikvid < 0
+        == render 'info/property_reports/files/assets_debts/bodelningslikvid', member: member, with_sum: false, type: :debt
 
       .calc-container
         .calc-left
           strong Skulder vid bodelning:
         .calc-right
-          strong.upper-border - #{to_sk @asset_calculator.total_transitory_debt_amount_for(member, @timeframe)}
+          strong.upper-border - #{to_sk @asset_calculator.total_transitory_debt_amount_for(member, @timeframe, sub_bodelning_if_negative)}
+
+    - else # member has no debts AFTER divorce
+      - if @bodelningslikvid < 0
+        h3.underline Skulder:
+        == render 'info/property_reports/files/assets_debts/bodelningslikvid', member: member, with_sum: true, type: :debt
 
     p
-      strong Nettotillgångar vid bodelning #{show_member_name member}: #{to_rounded_sk @asset_calculator.transitory_net_worth_for(member, @timeframe)} kronor
+      strong Nettotillgångar vid bodelning #{show_member_name member}: #{to_rounded_sk @asset_calculator.transitory_net_worth_for(member, @timeframe, @bodelningslikvid)} kronor
 
 
   - if @property.compensate_by_law?

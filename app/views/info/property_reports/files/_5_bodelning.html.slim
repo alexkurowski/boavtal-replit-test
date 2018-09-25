@@ -1,10 +1,10 @@
 h1 Bodelningslikvid
 
 - if @property.property_compensation == 'true'
-  p #{show_member_name :wife} och #{show_member_name :husband} har, oavsett vad som ovan angivits, överenskommit att en bodelningslikvid om totalt #{@property.compensation_amount} kronor ska erläggas av #{show_member_name @property.compensation_giver} till #{show_member_name @property.compensation_reciever}.
+  p #{show_member_name :wife} och #{show_member_name :husband} har, oavsett vad som ovan angivits, överenskommit att en bodelningslikvid om totalt #{@property.compensation_amount} kronor ska erläggas av #{show_member_name @property.compensation_giver} till #{show_member_name @property.compensation_reciever}. Vi är medvetna om att tillämpning av bestämmelserna av andelsberäkning hade gett ett annat utfall.
 
 - elsif @property.property_compensation == 'none'
-  p #{show_member_name :wife} och #{show_member_name :husband} har, oavsett vad som ovan angivits, överenskommit att ingen bodelningslikvid ska erläggas.
+  p #{show_member_name :wife} och #{show_member_name :husband} har, oavsett vad som ovan angivits, överenskommit att ingen bodelningslikvid ska erläggas. Vi är medvetna om att tillämpning av bestämmelserna av andelsberäkning hade gett ett annat utfall.
 
 - if @property.property_compensation == 'true' || @property.property_compensation == 'false'
   p Bodelningslikviden ska erläggas senast den #{@property.compensation_due_date}.
@@ -20,4 +20,3 @@ h1 Bodelningslikvid
   p Clearingnummer: #{@property.compensation_clearing}
   p Kontonummer:    #{@property.compensation_account}
   p Bank:           #{@property.compensation_bank_name}
-

@@ -3,8 +3,8 @@ h1.mt-10.text-center B O D E L N I N G S A V T A L
 - if case_number_filled_out?
 
   p #{show_member_name :husband}, #{show_ssn_for :husband} och #{show_member_name :wife}, #{show_ssn_for :wife}.
-  p Sedan #{@court.name} i mål #{get_case_number} dömt till äktenskapsskillnad efter ansökan som inkom till tingsrätten #{get_registration_date}, avtalar vi härmed om nedanstående bodelning. Bohag och all annan egendom som inte tagits upp i fördelning nedan har delats upp i godo mellan parterna. Befintliga tillgångar och skulder ska tas upp och värderas enligt följande.
+  p Sedan #{@court.name} i mål #{get_case_number} dömt till äktenskapsskillnad efter ansökan som inkom till tingsrätten #{get_registration_date}, avtalar vi härmed om nedanstående bodelning. Vi har redovisat vår ekonomi för varandra. Vi är överens om att undanta alla tillgångar och skulder som inte tas med i detta bodelningsavtal från andelsberäkningen. Vardera part behåller därmed de tillgångar och skulder som inte tas upp i bodelningsavtalet utan att eventuell bodelningslikvid påverkas. Bohag och annat lösöre har delats upp i godo.
 
 - else
   p #{show_member_name :husband}, #{show_ssn_for :husband} och #{show_member_name :wife}, #{show_ssn_for :wife}.
-  p Sedan vi till #{@court.name} ingivit ansökan om äktenskapsskillnad, som inkom #{get_registration_date}, har vi enats om nedanstående bodelning. Bohag och all annan egendom som inte tagits upp i fördelning nedan har delats upp i godo mellan parterna. Befintliga tillgångar och skulder ska tas upp och värderas enligt följande.
+  p Sedan vi till #{@court.name} ingivit ansökan om äktenskapsskillnad, som inkom #{get_registration_date}, har vi enats om nedanstående bodelning. Vi har redovisat vår ekonomi för varandra. Vi är överens om att undanta alla tillgångar och skulder som inte tas med i detta bodelningsavtal från andelsberäkningen. Vardera part behåller därmed de tillgångar och skulder som inte tas upp i bodelningsavtalet utan att eventuell bodelningslikvid påverkas. Bohag och annat lösöre har delats upp i godo.

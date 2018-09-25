@@ -1,0 +1,21 @@
+.calc-container
+  .calc-left
+    | Bodelningslikvid:
+  .calc-right
+    - if type == :asset
+      | + #{to_sk(@bodelningslikvid)}
+    - elsif type == :debt
+      | - #{to_sk(@bodelningslikvid.abs)}
+
+- if with_sum
+  .calc-container
+    - if type == :asset
+      .calc-left
+        strong Tillgångar vid bodelning:
+      .calc-right
+        strong.upper-border + #{to_sk @bodelningslikvid}
+    - elsif type == :debt
+      .calc-left
+        strong Skulder vid bodelning:
+      .calc-right
+        strong.upper-border - #{to_sk @bodelningslikvid.abs}

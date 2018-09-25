@@ -42,6 +42,28 @@ module PropertyReportsHelper
     end
   end
 
+  def calculate_bodelningslikvid(member)
+    if @property.property_compensation == 'true' && @property.compensation_amount > 0 && @property.compensation_reciever == member
+      @property.compensation_amount
+    elsif @property.property_compensation == 'false' && @property.total_difference_to_pay > 0 && @property.receiving_spouse == member
+      @property.total_difference_to_pay
+    elsif @property.property_compensation == 'true' && @property.compensation_amount > 0 && @property.compensation_reciever != member
+      -@bodelningslikvid = @property.compensation_amount
+    elsif @property.property_compensation == 'false' && @property.total_difference_to_pay > 0 && @property.giving_spouse == member
+      -@property.total_difference_to_pay
+    else
+      0
+    end
+  end
+
+  def add_bodelning_if_positive
+    @bodelningslikvid > 0 ? @bodelningslikvid : 0
+  end
+
+  def sub_bodelning_if_negative
+    @bodelningslikvid < 0 ? @bodelningslikvid : 0
+  end
+
   def to_sk(number)
     "#{number_to_currency(number, locale: :sv)}"
   end
@@ -50,7 +72,7 @@ module PropertyReportsHelper
     "#{number_to_currency(number, locale: :sv, unit: '', precision: 0)}"
   end
 
-  def total_difference_to_pay
+  def total_difference_to_pay # AKA "FINAL HEADFUCK NUMBER"
     arr = [:husband, :wife].map { |member| @asset_calculator.divided_net_worth(:now) - @asset_calculator.transitory_net_worth_for(member, :after) }
     arr.uniq.count <= 1 ? 0 : arr.max
   end

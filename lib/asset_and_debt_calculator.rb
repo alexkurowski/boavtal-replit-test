@@ -40,12 +40,13 @@ class AssetAndDebtCalculator
     !all_transitory_debts_for(member).blank?
   end
 
-  def total_transitory_asset_amount_for(member, timeframe)
-    if transitory_assets_exist_for?(member)
-      all_transitory_assets_for(member).map { |asset| asset.total_value_for(member, timeframe) }.reduce(0, :+)
-    else
-      0
-    end
+  def total_transitory_asset_amount_for(member, timeframe, additional_values = 0)
+    val = if transitory_assets_exist_for?(member)
+            all_transitory_assets_for(member).map { |asset| asset.total_value_for(member, timeframe) }.reduce(0, :+)
+          else
+            0
+          end
+    return val + additional_values
   end
 
   def total_asset_amount_for(member, timeframe)
@@ -64,12 +65,14 @@ class AssetAndDebtCalculator
     end
   end
 
-  def total_transitory_debt_amount_for(member, timeframe)
-    if transitory_debts_exist_for? member
-      all_transitory_debts_for(member).map { |debt| debt.total_value_for(member, timeframe) }.reduce(0, :+)
-    else
-      0
-    end
+  def total_transitory_debt_amount_for(member, timeframe, additional_values = 0)
+    val = if transitory_debts_exist_for? member
+            all_transitory_debts_for(member).map { |debt| debt.total_value_for(member, timeframe) }.reduce(0, :+)
+          else
+            0
+          end
+
+    return val + additional_values
   end
 
   def net_worth_for(member, timeframe)
@@ -78,10 +81,10 @@ class AssetAndDebtCalculator
     net_worth < 0 ? 0 : net_worth
   end
 
-  def transitory_net_worth_for(member, timeframe)
+  def transitory_net_worth_for(member, timeframe, additional_values = 0)
     net_worth = total_transitory_asset_amount_for(member, timeframe) - total_transitory_debt_amount_for(member, timeframe)
 
-    return net_worth
+    return net_worth + additional_values
     # net_worth < 0 ? 0 : net_worth # Commented out to allow negatives specifically on this formula
   end
 

@@ -25,8 +25,6 @@ h1 Tillgångar och skulder
       strong #{show_member_name member} har inga tillgångar som ska fördelas.
 
   - if @debts.present? && @asset_calculator.debts_exist_for?(member)
-    h3.underline Skulder:
-
     == render 'info/property_reports/files/assets_debts/debts', member: member, timeframe: :now
 
     .calc-container

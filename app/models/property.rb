@@ -48,7 +48,7 @@ class Property < ApplicationRecord
   end
 
   def compensation_amount
-    data['payment']['how_much']
+    data['payment']['how_much'].to_i
   end
 
   def compensation_reciever
