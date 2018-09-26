@@ -61,7 +61,7 @@ module PropertyReportsHelper
   end
 
   def sub_bodelning_if_negative
-    @bodelningslikvid < 0 ? @bodelningslikvid : 0
+    @bodelningslikvid < 0 ? -@bodelningslikvid : 0
   end
 
   def to_sk(number)
