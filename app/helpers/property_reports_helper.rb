@@ -45,12 +45,12 @@ module PropertyReportsHelper
   def calculate_bodelningslikvid(member)
     if @property.property_compensation == 'true' && @property.compensation_amount > 0 && @property.compensation_reciever == member
       @property.compensation_amount
-    elsif @property.property_compensation == 'false' && @property.total_difference_to_pay > 0 && @property.receiving_spouse == member
-      @property.total_difference_to_pay
+    elsif @property.property_compensation == 'false' && total_difference_to_pay > 0 && receiving_spouse == member
+      total_difference_to_pay
     elsif @property.property_compensation == 'true' && @property.compensation_amount > 0 && @property.compensation_reciever != member
       -@bodelningslikvid = @property.compensation_amount
-    elsif @property.property_compensation == 'false' && @property.total_difference_to_pay > 0 && @property.giving_spouse == member
-      -@property.total_difference_to_pay
+    elsif @property.property_compensation == 'false' && total_difference_to_pay > 0 && giving_spouse == member
+      -total_difference_to_pay
     else
       0
     end
