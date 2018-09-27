@@ -29,14 +29,15 @@ h1 Bodelning
           strong.upper-border + #{to_sk @asset_calculator.total_transitory_asset_amount_for(member, @timeframe, add_bodelning_if_positive)}
 
     - else # member gets no ASSETS after divorce
+      h3.underline Tillgångar:
       - if @bodelningslikvid.zero?
         p -
       - else
-        h3.underline Tillgångar:
         == render 'info/property_reports/files/assets_debts/bodelningslikvid', member: member, with_sum: true, type: :asset
 
-      - if @bodelningslikvid.zero?
-        p -
+      /
+        - if @bodelningslikvid.zero?
+          p -
 
     - if @asset_calculator.transitory_debts_exist_for?(member)
       == render 'info/property_reports/files/assets_debts/debts', member: member, timeframe: :after
