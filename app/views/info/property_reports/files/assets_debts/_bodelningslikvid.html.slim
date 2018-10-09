@@ -11,11 +11,11 @@
   .calc-container
     - if type == :asset
       .calc-left
-        strong Tillgångar vid bodelning:
+        strong Tillgångar efter bodelning:
       .calc-right
         strong.upper-border + #{to_sk @bodelningslikvid}
     - elsif type == :debt
       .calc-left
-        strong Skulder vid bodelning:
+        strong Skulder efter bodelning:
       .calc-right
         strong.upper-border - #{to_sk @bodelningslikvid.abs}
