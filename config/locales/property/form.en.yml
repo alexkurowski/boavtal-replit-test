@@ -3,9 +3,10 @@ sv: &sv
     warning:
       header: Ansvarsbegränsning
       body:
-        - Verktyget nedan är helt automatiskt och kan aldrig ersätta manuell rådgivning av jurist/advokat. Vill ni ha manuell hjälp med att skriva ert bodelningsavtal kan ni anlita oss per timme.
-        - Ett automatiskt verktyg kan ha brister. Genom att använda verktyget accepterar du detta. Verktyget försöker vägleda dig genom processen för att undvika felaktigheter. Det är ditt ansvar att läsa instruktionerna och följa dessa. Det är också ert ansvar att läsa igenom det utkast som verktyget genererar, innan ni skriver under. Det föreligger inget rådgivaransvar i förhållande till dig som användare av verktyget. Om du är osäker på något kan ni alltid anlita oss per timme istället för manuell hjälp.
-        - Vi tillhandahåller support per mejl för verktyget. Men det är endast teknisk support ägnad att hjälpa er använda verktyget. Det ska inte ses som juridisk rådgivning. Vi tar inte ansvar för följder av era val/agerande till följd av information erhållen via supporten. Om du är osäker på något kan ni alltid anlita oss per timme istället för manuell hjälp.
+        - Det är viktigt att tänka på att avtal som är framtagna genom denna tjänst är framtagna genom en helt och hållet automatisk process. Verktyget är utvecklat för att du enkelt ska kunna mata in de uppgifter som behövs för att ta fram ett bodelningsavtal. I verktyget har vi tagit med olika tips på saker som är viktiga att tänka på i sammanhanget. Dessa tips är och kan inte vara fullständiga eftersom det ständigt dyker upp nya frågor. Verktyget är under ständig utveckling.
+        - Du bör därför vara noggrann med att följa instruktionerna. Om det är något du inte förstår bör du kontakta oss för en personlig konsultation. Det är viktigt att tänka på att programmet inte är utvecklat för att göra ställningstaganden i mer komplicerade frågor.
+        - Verktyget är avsett att fungera som ett hjälpmedel men kan inte ersätta den rådgivning som du kan få genom en personlig konsultation med en jurist. Det är därför viktigt att du noga går igenom det utkast som genereras genom vårt verktyg innan ni skriver under avtalet. Vi tar därför inte något rådgivaransvar gentemot dig som använder produkten.
+        - Genom att använda verktyget accepterar du att du använder detta helt på egen risk.
       show: Visa mer
       hide: Visa mindre
 
@@ -17,9 +18,8 @@ sv: &sv
         - Har ni inte tid att fylla i alla uppgifter på en gång kan ni bara klicka på "Spara" och fortsätta fylla i formuläret senare.
         - Under många av frågorna finns “Vanliga frågor”. Klicka där för extra hjälp med att förstå frågan.
         - Det finns två sätt att göra en bodelning på. Antingen kommer ni själva överens om vem som ska ha vad. Lagen tillåter att man själv bestämmer detta, så länge det inte är till nackdel för en parts borgenärer. Då kan bodelningen komma att återgå.
-        - Man kan också göra er uppdelning enligt lagens 50/50-regler. Verktyget har inte detta alternativ i nuvarande version. Utan det är till för er som redan är överens om vem som ska ha vad. Det finns också regler om jämkning om man varit gifta i mindre än 5 år eller resultatet är uppenbart oskäligt. Verktyget hanterar inte jämkningar om det är något ni vill räkna ut. Det krävs som sagt att ni redan är överens om vem som ska ha vad.
+        - Man kan också göra er uppdelning enligt lagens 50/50-regler. Verktyget har inte detta alternativ i nuvarande version utan är till för er som redan är överens om vem som ska ha vad. Det finns också regler om jämkning om man varit gifta i mindre än fem år eller resultatet är uppenbart oskäligt. Verktyget hanterar inte jämkningar om det är något ni vill räkna ut. Det krävs som sagt att ni redan är överens om vem som ska ha vad.
         - Är ni inte överens och istället vill dela upp era tillgångar enligt lagens regler så kontakta supporten.
-
     members:
       header: NAMN OCH PERSONNUMMER
       wife: Kvinnan
@@ -32,19 +32,22 @@ sv: &sv
       day: Dag
 
     court:
-      header: DATUM OCH DOMSTOL
+      header: DATUM OCH TINGSRÄTT
       info:
-        - Det går att bodela från den dagen då er ansökan om skilsmässa postats och registreras hos tingsrätten.
+        - Ni kan göra bodelning med anledning av äktenskapsskillnad från och med den dag som ansökan kommit in till tingsrätten och registrerats där.
         - Först när den är registrerad och ni har mottagit en bekräftelse på registreringen är det dags att skriva ert bodelningsavtal.
+
       registration_date: 'Ange datum för registrering:'
       court: 'Välj tingsrätt ni postade er ansökan till:'
       court_prompt: Välj nedan
-      case_number: 'Om dom redan har meddelats ska du även ange det målnummer du fått hem av tingsrätten:'
+      case_number_html: |
+        Är ni redan skilda? </br>
+        Om ni redan är skilda ska du även ange det målnummer du fått hem av tingsrätten:
       note: OBS! Målnummer ska endast fyllas i om ni fått en dom på att skilsmässan är slutförd av tingsrätten. Om ni har lämnat in skilsmässoansökan men ännu inte fått någon dom ska ni inte fylla i målnummer.
 
     any_assets:
       header: TILLGÅNGAR
-      info: Med tillgångar menas till exempel en fastighet, bostadsrätt, bil båt eller pengar placerade på sparkonto eller i fonder. Normalt sett tas bara tillgångar av ett högre värde upp i ett bodelningsavtal. Tillgångar som är enskild egendom får tas upp om egendomen är enskild via äktenskapsförord och parterna är överens om att egendomen ska tas upp.
+      info: Med tillgångar menas allt som ni äger. Här ska alla sorters tillgångar som representerar ett ekonomiskt värde tas med. Här tar ni alltså upp eventuella fastigheter, bostadsrätter, bilar, båtar eller pengar placerade på sparkonto eller i fonder.
       label: Finns det några tillgångar att ta upp i detta bodelningsavtal?
 
     assets:
