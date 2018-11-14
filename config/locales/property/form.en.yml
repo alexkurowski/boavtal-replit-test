@@ -49,6 +49,16 @@ sv: &sv
       header: TILLGÅNGAR
       info: Med tillgångar menas allt som ni äger. Här ska alla sorters tillgångar som representerar ett ekonomiskt värde tas med. Här tar ni alltså upp eventuella fastigheter, bostadsrätter, bilar, båtar eller pengar placerade på sparkonto eller i fonder.
       label: Finns det några tillgångar att ta upp i detta bodelningsavtal?
+      faq:
+        q1: Ska enskild egendom tas med?
+        a1: Vissa tillgångar kan vara enskild egendom och ska normalt inte tas med i en bodelning.
+        q2: Hur vet man om en tillgång är enskild egendom?
+        a2: '<p>Tillgångar kan bli enskild egendom antingen genom äktenskapsförord eller genom förordnande i gåvobrev eller testamente. Tillgångar som blivit enskilda genom äktenskapsförord kan ni lägga till i bodelningsavtalet under förutsättning att ni är helt överens om det.</p>
+             <p>Har ni fått enskild egendom genom arv eller gåva bör ni undersöka med gåvogivaren eller arvlåtarens avsikt innan ni tar med tillgången i bodelningsavtal, även om ni är överens om att tillgången ska tas med trots att den utgör enskild egendom.</p>'
+        q3: Vad händer om vi inte tar med en tillgång?
+        a3: Standardtexten i bodelningsavtalet är formulerat så att alla era tillgångar anses vara beaktade i bodelningen ändå och tilldelad den av er som äger tillgången. Däremot kommer inte tillgången tas med i beräkningen av den ekonomiska kompensationen eller bodelningslikviden. Har någon av er medvetet förtigit någon mer betydande tillgång kan avtalet komma att bli ogiltigt vid en prövning enligt avtalslagen. Om någon medvetet vilseleder den andra kan det också aktualisera ansvar för bedrägeri.
+        q4: Måste vi ta med tillgångar av mindre värde?
+        a4: Nej. Det vanliga är att parterna delar upp lösöret i godo. Enligt den avtalstext som verktyget tar fram så anses ni ha delat upp tillgångar som inte tas upp i avtalet i godo. Finns det vissa tillgångar bland lösöret (de föremål ni har i hemmet) som har ett avsevärt högre värde än annat lösöre, exempelvis konst av kända konstnärer eller andra värdefulla antikviteter, kan dessa med fördel tas upp.
 
     assets:
       header: ERA TILLGÅNGAR OCH NUVARANDE ÄGARSKAP
