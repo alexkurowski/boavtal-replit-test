@@ -72,7 +72,7 @@ sv: &sv
       tabs:
         realestate: Fastighet
         apartment:  Bostadsrätt
-        car:        Bil
+        car:        Fordon
         security:   Värdepapper
         funds:      Fonder
         isk:        ISK
@@ -102,12 +102,12 @@ sv: &sv
       faq:
         a1: 'Samtliga skulder utom sådana som är knutna till enskild egendom får tas upp i bodelningen. Båda får behålla så mycket av sina tillgångar som de har i skulder. Alltså dras skulderna av från värdet av tillgångarna innan tillgångarna läggs samman och delas lika. Skulle någon av makarna hamna på ett minusbelopp räknas det som noll i bodelningen. Ett minusbelopp överförs således aldrig mellan makarna.'
       tabs:
-        loan: Banklån
-        bill: Skuldebrev
+        loan: Banklån och krediter
+        bill: Övriga skulder
       tab:
         shared:
           owe: "%{name} är skyldig"
-          details: 'Specifikation av skulden'
+          details: Uppgift om skulden
           after: 'Ange vem som ska ansvara för denna skuld EFTER bodelningen.'
           after_info: 'Skulden ska fördelas enligt nedan:'
       add:

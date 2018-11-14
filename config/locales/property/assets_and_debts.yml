@@ -4,82 +4,74 @@ sv: &sv
       realestate:
         marketvalue:
           - 'Marknadsvärde:'
-          - 'Ange vad hela tillgången är värd och inte endast vad en andel är värd.'
+          - 'Uppge HELA fastighetens värde och inte endast vad en andel är värd.'
           - 'NUMERICAL_FIELD'
         purchaseprice:
           - 'Anskaffningsvärde:'
-          - 'Här anges det pris som fastigheten köptes för. Om du har köpt en tomt och därefter byggt en byggnad på tomten är det i regel inköpspriset samt nybyggnadskostnaderna som ska anges här.'
+          - 'Här uppger ni vad ni har köpt fastigheten för. Har ni fått den genom gåva eller arv så anger ni vad gåvogivaren eller arvlåtaren köpte fastigheten för. Har ni bebyggt en fastighet, exempelvis köpt en tomt och byggt en villa på tomten, uppger ni den sammanlagda kostnaden för köp av fastigheten och byggnationskostnader.'
+          - 'Har du köpt din fastighet före 1952 finns möjlighet att beräkna inköpspriset schablonmässigt. Det gäller även fastigheter som du fått i gåva eller ärvt om den tidigare ägaren köpte fastigheten före 1952. Inköpspriset kan då beräknas till 150 procent av fastighetens taxeringsvärde år 1952. Kan du visa att inköpspriset för fastigheten översteg 150 procent av 1952 års taxeringsvärde, får du använda det verkliga inköpspriset.'
           - 'NUMERICAL_FIELD'
         acquisitioncost:
           - 'Anskaffningskostnader:'
-          - 'Tänk på att kostnader för att få lagfart och sådana kostnader ni har haft för inteckningar får räknas in i anskaffningskostnaderna.'
+          - 'Här tar ni upp kostnader ni haft för att införskaffa fastigheten. Här tas bland annat kostnader för lagfart och inteckningar upp.'
           - 'NUMERICAL_FIELD'
-        faq:
-          q1: 'Jag har inga uppgifter om anskaffningskostnad?'
-          a1: 'Om du inte har uppgifter om anskaffningskostnad kan du istället använda dig av schablonmetoden:'
-          a2: 'Ditt inköpspris är köpeskillingen för bostaden (inklusive mark) med tillägg för inköpsprovision, lagfartskostnad och eventuell utgift för inteckning i fastigheten. Om du fått bostaden genom arv eller gåva övertar du den tidigare ägarens inköpspris. Tillägg får sedan göras för eventuella förbättringsutgifter.'
-          a3: 'Om du har köpt din fastighet före 1952 finns möjlighet att beräkna inköpspriset schablonmässigt. Det gäller även fastigheter som du fått i gåva eller ärvt om den tidigare ägaren köpte fastigheten före 1952. Inköpspriset kan då beräknas till 150 procent av fastighetens taxeringsvärde år 1952. Kan du visa att inköpspriset för fastigheten översteg 150 procent av 1952 års taxeringsvärde, får du använda det verkliga inköpspriset.'
         agentfee:
           - 'Mäklararvode:'
-          - 'Mäklararvodet är ett fiktivt värde som räknas med för att få fram ett nettovärde på fastigheten. Schablonvärdet brukar vara runt 2%.'
+          - 'Vid bodelning tar man hänsyn till att den som får behålla fastigheten vid en försäljning kommer att ha kostnader för mäklararvode vid en framtida försäljning. Schablonmässigt är det vanligt att man uppskattar mäklararvodet till ca 2 procent. Mäklarprovisionen kan variera beroende på ort och aktuellt marknadsläge. Är ni osäkra på mäklarkostnaden kan ni höra av er till en lokal mäklare och höra er för om kostnaden.'
           - 'NUMERICAL_FIELD'
         improvementcost:
           - 'Förbättringsutgifter:'
-          - 'Man har rätt att göra avdrag för förbättringsutgifter. Det finns två typer av förbättringsutgifter och det är grundförbättringar och reparationer och underhåll.'
-          - 'Som grundförbättringar räknas kortfattat nybyggnad, tillbyggnad och ombyggnad. Även andra åtgärder kan i vissa fall räknas som grundförbättringar.'
-          - 'Som förbättrande reparationer och underhåll räknas kortfattat sådant som görs för att bibehålla bostadens egenskaper.'
+          - 'Här tar ni upp avdrag för förbättringsutgifter vilka delas in i två kategorier, grundförbättringar och reparation/underhåll. Grundförbättringar avser i huvudsak ny-, om- och tillbyggnation. Reparation och underhåll är vad det låter som; kostnader för att hålla fastigheten i gott skick.'
           - 'NUMERICAL_FIELD'
         deferral:
           - 'Uppskov:'
-          - 'Med uppskov menas här att du ska ta upp eventuellt uppskov på kapitalvinstskatt efter tidigare försäljning av bostad. När försäljningen deklareras kan skatten antingen betalas direkt eller skjutas upp. Har du beviljats uppskov tidigare så skall uppskovet återföras till beskattning vid kommande försäljning. Har du inte något uppskov så fyller du i fältet med en nolla.'
+          - 'Här tar att ni upp eventuellt uppskov på kapitalvinstskatt efter tidigare bostadsförsäljning. Vid försäljning har man rätt att i viss utsträckning skjuta fram beskattning av vinst om man skaffar en ny bostad inom viss tid. Detta kallas för uppskov. Har du beviljats uppskov tidigare så skall uppskovet återföras till beskattning vid kommande försäljning. Beviljade uppskov framgår av er taxering.'
+          - 'Saknas uppskov fyller ni i fältet med en nolla.'
           - 'NUMERICAL_FIELD'
         name:
           - 'Fastighetsbeteckning:'
           - 'TEXT_FIELD'
         city:
           - 'Kommun:'
+          - 'Vid försäljning av tomträtten gäller delvis andra skatteregler. Du bör i så fall ta kontakt med Skatteupplysningen eller Lantmäteriet.'
           - 'TEXT_FIELD'
         _:
           - 'OBS! Har du en tomträtt så kan det i vissa avseende skilja sig skattemässigt från fastighet. Du måste då ta kontakt med våra jurister eller med lantmäteriet som du når på Telefon: 0771-63 63 63'
       apartment:
         marketvalue:
           - 'Marknadsvärde:'
-          - 'Ange vad hela tillgången är värd och inte endast vad en andel är värd.'
+          - 'Uppge HELA bostadsrättens värde och inte endast vad din/era respektive andel är värd.'
           - 'NUMERICAL_FIELD'
         purchaseprice:
           - 'Anskaffningsvärde:'
-          - 'Eventuell inköpsprovision samt kostnader för upptagande av bolån (inteckning) får räknas in i anskaffningsvärdet.'
           - 'NUMERICAL_FIELD'
         agentfee:
           - 'Mäklararvode:'
-          - 'Mäklararvodet är ett fiktivt värde som räknas med för att få fram ett nettovärde på fastigheten. Schablonvärdet brukar vara runt 2%.'
+          - 'Vid bodelning tar man hänsyn till att den som får behålla fastigheten vid en försäljning kommer att ha kostnader för mäklararvode vid en framtida försäljning. Schablonmässigt är det vanligt att man uppskattar mäklararvodet till ca 2 procent. Mäklarprovisionen kan variera beroende på ort och aktuellt marknadsläge. Är ni osäkra på mäklarkostnaden kan ni höra av er till en lokal mäklare och höra er för om kostnaden.'
           - 'NUMERICAL_FIELD'
         salescosts:
           - 'Övriga försäljningskostnader:'
-          - 'Du har rätt till avdrag för utgifter som har samband med försäljningen. Hit räknas advokatutgifter, utgifter för resor som görs i syfte att sälja bostadsrätten (exempelvis för visning, till mäklare, för att skriva på kontrakt och lämna nycklar) samt utgifter för homestyling.'
-          - 'Du kan inte få avdrag för städning och trädgårdsskötsel, flyttning och andra privata kostnader.'
+          - 'Här har du möjlighet att du upp förväntade utgifter i samband med försäljningen. Här kan du t.ex. ta upp kostnader för homestyling. Gå in på <a href="https://www.skatteverket.se">www.skatteverket.se</a> och se vilka kostnader som är avdragsgilla.'
           - 'NUMERICAL_FIELD'
         improvementcost:
           - 'Förbättringsutgifter:'
-          - 'Man har rätt att göra avdrag för förbättringsutgifter. Det finns två typer av förbättringsutgifter och det är grundförbättringar och reparationer och underhåll.'
-          - 'Som grundförbättringar räknas kortfattat nybyggnad, tillbyggnad och ombyggnad. Även andra åtgärder kan i vissa fall räknas som grundförbättringar.'
-          - 'Som förbättrande reparationer och underhåll räknas kortfattat sådant som görs för att bibehålla bostadens egenskaper.'
+          - 'Här tar ni upp avdrag för förbättringsutgifter vilka delas in i två kategorier, grundförbättringar och reparation/underhåll. Grundförbättringar avser i huvudsak ny-, om- och tillbyggnation. Reparation och underhåll är vad det låter som; kostnader för att hålla bostadsrätten i gott skick.'
           - 'NUMERICAL_FIELD'
         capitalinjection:
           - 'Kapitaltillskott:'
-          - 'Ibland så kan medlemmar i en bostadsrättsförening ha betalat in en extra summa pengar till bostadsrättsföreningen för att stärka bostadsrättsföreningens ekonomi. Detta kallas för kapitaltillskott. Om du inte har betalat något kapitaltillskott till föreningen så fyller du i fältet med en nolla.'
+          - 'Som medlem i en bostadsrättsförening förekommer det att man får göra ett kapitaltillskott till föreningen. Har ni gjort ett sådant fyller ni i den kostnaden här. I annat fall fyller ni i fältet med en nolla.'
           - 'NUMERICAL_FIELD'
         salefunds:
           - 'Reparationsfond vid försäljningen:'
-          - 'En del bostadsrättsföreningar har en så kallad reparationsfond knuten till varje lägenhet. Varje månad sätts då en del av månadsavgiften in på ett särskilt reparationskonto. Lägenhetsägaren får sedan använda dessa pengar när han eller hon ska renovera sin lägenhet. Om det inte finns någon reparationsfond då så fyller du i fältet med en nolla.'
+          - 'Om ni har en reparationsfond fyller ni in det beloppet här. Om det inte finns någon sådan fyller ni i fältet med en nolla.'
           - 'NUMERICAL_FIELD'
         purchasefunds:
           - 'Reparationsfond vid köpet:'
-          - 'En del bostadsrättsföreningar har en så kallad reparationsfond knuten till varje lägenhet. Varje månad sätts då en del av månadsavgiften in på ett särskilt reparationskonto. Lägenhetsägaren får sedan använda dessa pengar när han eller hon ska renovera sin lägenhet. Om det inte finns någon reparationsfond då så fyller du i fältet med en nolla.'
+          - 'Om det inte finns någon reparationsfond då så fyller ni i fältet med en nolla.'
           - 'NUMERICAL_FIELD'
         deferral:
           - 'Uppskov:'
-          - 'Med uppskov menas här att du ska ta upp eventuellt uppskov på kapitalvinstskatt efter tidigare försäljning av bostad. När försäljningen deklareras kan skatten antingen betalas direkt eller skjutas upp. Har du beviljats uppskov tidigare så skall uppskovet återföras till beskattning vid kommande försäljning. Har du inte något uppskov så fyller du i fältet med en nolla.'
+          - 'Här tar att ni upp eventuellt uppskov på kapitalvinstskatt efter tidigare bostadsförsäljning. Vid försäljning har man rätt att i viss utsträckning skjuta fram beskattning av vinst om man skaffar en ny bostad inom viss tid. Detta kallas för uppskov. Har du beviljats uppskov tidigare så skall uppskovet återföras till beskattning vid kommande försäljning. Beviljade uppskov framgår av er taxering. Saknas uppskov fyller ni i blanketten med en nolla.'
           - 'NUMERICAL_FIELD'
         number:
           - 'Lägenhetsnummer:'
@@ -97,22 +89,24 @@ sv: &sv
           - 'Postort:'
           - 'TEXT_FIELD'
       car:
+        _:
+          - 'Här tar ni upp bilar, motorcyklar, släp, båtar etcetera.'
         value:
-          - 'Bilens värde:'
+          - 'Fordonets värde:'
           - 'NUMERICAL_FIELD'
         registrationnumber:
-          - 'Bilens registreringsnummer:'
+          - 'Fordonets registreringsnummer:'
           - 'TEXT_FIELD'
       security:
         _:
-          - 'Detta avser dig som har värdepapper på ett värdepapperskonto (VP-konto) alternativt på en depå.'
+          - 'Om du har tillgångar på ett värdepapperskonto (VP-konto) alternativt på en depå tar du upp dessa här.'
         salesprice:
           - 'Försäljningspris:'
           - 'NUMERICAL_FIELD'
         costamount:
           - 'Omkostnadsbelopp:'
-          - 'Omkostnadsbelopp är summan av dina anskaffningsutgifter, oftast ett belopp du sammanlagt har betalt för dina värdepapper.'
-          - 'Du som inte har någon uppgift på vad du köpte aktierna för kan använda schablonmetoden. För att ta reda på mer information rekommenderar vi dig att kontakta Skatteverket och läsa på:'
+          - 'Omkostnadsbelopp är summan av dina anskaffningskostnader.'
+          - 'Saknar du uppgift om vad du köpte aktierna för kan du använda schablonmetoden. För att ta reda på mer information kan du kontakta Skatteverket, <a href="https://www.skatteverket.se">www.skatteverket.se</a>, alternativt ringa skatteupplysningen, 0771 567 567.'
           - 'NUMERICAL_FIELD'
         account:
           - 'Konto/Depå:'
@@ -122,22 +116,20 @@ sv: &sv
           - 'TEXT_FIELD'
       funds:
         _1:
-          - 'Detta avser dig som har ett fondkonto.'
-          - 'Om du säljer dina fonder med vinst beskattas vinsten med 30 procent. Om du har ditt fondinnehav på ett Investeringssparkonto (ISK) eller i en kapitalförsäkring betalar du inte kapitalvinstskatt varje gång du säljer med vinst, utan en schablonbeskattning sker istället årligen.'
-          - 'För att ta reda på mer information rekommenderar vi dig att kontakta Skatteverket och ta del av följande information:'
-          - '<a href="https://www.skatteverket.se/privat/skatter/vardepapper/omovrigavardepapper/fonder.4.19b9f599116a9e8ef36800010782.html" target="_blank">Läs mer här</a>'
+          - 'Här tar du upp eventuella fondkonton.'
+          - 'Här tar du upp bruttovärdet, d.v.s. värdet före skatt. Verktyget räknar ut skatten åt dig. Om du har ditt fondinnehav på ett Investeringssparkonto (ISK) eller i en kapitalförsäkring gäller andra skatteregler. Vi har andra tillgångskategorier för dessa.'
+          - 'Kontakta Skatteupplysningen om du vill veta mer om skattereglerna.'
         salesprice:
           - 'Försäljningspris:'
           - 'NUMERICAL_FIELD'
         costamount:
           - 'Omkostnadsbelopp:'
-          - 'Summan av dina anskaffningsutgifter, oftast ett belopp du sammanlagt har betalt för dina värdepapper.'
+          - 'Här tar du upp summan av dina anskaffningskostnader, alltså det belopp du sammanlagt har betalat för dina värdepapper.'
           - 'NUMERICAL_FIELD'
         faq:
           q1: 'Jag saknar uppgifter om anskaffningskostnad?'
-          a1: 'Om du inte har uppgifter om anskaffningskostnad och sålt marknadsnoterade fondandelar kan du istället beräkna omkostnadsbeloppet till 20 procent av försäljningspriset enligt schablonmetoden:'
-          a2: 'Som omkostnadsbelopp tar man normalt upp den faktiska anskaffningsutgiften för de sålda andelarna. Om en andelsägare fått utdelning på sina andelar och återinvesterat en del av utdelningen i fonden ska återinvesterad del räknas in i omkostnadsbeloppet. För att ta reda på mer information rekommenderar vi dig att kontakta Skatteverket och ta del av följande information:'
-          a3: '<a href="https://www.skatteverket.se/privat/vinstskatter/vardepapper/deklareraaktierochovrigavardepapper/omkostnadsbelopp.4.12815e4f14a62bc048fa7bc.html" target="_blank">Läs mer</a>'
+          a1: '<p>Saknar du uppgift om vad du köpte aktierna för kan du använda schablonmetoden. För att ta reda på mer information kan du kontakta Skatteverket, <a href="https://www.skatteverket.se">www.skatteverket.se</a>, alternativt ringa skatteupplysningen, 0771 567 567.</p>'
+          a3: '<p>Som omkostnadsbelopp tar man normalt upp den faktiska anskaffningsutgiften för de sålda andelarna. Om en andelsägare fått utdelning på sina andelar och återinvesterat en del av utdelningen i fonden ska återinvesterad del räknas in i omkostnadsbeloppet. För att ta reda på mer information rekommenderar vi dig att kontakta Skatteverket och ta del av följande information: <a href="https://www.skatteverket.se/privat/vinstskatter/vardepapper/deklareraaktierochovrigavardepapper/omkostnadsbelopp.4.12815e4f14a62bc048fa7bc.html" target="_blank">Läs mer</a></p>'
         account:
           - 'Konto:'
           - 'TEXT_FIELD'
@@ -180,19 +172,21 @@ sv: &sv
           - 'TEXT_FIELD'
       other:
         _:
-          - 'Om ni har övriga tillgångar och är osäkra på hur dessa sak redovisas rekommenderar vi att ni tar hjälp av någon av våra jurister.'
+          - 'Här tar ni upp övriga tillgångar som ni vill ska beaktas i bodelningen. Vilka tillgångar som helst kan tas upp här. Har ni exempelvis värdefullt lösöre såsom båtar, värdefulla tavlor eller möbler med högt andrahandsvärde kan ni ta upp det här. Är ni osäkra på hur det ska värderas kan ni antingen komma överens om vad ni kan förväntas kunna sälja föremålen för eller ta kontakt med en värderingsman.'
         total:
           - 'Tillgångens värde:'
-          - 'Med värde avses tillgångens totala marknadsvärde. Även om ni endast äger 20 % av en fritidsbåt ska ni alltså fylla i vad 100 % av fritidsbåten är värd här.'
+          - 'Med värde avses tillgångens totala marknadsvärde.'
           - 'NUMERICAL_FIELD'
         name:
-          - 'Namnge tillgången kortfattat:'
+          - 'Beskriv tillgången kort:'
           - 'TEXT_FIELD'
 
     debts:
       loan:
+        _:
+          - 'Har tar ni upp skulder som ni har till banken och andra kreditinstitut. Exempelvis bolån, krediter, in blanco-lån.'
         amount:
-          - 'Ange belopp:'
+          - 'Skuldens storlek på brytdagen:'
           - 'NUMERICAL_FIELD'
         number:
           - 'Lånenummer:'
@@ -201,14 +195,16 @@ sv: &sv
           - 'Bank:'
           - 'TEXT_FIELD'
       bill:
+        _:
+          - 'Här tar ni upp skulder som ni inte har till banker eller kreditinstitut. Har ni privata skulder till vänner och familj kan ni ta upp dessa här. Här tar ni också upp övriga skulder som ni kan ha, eventuella obetalda räkningar räknas också hit.'
         amount:
           - 'Ange belopp:'
           - 'NUMERICAL_FIELD'
         owner:
-          - 'Vem är skulden till:'
+          - 'Ange vem skulden är till:'
           - 'TEXT_FIELD'
         date:
-          - 'Skuldebrev daterat:'
+          - 'Ev skuldebrev daterat:'
           - 'DATE_FIELD'
 
 en:
