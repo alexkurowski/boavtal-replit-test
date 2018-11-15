@@ -1,5 +1,22 @@
 sv: &sv
   property:
+    groups:
+      general: Grundfrågor
+      assets: Tillgångar
+      debts: Skulder
+      compensation: Kompensation
+      other: Övrigt
+
+    subgroups:
+      members: Namn och personnummer
+      copies: Antal undertecknade exemplar
+      court: Datum och domstol
+      witnesses: Ska bodelningsavtalet bevittnas?
+      any_assets: Finns tillgångar
+      assets: Ange alla tillgångar
+      any_debts: Finns skulder
+      debts: Ange alla skulder
+
     warning:
       header: Ansvarsbegränsning
       body:
@@ -9,6 +26,7 @@ sv: &sv
         - Genom att använda verktyget accepterar du att du använder detta helt på egen risk.
       show: Visa mer
       hide: Visa mindre
+      terms_agreement: Jag förstår
 
     instructions:
       header: INSTRUKTIONER
@@ -208,6 +226,9 @@ sv: &sv
       soft: Spara och fortsätt senare
       hard: Spara och skapa dokument
       signup: Create account and continue
+      save_and_continue: Spara och forsätt
+      continue: Forsätt
+      previous: Tillbaka
 
     common:
       'yes': Ja

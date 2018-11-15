@@ -15,7 +15,11 @@ class PropertiesController < ApplicationController
     create_customer if params[:customer].present? and not customer_signed_in?
     set_customer if customer_signed_in?
     Property.create property_params
-    redirect_to after_form_path, flash: { notice: 'Form was saved successfully' }
+    if request.xhr?
+      render plain: 'ok'
+    else
+      redirect_to after_form_path, flash: { notice: 'Form was saved successfully' }
+    end
   end
 
   def edit
@@ -24,7 +28,11 @@ class PropertiesController < ApplicationController
 
   def update
     @property.update_attributes property_params
-    redirect_to after_form_path, flash: { notice: 'Form was saved successfully' }
+    if request.xhr?
+      render plain: 'ok'
+    else
+      redirect_to after_form_path, flash: { notice: 'Form was saved successfully' }
+    end
   end
 
   def destroy

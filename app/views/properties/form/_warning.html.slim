@@ -1,0 +1,13 @@
+= property_panel 'warning' do
+  .content
+    - t('property.warning.body').each do |line|
+      p = line
+
+  .mt-30
+    .checkbox-custom.checkbox-primary
+      = @f.check_box 'data[terms][agreement]',
+        data: { \
+          parsley_required: true,
+          parsley_error_message: t('property.error.required'),
+          parsley_group: 'warning' }
+      = @f.label 'data[terms][agreement]', t('property.warning.terms_agreement')

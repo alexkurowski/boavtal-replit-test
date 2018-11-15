@@ -1,6 +1,5 @@
 .container
   .property-form
-    == render "warning"
-    == form_for @property do |f|
+    == form_for @property, remote: true do |f|
       - @f = f
       == render "form"

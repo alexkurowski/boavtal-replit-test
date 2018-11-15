@@ -8,7 +8,8 @@ h4 = t "property.members.#{member}"
         class: 'form-control',
         data: { \
           parsley_required: true,
-          parsley_error_message: t('property.error.required') }
+          parsley_error_message: t('property.error.required'),
+          parsley_group: 'members' }
 
     .col-md
       label = t 'property.members.lastname'
@@ -16,7 +17,8 @@ h4 = t "property.members.#{member}"
         class: 'form-control',
         data: { \
           parsley_required: true,
-          parsley_error_message: t('property.error.required') }
+          parsley_error_message: t('property.error.required'),
+          parsley_group: 'members' }
 
 .form-group
   label = t 'property.members.ssn'
@@ -28,7 +30,8 @@ h4 = t "property.members.#{member}"
         class: 'form-control',
         data: { \
           parsley_required: true,
-          parsley_error_message: t('property.error.required') }
+          parsley_error_message: t('property.error.required'),
+          parsley_group: 'members' }
 
     .col-sm
       = @f.select "data[#{member}][datebirth][2i]",
@@ -37,7 +40,8 @@ h4 = t "property.members.#{member}"
         class: 'form-control',
         data: { \
           parsley_required: true,
-          parsley_error_message: t('property.error.required') }
+          parsley_error_message: t('property.error.required'),
+          parsley_group: 'members' }
 
     .col-sm
       = @f.select "data[#{member}][datebirth][3i]",
@@ -46,7 +50,8 @@ h4 = t "property.members.#{member}"
         class: 'form-control',
         data: { \
           parsley_required: true,
-          parsley_error_message: t('property.error.required') }
+          parsley_error_message: t('property.error.required'),
+          parsley_group: 'members' }
 
     .col-sm
       = @f.text_field "data[#{member}][ssn2]",
@@ -56,6 +61,7 @@ h4 = t "property.members.#{member}"
         placeholder: '1234',
         data: { \
           parsley_required: true,
-          parsley_error_message: t('property.error.required') }
+          parsley_error_message: t('property.error.required'),
+          parsley_group: 'members' }
 
   .parsley-error

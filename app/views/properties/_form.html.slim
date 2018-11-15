@@ -1,72 +1,149 @@
-.row
-  .col
-    == render 'properties/form/instructions'
+.fieldset-group[
+  data-title=''
+]
+  fieldset.active [
+    data-group='warning'
+  ]
+    .row
+      .col
+        == render 'properties/form/warning'
 
-.row
-  .col
-    == render 'properties/form/members'
+  fieldset [
+    data-group='instructions'
+  ]
+    .row
+      .col
+        == render 'properties/form/instructions'
 
-.row
-  .col
-    == render 'properties/form/court'
+.fieldset-group[
+  data-title=t('property.groups.general')
+]
+  fieldset [
+    data-title=t('property.subgroups.members')
+    data-group='members'
+  ]
+    .row
+      .col
+        == render 'properties/form/members'
 
-.row
-  .col
-    == render 'properties/form/any_assets'
+  fieldset [
+    data-title=t('property.subgroups.copies')
+    data-group='copies'
+  ]
+    .row
+      .col
+        == render 'properties/form/copies'
 
-.row.if-any-assets style="#{ hidden_unless @property.data(:assets_debts, :any_assets) }"
-  .col
-    == render 'properties/form/assets'
+  fieldset [
+    data-title=t('property.subgroups.witnesses')
+    data-group='witnesses'
+  ]
+    .row
+      .col
+        == render 'properties/form/witnesses'
 
-.row
-  .col
-    == render 'properties/form/any_debts'
+  fieldset [
+    data-title=t('property.subgroups.court')
+    data-group='court'
+  ]
+    .row
+      .col
+        == render 'properties/form/court'
 
-.row.if-any-debts style="#{ hidden_unless @property.data(:assets_debts, :any_debts) }"
-  .col
-    == render 'properties/form/debts'
+.fieldset-group[
+  data-title=t('property.groups.assets')
+]
+  fieldset [
+    data-title=t('property.subgroups.any_assets')
+    data-group='any_assets'
+  ]
+    .row
+      .col
+        == render 'properties/form/any_assets'
 
-.row
-  .col
-    == render 'properties/form/compensation'
+  fieldset [
+    data-title=t('property.subgroups.assets')
+    data-group='assets'
+  ]
+    .row.if-any-assets style="#{ hidden_unless @property.data(:assets_debts, :any_assets) }"
+      .col
+        == render 'properties/form/assets'
 
-.row.if-compensation style="#{ hidden_unless @property.data(:compensation, :decide) }"
-  .col
-    == render 'properties/form/payment'
+.fieldset-group[
+  data-title=t('property.groups.debts')
+]
+  fieldset [
+    data-title=t('property.subgroups.any_debts')
+    data-group='any_debts'
+  ]
+    .row
+      .col
+        == render 'properties/form/any_debts'
 
-.row.if-compensation-details style="#{ hidden_unless_in @property.data(:compensation, :decide), ['true', 'false'] }"
-  .col
-    == render 'properties/form/payment_details'
+  fieldset [
+    data-title=t('property.subgroups.debts')
+    data-group='debts'
+  ]
+    .row.if-any-debts style="#{ hidden_unless @property.data(:assets_debts, :any_debts) }"
+      .col
+        == render 'properties/form/debts'
 
-.row.if-compensation-details style="#{ hidden_unless_in @property.data(:compensation, :decide), ['true', 'false'] }"
-  .col
-    == render 'properties/form/interest'
+.fieldset-group[
+  data-title=t('property.groups.compensation')
+]
+  fieldset [
+    data-group='compensation'
+  ]
+    .row
+      .col
+        == render 'properties/form/compensation'
 
-.row
-  .col
-    == render 'properties/form/other'
+    .row.if-compensation style="#{ hidden_unless @property.data(:compensation, :decide) }"
+      .col
+        == render 'properties/form/payment'
 
-.row
-  .col
-    == render 'properties/form/copies'
+    .row.if-compensation-details style="#{ hidden_unless_in @property.data(:compensation, :decide), ['true', 'false'] }"
+      .col
+        == render 'properties/form/payment_details'
 
-.row
-  .col
-    == render 'properties/form/witnesses'
+    .row.if-compensation-details style="#{ hidden_unless_in @property.data(:compensation, :decide), ['true', 'false'] }"
+      .col
+        == render 'properties/form/interest'
+
+.fieldset-group[
+  data-title=t('property.groups.other')
+]
+  fieldset [
+    data-group='other'
+  ]
+    .row
+      .col
+        == render 'properties/form/other'
 
 = hidden_field_tag :submit_type, 'hard'
 
-- if customer_signed_in? or Rails.env.production?
-  = @f.submit t('property.submit.hard'),
-    class: 'hard-submit float-right btn btn-success ml-10'
 
-  = @f.submit t('property.submit.soft'),
-    class: 'soft-submit float-right btn btn-default'
+button.form-next.float-right.btn.btn-success.ml-10
+  = t 'property.submit.save_and_continue'
 
-- else
-  .row
-    .col
-      == render 'signup'
+button.form-prev.float-right.btn.btn-default.ml-10
+  = t 'property.submit.previous'
 
-  = @f.submit t('property.submit.signup'),
-    class: 'signup-submit float-right btn btn-success'
+
+
+
+/
+  - if customer_signed_in? or Rails.env.production?
+    = @f.submit t('property.submit.hard'),
+      class: 'hard-submit float-right btn btn-success ml-10'
+
+    = @f.submit t('property.submit.soft'),
+      class: 'soft-submit float-right btn btn-default'
+
+  - else
+    .row
+      .col
+        == render 'signup'
+
+    = @f.submit t('property.submit.signup'),
+      class: 'signup-submit float-right btn btn-success'

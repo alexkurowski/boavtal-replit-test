@@ -136,6 +136,41 @@ $(document).ready ->
     forceSubmit()
 
 
+
+
+  $form.find('.form-next').on 'click', (e) ->
+    e.preventDefault()
+
+    $fieldset = $('fieldset.active')
+    group = $fieldset.data('group')
+    isValid = $form.parsley().validate({ group: group })
+
+    if isValid
+      $fieldsets = $('fieldset')
+      next = $fieldsets[ $fieldsets.index($fieldset) + 1 ]
+      if next
+        $fieldset.removeClass('active')
+        $(next).addClass('active')
+        window.scrollTo(0, 0)
+        $form.parsley().reset()
+
+      $form.trigger('submit.rails')
+
+
+  $form.find('.form-prev').on 'click', (e) ->
+    e.preventDefault()
+
+    $fieldset = $('fieldset.active')
+
+    prev = $fieldsets[ $fieldsets.index($fieldset) - 1 ]
+    if prev
+      $fieldset.removeClass('active')
+      $(prev).addClass('active')
+      window.scrollTo(0, 0)
+
+
+
+
   $form.find('input[data-slide-target]').on 'change', ->
     slideTargets = this.dataset.slideTarget.split(' ')
     slideTargets.forEach (slideTarget) ->
