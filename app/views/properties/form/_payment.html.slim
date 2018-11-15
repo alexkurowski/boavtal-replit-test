@@ -8,7 +8,8 @@
       class: 'form-control payment-how-much',
       data: { \
         parsley_required: parsley_required,
-        parsley_error_message: t('property.error.required') }
+        parsley_error_message: t('property.error.required'),
+        parsley_group: 'compensation' }
     span = t 'property.payment.currency'
     .parsley-error
 
@@ -17,11 +18,13 @@
       data: { \
         parsley_required: parsley_required,
         parsley_error_message: t('property.error.required'),
+        parsley_group: 'compensation',
         name: 'Mannen' }
     = @f.radio_button 'data[payment][to_whom]', 'wife',
       data: { \
         parsley_required: parsley_required,
         parsley_error_message: t('property.error.required'),
+        parsley_group: 'compensation',
         name: 'Kvinnan' }
     span = t 'property.payment.to_whom'
     .parsley-error

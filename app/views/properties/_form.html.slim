@@ -1,6 +1,7 @@
-.fieldset-group[
-  data-title=''
-]
+#form-progress.steps.steps-sm
+#form-subprogress.steps.steps-sm
+
+.fieldset-group
   fieldset.active [
     data-group='warning'
   ]
@@ -15,7 +16,7 @@
       .col
         == render 'properties/form/instructions'
 
-.fieldset-group[
+.fieldset-group [
   data-title=t('property.groups.general')
 ]
   fieldset [
@@ -50,7 +51,7 @@
       .col
         == render 'properties/form/court'
 
-.fieldset-group[
+.fieldset-group [
   data-title=t('property.groups.assets')
 ]
   fieldset [
@@ -63,13 +64,14 @@
 
   fieldset [
     data-title=t('property.subgroups.assets')
+    data-skip=( @property.data(:assets_debts, :any_assets) != true ).to_s
     data-group='assets'
   ]
-    .row.if-any-assets style="#{ hidden_unless @property.data(:assets_debts, :any_assets) }"
+    .row
       .col
         == render 'properties/form/assets'
 
-.fieldset-group[
+.fieldset-group [
   data-title=t('property.groups.debts')
 ]
   fieldset [
@@ -82,13 +84,14 @@
 
   fieldset [
     data-title=t('property.subgroups.debts')
+    data-skip=( @property.data(:assets_debts, :any_debts) != true ).to_s
     data-group='debts'
   ]
-    .row.if-any-debts style="#{ hidden_unless @property.data(:assets_debts, :any_debts) }"
+    .row
       .col
         == render 'properties/form/debts'
 
-.fieldset-group[
+.fieldset-group [
   data-title=t('property.groups.compensation')
 ]
   fieldset [
@@ -110,7 +113,7 @@
       .col
         == render 'properties/form/interest'
 
-.fieldset-group[
+.fieldset-group [
   data-title=t('property.groups.other')
 ]
   fieldset [

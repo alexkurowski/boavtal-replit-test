@@ -137,36 +137,113 @@ $(document).ready ->
 
 
 
+  validateCurrentFieldset = () ->
+    $fieldset = $('fieldset.active')
+    group = $fieldset.data('group')
+    return $form.parsley().validate({ group: group })
+
+  showFieldset = (fieldset) ->
+    $('fieldset').removeClass('active')
+    $(fieldset).addClass('active')
+    window.scrollTo(0, 0)
+    $form.parsley().reset()
+    updateFormProgress()
+
+  showNextFieldset = () ->
+    $fieldsets = $('fieldset')
+    $fieldset  = $('fieldset.active')
+    next = $fieldsets[ $fieldsets.index($fieldset) + 1 ]
+
+    if next.dataset.skip is 'true'
+      next = $fieldsets[ $fieldsets.index($fieldset) + 2 ]
+
+    if $(next).is('fieldset')
+      showFieldset(next)
+
+  showPrevFieldset = () ->
+    $fieldsets = $('fieldset')
+    $fieldset  = $('fieldset.active')
+    prev = $fieldsets[ $fieldsets.index($fieldset) - 1 ]
+
+    if prev.dataset.skip is 'true'
+      prev = $fieldsets[ $fieldsets.index($fieldset) - 2 ]
+
+    if $(prev).is('fieldset')
+      showFieldset(prev)
+
+  updateFormProgress = () ->
+    $progress      = $('#form-progress')
+    $subprogress   = $('#form-subprogress')
+    $fieldset      = $('fieldset.active')
+    $group         = $fieldset.closest('.fieldset-group')
+    currentStep    = $group.data('title')
+    currentSubstep = $fieldset.data('title')
+
+    steps = $('.fieldset-group')
+      .map (_, v) -> if v.dataset.skip is 'true' then '' else v.dataset.title
+      .filter (_, v) -> v
+    substeps = $group.find('fieldset')
+      .map (_, v) -> if v.dataset.skip is 'true' then '' else v.dataset.title
+      .filter (_, v) -> v
+
+    $progress.empty()
+    $subprogress.empty()
+
+    stepBackgroundClass = (active, complete) ->
+      if active
+        'current active'
+      else
+        if complete
+          'bg-success'
+        else
+          'bg-white'
+
+    if currentStep
+      complete = true
+      steps.each (_, step) ->
+        active = step is currentStep
+        complete = false if active
+
+        $progress.append("
+          <div class='step #{ stepBackgroundClass(active, complete) }'>
+            <div class='step-desc'>
+              <span class='step-title'>
+                #{ step }
+              </span>
+            </div>
+          </div>
+        ")
+
+    if currentStep and currentSubstep and substeps.length > 1
+      complete = true
+      substeps.each (_, substep) ->
+        active = substep is currentSubstep
+        complete = false if active
+
+        $subprogress.append("
+          <div class='step #{ stepBackgroundClass(active, complete) }'>
+            <div class='step-desc'>
+              <span>
+                #{ substep }
+              </span>
+            </div>
+          </div>
+        ")
+
+  updateFormProgress()
+
 
   $form.find('.form-next').on 'click', (e) ->
     e.preventDefault()
 
-    $fieldset = $('fieldset.active')
-    group = $fieldset.data('group')
-    isValid = $form.parsley().validate({ group: group })
-
-    if isValid
-      $fieldsets = $('fieldset')
-      next = $fieldsets[ $fieldsets.index($fieldset) + 1 ]
-      if next
-        $fieldset.removeClass('active')
-        $(next).addClass('active')
-        window.scrollTo(0, 0)
-        $form.parsley().reset()
-
+    if validateCurrentFieldset()
+      showNextFieldset()
       $form.trigger('submit.rails')
-
 
   $form.find('.form-prev').on 'click', (e) ->
     e.preventDefault()
 
-    $fieldset = $('fieldset.active')
-
-    prev = $fieldsets[ $fieldsets.index($fieldset) - 1 ]
-    if prev
-      $fieldset.removeClass('active')
-      $(prev).addClass('active')
-      window.scrollTo(0, 0)
+    showPrevFieldset()
 
 
 
@@ -359,10 +436,14 @@ $(document).ready ->
 
 
   $form.on 'change', 'input[name="property[data[assets_debts][any_assets]]"]', () ->
+    skip = this.value is 'false'
+    $('[data-group=assets]').get(0).dataset.skip = skip
     resetProperties('asset')
 
 
   $form.on 'change', 'input[name="property[data[assets_debts][any_debts]]"]', () ->
+    skip = this.value is 'false'
+    $('[data-group=debts]').get(0).dataset.skip = skip
     resetProperties('debt')
 
 

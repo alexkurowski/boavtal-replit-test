@@ -7,12 +7,14 @@
       = @f.radio_button 'data[witnesses][to_sign]', true,
         data: { \
           parsley_required: true,
-          parsley_error_message: t('property.error.required') }
+          parsley_error_message: t('property.error.required'),
+          parsley_group: 'witnesses' }
       = @f.label 'data[witnesses][to_sign]_true', t('property.common.yes').capitalize
     .radio-custom.radio-primary
       = @f.radio_button 'data[witnesses][to_sign]', false,
         data: { \
           parsley_required: true,
-          parsley_error_message: t('property.error.required') }
+          parsley_error_message: t('property.error.required'),
+          parsley_group: 'witnesses' }
       = @f.label 'data[witnesses][to_sign]_false', t('property.common.no').capitalize
     .parsley-error

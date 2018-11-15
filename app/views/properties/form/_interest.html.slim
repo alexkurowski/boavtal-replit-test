@@ -14,6 +14,7 @@
         data: { \
           parsley_required: parsley_required,
           parsley_error_message: t('property.error.required'),
+          parsley_group: 'compensation',
           slide_target: '.if-interest-before:show' }
       = @f.label 'data[interest][before_payment]_true', t('property.common.yes').capitalize
     .radio-custom.radio-primary
@@ -21,6 +22,7 @@
         data: { \
           parsley_required: parsley_required,
           parsley_error_message: t('property.error.required'),
+          parsley_group: 'compensation',
           slide_target: '.if-interest-before:hide' }
       = @f.label 'data[interest][before_payment]_false', t('property.common.no').capitalize
     .parsley-error
@@ -37,7 +39,8 @@
           parsley_interest_rate: true,
           parsley_error_message: t('property.error.interest'),
           parsley_validation_threshold: 0,
-          parsley_trigger: 'keyup' }
+          parsley_trigger: 'keyup',
+          parsley_group: 'compensation' }
       span = t 'property.interest.before_payment_rate_percent'
       .parsley-error
 
@@ -53,6 +56,7 @@
         data: { \
           parsley_required: parsley_required,
           parsley_error_message: t('property.error.required'),
+          parsley_group: 'compensation',
           slide_target: '.if-interest-after:show' }
       = @f.label 'data[interest][after_payment]_true', t('property.common.yes').capitalize
     .radio-custom.radio-primary
@@ -60,6 +64,7 @@
         data: { \
           parsley_required: parsley_required,
           parsley_error_message: t('property.error.required'),
+          parsley_group: 'compensation',
           slide_target: '.if-interest-after:hide' }
       = @f.label 'data[interest][after_payment]_false', t('property.common.no').capitalize
     .parsley-error
@@ -76,7 +81,8 @@
           parsley_interest_rate: true,
           parsley_error_message: t('property.error.interest'),
           parsley_validation_threshold: 0,
-          parsley_trigger: 'keyup' }
+          parsley_trigger: 'keyup',
+          parsley_group: 'compensation' }
       span = t 'property.interest.after_payment_rate_percent'
       .parsley-error
 

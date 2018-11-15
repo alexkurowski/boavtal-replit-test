@@ -10,7 +10,7 @@
           parsley_required_message: t('property.error.required'),
           parsley_any_debts_message: t('property.error.debts_empty'),
           parsley_trigger: '',
-          slide_target: '.if-any-debts:show' }
+          parsley_group: 'any_debts' }
       = @f.label 'data[assets_debts][any_debts]_true', t('property.common.yes').capitalize
     .radio-custom.radio-primary
       = @f.radio_button 'data[assets_debts][any_debts]', false,
@@ -20,6 +20,6 @@
           parsley_required_message: t('property.error.required'),
           parsley_any_debts_message: t('property.error.debts_empty'),
           parsley_trigger: '',
-          slide_target: '.if-any-debts:hide' }
+          parsley_group: 'any_debts' }
       = @f.label 'data[assets_debts][any_debts]_false', t('property.common.no').capitalize
     .parsley-error

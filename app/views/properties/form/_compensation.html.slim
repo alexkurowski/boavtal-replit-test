@@ -8,6 +8,7 @@
         data: { \
           parsley_required: true,
           parsley_error_message: t('property.error.required'),
+          parsley_group: 'compensation',
           slide_target: '.if-compensation:show .if-compensation-details:show' }
       = @f.label 'data[compensation][decide]_true', t('property.compensation.decide.yes')
     .radio-custom.radio-primary
@@ -15,6 +16,7 @@
         data: { \
           parsley_required: true,
           parsley_error_message: t('property.error.required'),
+          parsley_group: 'compensation',
           slide_target: '.if-compensation:hide .if-compensation-details:show' }
       = @f.label 'data[compensation][decide]_false', t('property.compensation.decide.no')
     .radio-custom.radio-primary
@@ -22,6 +24,7 @@
         data: { \
           parsley_required: true,
           parsley_error_message: t('property.error.required'),
+          parsley_group: 'compensation',
           slide_target: '.if-compensation:hide .if-compensation-details:hide' }
       = @f.label 'data[compensation][decide]_none', t('property.compensation.decide.none')
     .parsley-error
