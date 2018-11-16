@@ -7,7 +7,7 @@ class PropertiesController < ApplicationController
   end
 
   def new
-    @property = Property.new
+    @property = Property.create
     render :form
   end
 
