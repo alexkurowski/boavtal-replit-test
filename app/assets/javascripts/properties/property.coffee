@@ -3,7 +3,7 @@ $(document).ready ->
   return unless $form.length
 
 
-  submitting = false
+  # submitting = false
 
   rangeSettings = {
     namespace: 'rangeUi',
@@ -358,14 +358,12 @@ $(document).ready ->
       $form.find('.debt a.nav-link.active').click()
     , 0)
 
-    updatePropertyRemoveButtons()
 
-
-  addProperty = (type) ->
+  addProperty = (group, type) ->
     id = String(Date.now())
 
-    $container = $form.find(".#{type}s")
-    $template  = $form.find(".template .#{type}")
+    $container = $form.find(".#{group}s")
+    $template  = $form.find(".template-#{type} .#{group}")
 
     $prop = $template
       .clone()
@@ -411,25 +409,6 @@ $(document).ready ->
     , 400)
 
 
-  updatePropertyTitles = ($tab) ->
-    tab    = $tab.data('tab')
-    name   = $tab.data('name')
-    $panel = $tab.find("#panel_#{tab}")
-    $panel.children().each (index, entry) ->
-      $(entry).find('a.panel-title').text("#{name} ##{index + 1}")
-
-
-  updatePropertyRemoveButtons = ->
-    ['.assets', '.debts'].forEach (propClass) ->
-      $parent = $(propClass)
-      single  = $parent.children().length <= 1
-
-      if single
-        $parent.addClass('single')
-      else
-        $parent.removeClass('single')
-
-
   $form.on 'click', '.asset a[data-toggle="tab"], .debt a[data-toggle="tab"]', ->
     $parent = $(this).closest('.asset, .debt')
     $parent.find('.tab-content.d-none').removeClass('d-none')
@@ -437,26 +416,52 @@ $(document).ready ->
 
   $form.on 'click', '.add-asset a', (e) ->
     e.preventDefault()
-    addProperty('asset')
-    updatePropertyRemoveButtons()
-
+    type = $('.add-asset select').val()
+    addProperty('asset', type)
 
   $form.on 'click', '.add-debt a', (e) ->
     e.preventDefault()
-    addProperty('debt')
-    updatePropertyRemoveButtons()
+    type = $('.add-debt select').val()
+    addProperty('debt', type)
 
 
   $form.on 'click', '.remove-asset', (e) ->
     e.preventDefault()
     $(this).closest('.asset').remove()
-    updatePropertyRemoveButtons()
-
 
   $form.on 'click', '.remove-debt', (e) ->
     e.preventDefault()
     $(this).closest('.debt').remove()
-    updatePropertyRemoveButtons()
+
+
+  $form.on 'click', '.minimize-asset', (e) ->
+    e.preventDefault()
+    $asset = $(this).closest('.asset')
+    $asset.find('.asset-fields').slideUp(300)
+    setTimeout ->
+      $asset.addClass('minimized')
+    , 300
+
+  $form.on 'click', '.minimize-debt', (e) ->
+    e.preventDefault()
+    $debt = $(this).closest('.debt')
+    $debt.find('.debt-fields').slideUp(300)
+    setTimeout ->
+      $debt.addClass('minimized')
+    , 300
+
+
+  $form.on 'click', '.maximize-asset', (e) ->
+    e.preventDefault()
+    $asset = $(this).closest('.asset')
+    $asset.removeClass('minimized')
+    $asset.find('.asset-fields').slideDown(300)
+
+  $form.on 'click', '.maximize-debt', (e) ->
+    e.preventDefault()
+    $debt = $(this).closest('.debt')
+    $debt.removeClass('minimized')
+    $debt.find('.debt-fields').slideDown(300)
 
 
   $form.on 'change', 'input[name="property[data[assets_debts][any_assets]]"]', () ->

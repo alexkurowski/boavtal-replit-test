@@ -87,7 +87,7 @@ sv: &sv
       faq:
         q1: Bostadsrättens värde har stigit med flera hundra tusen sedan brytdagen, vilket värde ska vi ta upp bostadsrätten till?
         a1: Avgörande för vilka tillgångar som ska omfattas av bodelningen är de tillgångar som ni ägde per brytdagen. Efter brytdagen kan dock värdet av tillgångarna förändras. Har ni fonder som stigit i värde efter brytdagen, eller om er bostadsrätt eller fastighet har stigit eller sjunkit i värde, är det värdet per det datum då ni gör färdigt bodelningen som är avgörande. Har det gått lång tid sedan brytdagen kan det därför vara en god idé att se till att ha en värdering av bostadsrätten som inte är mer än sex månader gamla. Beträffande aktier m.m. kan ni ta gällande kurs. Tänk på att fonder eller aktier som förvärvats efter brytdagen inte ska omfattas av bodelningen.
-      tabs:
+      types:
         realestate: Fastighet
         apartment:  Bostadsrätt
         car:        Fordon
@@ -97,16 +97,14 @@ sv: &sv
         insurance:  Kapitalförsäkringar
         bank:       Bankkonto
         other:      Övrigt
-      tab:
-        shared:
-          own: "%{name} äger"
-          details: Uppgift om tillgången
-          after: 'Ange vem som ska äga denna tillgång EFTER bodelningen.'
-          after_full: 'Efter bodelningen ska denna tillgång ägas enligt nedan:'
-          after_part: "Andelen av denna tillgång om <span class='after-part-percent'></span> procent ska ägas enligt nedan:"
-      add:
-        label: En till tillgång?
-        button: Klicka här!
+      shared:
+        own: "%{name} äger"
+        details: Uppgift om tillgången
+        after: 'Ange vem som ska äga denna tillgång EFTER bodelningen.'
+        after_full: 'Efter bodelningen ska denna tillgång ägas enligt nedan:'
+        after_part: "Andelen av denna tillgång om <span class='after-part-percent'></span> procent ska ägas enligt nedan:"
+      add: Lägg till
+      minimize: Minimera
 
     any_debts:
       header: FINNS DET NÅGRA SKULDER
@@ -119,18 +117,16 @@ sv: &sv
         - Ange de skulder ni hade vid brytdagen nedan och hur betalningsansvaret är fördelat mellan er.
       faq:
         a1: 'Samtliga skulder utom sådana som är knutna till enskild egendom får tas upp i bodelningen. Båda får behålla så mycket av sina tillgångar som de har i skulder. Alltså dras skulderna av från värdet av tillgångarna innan tillgångarna läggs samman och delas lika. Skulle någon av makarna hamna på ett minusbelopp räknas det som noll i bodelningen. Ett minusbelopp överförs således aldrig mellan makarna.'
-      tabs:
+      types:
         loan: Banklån och krediter
         bill: Övriga skulder
-      tab:
-        shared:
-          owe: "%{name} är skyldig"
-          details: Uppgift om skulden
-          after: 'Ange vem som ska ansvara för denna skuld EFTER bodelningen.'
-          after_info: 'Skulden ska fördelas enligt nedan:'
-      add:
-        label: En till skuld?
-        button: Klicka här!
+      shared:
+        owe: "%{name} är skyldig"
+        details: Uppgift om skulden
+        after: 'Ange vem som ska ansvara för denna skuld EFTER bodelningen.'
+        after_info: 'Skulden ska fördelas enligt nedan:'
+      add: Lägg till
+      minimize: Minimera
 
     compensation:
       header: BODELNINGSLIKVID

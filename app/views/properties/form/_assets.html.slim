@@ -1,3 +1,5 @@
+- types = t('property.assets.types')
+
 = property_panel 'assets' do
   - t('property.assets.info').each do |p|
     p = p
@@ -5,15 +7,18 @@
   = faq_section 'property.assets.faq'
 
   .template
-    = asset_partial 'template'
+    - types.each do |type, name|
+      .d-none class="template-#{type}"
+        = asset_partial 'template', type
 
   .assets
-    - if @property.data(:assets).blank?
-      = asset_partial
-    - else
+    - unless @property.data(:assets).blank?
       - @property.sorted_assets.each do |id, asset|
         = asset_partial id, asset['type']
 
   .add-asset.mx-20.mt-60
-    label.label.h4.mr-10 = t 'property.assets.add.label'
-    a.btn.btn-primary href='#' = t 'property.assets.add.button'
+    = select_tag 'add-asset-type',
+      options_for_select(types.map { |type, name| [name, type] }),
+      class: 'form-control d-inline mr-20'
+    a.btn.btn-primary href='#'
+      = t 'property.assets.add'

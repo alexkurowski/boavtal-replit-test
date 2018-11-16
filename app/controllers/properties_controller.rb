@@ -60,6 +60,18 @@ class PropertiesController < ApplicationController
           params[:property][:data].delete :payment_details
         end
 
+        unless params.dig(:property, :data, :assets).blank?
+          params.dig(:property, :data, :assets).each do |type, value|
+            params[:property][:data][:assets][type].delete :template
+          end
+        end
+
+        unless params.dig(:property, :data, :debts).blank?
+          params.dig(:property, :data, :debts).each do |type, value|
+            params[:property][:data][:debts][type].delete :template
+          end
+        end
+
         case params[:submit_type]
         when 'soft' then params[:property][:validated] = false
         when 'hard' then params[:property][:validated] = true

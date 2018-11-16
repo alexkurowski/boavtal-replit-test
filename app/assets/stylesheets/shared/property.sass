@@ -66,7 +66,7 @@ body.customer_properties
       position: relative
       border: 1px solid #e4eaec
       border-radius: 5px
-      padding: 19px
+      padding: 18px 19px 16px
       margin-top: 40px
 
       &:first-of-type
@@ -85,26 +85,42 @@ body.customer_properties
         border-top-right-radius: 5px
 
       .remove-asset,
-      .remove-debt
+      .remove-debt,
+      .maximize-asset,
+      .maximize-debt
+        position: absolute
         display: flex
         justify-content: center
         align-items: center
+        top: 20px
+        right: 20px
         width: 40px
         height: 40px
         margin-left: auto
 
-      .nav-tabs
-        border-bottom: none
+      .maximize-asset,
+      .maximize-debt
+        display: none
+        top: 20px
+        right: 80px
 
-        a
-          border-bottom: none !important
-          border-radius: 3px
+      &.minimized
+        .asset-fields,
+        .debt-fields
+          display: none
 
-    .assets.single,
-    .debts.single
-      .remove-asset,
-      .remove-debt
-        display: none !important
+        .maximize-asset,
+        .maximize-debt
+          display: flex
+
+        .minimize-asset,
+        .minimize-debt
+          display: none
+
+    .add-asset select,
+    .add-debt select
+      position: relative
+      top: 1px
 
     .payment-how-much
       display: inline-block

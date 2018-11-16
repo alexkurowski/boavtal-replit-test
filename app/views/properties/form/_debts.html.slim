@@ -1,17 +1,22 @@
+- types = t('property.debts.types')
+
 = property_panel 'debts' do
   - t('property.debts.info').each do |p|
     p = p
 
   .template
-    = debt_partial 'template'
+    - types.each do |type, name|
+      .d-none class="template-#{type}"
+        = debt_partial 'template', type
 
   .debts
-    - if @property.data(:debts).blank?
-      = debt_partial
-    - else
+    - unless @property.data(:debts).blank?
       - @property.sorted_debts.each do |id, debt|
         = debt_partial id, debt['type']
 
   .add-debt.mx-20.mt-60
-    label.label.h4.mr-10 = t 'property.debts.add.label'
-    a.btn.btn-primary href='#' = t 'property.debts.add.button'
+    = select_tag 'add-debt-type',
+      options_for_select(types.map { |type, name| [name, type] }),
+      class: 'form-control d-inline mr-20'
+    a.btn.btn-primary href='#'
+      = t 'property.assets.add'

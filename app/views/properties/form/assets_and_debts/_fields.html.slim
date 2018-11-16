@@ -1,11 +1,11 @@
-- fields = t "division_of_property.#{type}.#{tab}"
+- fields = t "division_of_property.#{group}.#{type}"
 
 .fields.mt--20.mb-60
   - fields.each do |field, text|
     - field_rendered = false
 
     - if field.to_s.starts_with? 'faq'
-      = faq_section "division_of_property.#{type}.#{tab}.#{field}"
+      = faq_section "division_of_property.#{group}.#{type}.#{field}"
     - else
       .field.my-40
         - text.each do |line|
@@ -13,33 +13,36 @@
           - case line
           - when 'TEXT_FIELD'
             .form-group
-              = @f.text_field "data[#{type}][#{tab}][#{id}][#{field}]",
+              = @f.text_field "data[#{group}][#{type}][#{id}][#{field}]",
                 class: 'form-control',
                 data: { \
                   parsley_required_field: true,
                   parsley_validate_if_empty: true,
-                  parsley_error_message: t('property.error.required') }
+                  parsley_error_message: t('property.error.required'),
+                  parsley_group: group }
 
           - when 'NUMERICAL_FIELD'
             .form-group
-              = @f.text_field "data[#{type}][#{tab}][#{id}][#{field}]",
+              = @f.text_field "data[#{group}][#{type}][#{id}][#{field}]",
                 class: 'form-control numerical',
                 data: { \
                   parsley_required_field: true,
                   parsley_validate_if_empty: true,
-                  parsley_error_message: t('property.error.required') }
+                  parsley_error_message: t('property.error.required'),
+                  parsley_group: group }
 
           - when 'DATE_FIELD'
             .form-group
               .input-group
                 span.input-group-addon
                   i.icon.wb-calendar aria-hidden="true"
-                = @f.text_field "data[#{type}][#{tab}][#{id}][#{field}]",
+                = @f.text_field "data[#{group}][#{type}][#{id}][#{field}]",
                   class: 'form-control',
                   data: { \
                     parsley_required_field: true,
                     parsley_validate_if_empty: true,
                     parsley_error_message: t('property.error.required'),
+                    parsley_group: group,
                     plugin: 'datepicker',
                     container: '.page',
                     language: 'sv' }
