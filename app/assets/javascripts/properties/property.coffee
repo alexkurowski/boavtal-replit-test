@@ -66,8 +66,21 @@ $(document).ready ->
     $fieldset = $('fieldset.active')
     group = $fieldset.data('group')
 
-    if group is 'assets' and $form.find('.assets .asset').length is 0
-      error = $('#any-assets-error')
+    isValid = $form.parsley().validate({ group: group })
+
+    if group is 'assets'
+      return validateProperty('asset', isValid)
+
+    if group is 'debts'
+      return validateProperty('debt', isValid)
+
+    return isValid
+
+  validateProperty = (group, isValid) ->
+    $fieldset = $('fieldset.active')
+
+    if $form.find(".#{group}s .#{group}").length is 0
+      error = $("#any-#{group}s-error")
       error.html("
         <ul class='parsley-errors-list filled'>
           <li class='parsley-custom-error-message'>
@@ -77,18 +90,26 @@ $(document).ready ->
       ")
       return false
 
-    if group is 'debts' and $form.find('.debts .debt').length is 0
-      error = $('#any-debts-error')
-      error.html("
-        <ul class='parsley-errors-list filled'>
-          <li class='parsley-custom-error-message'>
-            #{ error.data('message') }
-          </li>
-        </ul>
-      ")
-      return false
+    unless isValid
+      $fieldset
+        .find('.is-invalid')
+        .closest(".#{group}")
+        .find(".maximize-#{group}")
+        .click()
 
-    return $form.parsley().validate({ group: group })
+      setTimeout ->
+        scrollOffset = 180
+        $('html, body').animate({
+          scrollTop: $fieldset
+            .find('.is-invalid')
+            .first()
+            .parent()
+            .offset()
+            .top - scrollOffset
+        }, 300)
+      , 300
+
+    return isValid
 
   showInitialFieldset = () ->
     index = $form.find('#property_data_form_last_fieldset').val()
