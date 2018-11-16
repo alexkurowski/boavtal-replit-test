@@ -16,6 +16,8 @@
       - @property.sorted_assets.each do |id, asset|
         = asset_partial id, asset['type']
 
+  #any-assets-error.parsley-error data-message=t('property.error.assets_empty')
+
   .add-asset.mx-20.mt-60
     = select_tag 'add-asset-type',
       options_for_select(types.map { |type, name| [name, type] }),

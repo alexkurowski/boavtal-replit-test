@@ -17,7 +17,6 @@ $(document).ready ->
     validateNumber: (value, _, field) ->
       return true if field.element.name.indexOf('template') isnt -1
       return true if field.element.dataset.parsleyRequiredRange is 'false'
-      return true unless $(field.element).closest('.tab-pane').hasClass('active')
 
       return true if $(field.element).closest('.assets').length and not any_assets()
       return true if $(field.element).closest('.debts').length and not any_debts()
@@ -34,24 +33,11 @@ $(document).ready ->
   window.Parsley.addValidator('requiredField', {
     validateString: (value, _, field) ->
       return true if field.element.name.indexOf('template') isnt -1
-      return true unless $(field.element).closest('.tab-pane').hasClass('active')
 
       return true if $(field.element).closest('.assets').length and not any_assets()
       return true if $(field.element).closest('.debts').length and not any_debts()
 
       return value.length > 0
-  })
-
-  window.Parsley.addValidator('anyAssets', {
-    validateString: (value, _, field) ->
-      return true if value is 'false'
-      $('.assets .asset li.nav-item .active').length > 0
-  })
-
-  window.Parsley.addValidator('anyDebts', {
-    validateString: (value, _, field) ->
-      return true if value is 'false'
-      $('.debts .debt li.nav-item .active').length > 0
   })
 
   window.Parsley.addValidator('interestRate', {

@@ -8,70 +8,71 @@
   a.remove-asset.btn.btn-danger href='#'
     i.fa.fa-trash
 
-  .asset-fields.p-5.mt-40.mb-20
-    .form-group.m-0
-      .row
-        .col-md
-          label.mb-40 = t 'property.assets.shared.own', name: 'Mannen'
-          = @f.range_field "data[assets][#{type}][#{id}][husband_own]",
-            value: @property.fetch(:assets, type, id, :husband_own, 0),
-            data: { \
-              parsley_required_range: true,
-              parsley_error_message: t('property.error.required'),
-              parsley_group: 'assets',
-              entangled: false,
-              maxvalue: 100 }
+  .asset-fields.p-5
+    .mt-40.mb-20
+      .form-group.m-0
+        .row
+          .col-md
+            label.mb-40 = t 'property.assets.shared.own', name: 'Mannen'
+            = @f.range_field "data[assets][#{type}][#{id}][husband_own]",
+              value: @property.fetch(:assets, type, id, :husband_own, 0),
+              data: { \
+                parsley_required_range: true,
+                parsley_error_message: t('property.error.required'),
+                parsley_group: 'assets',
+                entangled: false,
+                maxvalue: 100 }
 
-        .col-md
-          label.mb-40 = t 'property.assets.shared.own', name: 'Kvinnan'
-          = @f.range_field "data[assets][#{type}][#{id}][wife_own]",
-            value: @property.fetch(:assets, type, id, :wife_own, 0),
-            data: { \
-              parsley_required_range: true,
-              parsley_error_message: t('property.error.required'),
-              parsley_group: 'assets',
-              entangled: false,
-              maxvalue: 100 }
+          .col-md
+            label.mb-40 = t 'property.assets.shared.own', name: 'Kvinnan'
+            = @f.range_field "data[assets][#{type}][#{id}][wife_own]",
+              value: @property.fetch(:assets, type, id, :wife_own, 0),
+              data: { \
+                parsley_required_range: true,
+                parsley_error_message: t('property.error.required'),
+                parsley_group: 'assets',
+                entangled: false,
+                maxvalue: 100 }
 
-      .parsley-error
+        .parsley-error
 
 
-    h4.mt-60 = t 'property.assets.shared.details'
+      h4.mt-60 = t 'property.assets.shared.details'
 
-    = render partial: 'properties/form/assets_and_debts/fields',
-      locals: { group: 'assets', id: id, type: type }
+      = render partial: 'properties/form/assets_and_debts/fields',
+        locals: { group: 'assets', id: id, type: type }
 
-    h4.mt-40 = t 'property.assets.shared.after'
+      h4.mt-40 = t 'property.assets.shared.after'
 
-    .after-info
-      p.after-full = t('property.assets.shared.after_full').html_safe
-      p.after-part.d-none = t('property.assets.shared.after_part').html_safe
+      .after-info
+        p.after-full = t('property.assets.shared.after_full').html_safe
+        p.after-part.d-none = t('property.assets.shared.after_part').html_safe
 
-    .form-group.m-0
-      .row
-        .col-md
-          label.mb-40 Mannen
-          = @f.range_field "data[assets][#{type}][#{id}][husband_after]",
-            value: @property.fetch(:assets, type, id, :husband_after, 0),
-            data: { \
-              parsley_required_range: true,
-              parsley_error_message: t('property.error.required'),
-              parsley_group: 'assets',
-              entangled: true,
-              maxvalue: 100 }
+      .form-group.m-0
+        .row
+          .col-md
+            label.mb-40 Mannen
+            = @f.range_field "data[assets][#{type}][#{id}][husband_after]",
+              value: @property.fetch(:assets, type, id, :husband_after, 0),
+              data: { \
+                parsley_required_range: true,
+                parsley_error_message: t('property.error.required'),
+                parsley_group: 'assets',
+                entangled: true,
+                maxvalue: 100 }
 
-        .col-md
-          label.mb-40 Kvinnan
-          = @f.range_field "data[assets][#{type}][#{id}][wife_after]",
-            value: @property.fetch(:assets, type, id, :wife_after, 0),
-            data: { \
-              parsley_required_range: true,
-              parsley_error_message: t('property.error.required'),
-              parsley_group: 'assets',
-              entangled: true,
-              maxvalue: 100 }
+          .col-md
+            label.mb-40 Kvinnan
+            = @f.range_field "data[assets][#{type}][#{id}][wife_after]",
+              value: @property.fetch(:assets, type, id, :wife_after, 0),
+              data: { \
+                parsley_required_range: true,
+                parsley_error_message: t('property.error.required'),
+                parsley_group: 'assets',
+                entangled: true,
+                maxvalue: 100 }
 
-      .parsley-error
+        .parsley-error
 
   .text-right
     a.minimize-asset.btn.btn-primary.mt-30 href='#'

@@ -14,6 +14,8 @@
       - @property.sorted_debts.each do |id, debt|
         = debt_partial id, debt['type']
 
+  #any-debts-error.parsley-error data-message=t('property.error.debts_empty')
+
   .add-debt.mx-20.mt-60
     = select_tag 'add-debt-type',
       options_for_select(types.map { |type, name| [name, type] }),

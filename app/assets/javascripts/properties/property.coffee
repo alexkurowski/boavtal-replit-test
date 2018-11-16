@@ -139,6 +139,29 @@ $(document).ready ->
   validateCurrentFieldset = () ->
     $fieldset = $('fieldset.active')
     group = $fieldset.data('group')
+
+    if group is 'assets' and $form.find('.assets .asset').length is 0
+      error = $('#any-assets-error')
+      error.html("
+        <ul class='parsley-errors-list filled'>
+          <li class='parsley-custom-error-message'>
+            #{ error.data('message') }
+          </li>
+        </ul>
+      ")
+      return false
+
+    if group is 'debts' and $form.find('.debts .debt').length is 0
+      error = $('#any-debts-error')
+      error.html("
+        <ul class='parsley-errors-list filled'>
+          <li class='parsley-custom-error-message'>
+            #{ error.data('message') }
+          </li>
+        </ul>
+      ")
+      return false
+
     return $form.parsley().validate({ group: group })
 
   showInitialFieldset = () ->
@@ -400,6 +423,8 @@ $(document).ready ->
       new_name = old_name.replace('[template]', "[#{id}]")
       input.id   = new_name
       input.name = new_name
+
+    $("#any-#{group}s-error").html('')
 
 
   resetProperties = (type) ->
