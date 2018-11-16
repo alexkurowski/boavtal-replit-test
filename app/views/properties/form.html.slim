@@ -1,5 +1,5 @@
 .container
   .property-form
-    == form_for @property, remote: true do |f|
+    == form_for @property, remote: true, authenticity_token: true do |f|
       - @f = f
       == render "form"

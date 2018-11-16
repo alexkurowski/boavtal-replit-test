@@ -12,9 +12,9 @@ sv: &sv
       copies: Antal undertecknade exemplar
       court: Datum och domstol
       witnesses: Ska bodelningsavtalet bevittnas?
-      any_assets: Finns tillgångar
+      any_assets: Finns tillgångar?
       assets: Ange alla tillgångar
-      any_debts: Finns skulder
+      any_debts: Finns skulder?
       debts: Ange alla skulder
 
     warning:

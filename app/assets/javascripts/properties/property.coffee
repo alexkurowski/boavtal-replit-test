@@ -62,79 +62,78 @@ $(document).ready ->
   }
 
 
-  beforeSubmit = ->
-    $form.find('.template .asset').remove()
-    $form.find('.template .debt').remove()
+  # beforeSubmit = ->
+  #   $form.find('.template .asset').remove()
+  #   $form.find('.template .debt').remove()
 
-    any_assets = document.getElementById('property_data[assets_debts][any_assets]_true').checked
-    if any_assets
-      $form.find('.asset .tab-pane:not(.active)').remove()
-    else
-      $form.find('.asset').remove()
+  #   any_assets = document.getElementById('property_data[assets_debts][any_assets]_true').checked
+  #   if any_assets
+  #     $form.find('.asset .tab-pane:not(.active)').remove()
+  #   else
+  #     $form.find('.asset').remove()
 
-    any_debts = document.getElementById('property_data[assets_debts][any_debts]_true').checked
-    if any_debts
-      $form.find('.debt .tab-pane:not(.active)').remove()
-    else
-      $form.find('.debt').remove()
-
-
-  forceSubmit = ->
-    $form.off('submit.Parsley')
-    $form.off('form:validate')
-    beforeSubmit()
-    $form.submit()
+  #   any_debts = document.getElementById('property_data[assets_debts][any_debts]_true').checked
+  #   if any_debts
+  #     $form.find('.debt .tab-pane:not(.active)').remove()
+  #   else
+  #     $form.find('.debt').remove()
 
 
-  disableSubmitButtons = ->
-    $('.soft-submit, .hard-submit').prop('disabled', true)
-
-  enableSubmitButtons = ->
-    $('.soft-submit, .hard-submit').prop('disabled', false)
-
-
-  window.Parsley.on 'form:validated', ->
-    enableSubmitButtons()
-
-    if $form.parsley().isValid()
-      if submitting
-        forceSubmit()
-
-    else
-      $invalid = $('.is-invalid:first').closest('.form-group')
-      if $invalid.length
-        window.scrollTo 0, $invalid.offset().top - window.innerHeight * 0.4
+  # forceSubmit = ->
+  #   $form.off('submit.Parsley')
+  #   $form.off('form:validate')
+  #   beforeSubmit()
+  #   $form.submit()
 
 
-  $form.find('.soft-submit').on 'click', (e) ->
-    e.preventDefault()
-    disableSubmitButtons()
-    $form.find('#submit_type').val('soft')
-    forceSubmit()
+  # disableSubmitButtons = ->
+  #   $('.soft-submit, .hard-submit').prop('disabled', true)
+
+  # enableSubmitButtons = ->
+  #   $('.soft-submit, .hard-submit').prop('disabled', false)
 
 
-  $form.find('.hard-submit').on 'click', (e) ->
-    e.preventDefault()
-    disableSubmitButtons()
-    submitting = true
-    $form.find('#submit_type').val('hard')
-    $form.parsley().validate()
+  # window.Parsley.on 'form:validated', ->
+  #   enableSubmitButtons()
+
+  #   if $form.parsley().isValid()
+  #     if submitting
+  #       forceSubmit()
+
+  #   else
+  #     $invalid = $('.is-invalid:first').closest('.form-group')
+  #     if $invalid.length
+  #       window.scrollTo 0, $invalid.offset().top - window.innerHeight * 0.4
 
 
-  $form.find('.signup-submit').on 'click', (e) ->
-    e.preventDefault()
-    email = $('#customer_email')
-    password = $('#customer_password')
-    email.parsley().validate()
-    password.parsley().validate()
+  # $form.find('.soft-submit').on 'click', (e) ->
+  #   e.preventDefault()
+  #   disableSubmitButtons()
+  #   $form.find('#submit_type').val('soft')
+  #   forceSubmit()
 
-    valid = email.parsley().isValid() && password.parsley().isValid()
-    return unless valid
 
-    $form.find('.signup-submit').get(0).disabled = true
-    $form.find('#submit_type').val('soft')
-    forceSubmit()
+  # $form.find('.hard-submit').on 'click', (e) ->
+  #   e.preventDefault()
+  #   disableSubmitButtons()
+  #   submitting = true
+  #   $form.find('#submit_type').val('hard')
+  #   $form.parsley().validate()
 
+
+  # $form.find('.signup-submit').on 'click', (e) ->
+  #   e.preventDefault()
+  #   email = $('#customer_email')
+  #   password = $('#customer_password')
+  #   email.parsley().validate()
+  #   password.parsley().validate()
+
+  #   valid = email.parsley().isValid() && password.parsley().isValid()
+  #   return unless valid
+
+  #   $form.find('.signup-submit').get(0).disabled = true
+  #   $form.find('#submit_type').val('soft')
+  #   forceSubmit()
 
 
   validateCurrentFieldset = () ->
@@ -142,31 +141,49 @@ $(document).ready ->
     group = $fieldset.data('group')
     return $form.parsley().validate({ group: group })
 
+  showInitialFieldset = () ->
+    index = $form.find('#property_data_form_last_fieldset').val()
+    fieldset = $('fieldset')[index]
+    showFieldset(fieldset)
+
   showFieldset = (fieldset) ->
     $('fieldset').removeClass('active')
     $(fieldset).addClass('active')
     window.scrollTo(0, 0)
     $form.parsley().reset()
     updateFormProgress()
+    updateFormSubmitButtons()
 
-  showNextFieldset = () ->
+  showNextFieldsetAndSave = () ->
     $fieldsets = $('fieldset')
     $fieldset  = $('fieldset.active')
-    next = $fieldsets[ $fieldsets.index($fieldset) + 1 ]
+    index      = $fieldsets.index($fieldset)
+    next       = $fieldsets[index + 1]
 
-    if next.dataset.skip is 'true'
-      next = $fieldsets[ $fieldsets.index($fieldset) + 2 ]
+    if next and next.dataset.skip is 'true'
+      next = $fieldsets[index + 2]
+
+    $form.find('#property_data_form_last_fieldset').val($fieldsets.index(next))
 
     if $(next).is('fieldset')
       showFieldset(next)
+      $form.find('#submit_type').val('soft')
+      $form.trigger('submit.rails')
+    else
+      $form.removeAttr('data-remote')
+      $form.off('submit.Parsley')
+      $form.off('form:validate')
+      $form.find('#submit_type').val('hard')
+      $form.get(0).submit()
 
   showPrevFieldset = () ->
     $fieldsets = $('fieldset')
     $fieldset  = $('fieldset.active')
-    prev = $fieldsets[ $fieldsets.index($fieldset) - 1 ]
+    index      = $fieldsets.index($fieldset)
+    prev       = $fieldsets[index - 1]
 
     if prev.dataset.skip is 'true'
-      prev = $fieldsets[ $fieldsets.index($fieldset) - 2 ]
+      prev = $fieldsets[index - 2]
 
     if $(prev).is('fieldset')
       showFieldset(prev)
@@ -180,10 +197,10 @@ $(document).ready ->
     currentSubstep = $fieldset.data('title')
 
     steps = $('.fieldset-group')
-      .map (_, v) -> if v.dataset.skip is 'true' then '' else v.dataset.title
+      .map (_, v) -> v.dataset.title
       .filter (_, v) -> v
     substeps = $group.find('fieldset')
-      .map (_, v) -> if v.dataset.skip is 'true' then '' else v.dataset.title
+      .map (_, v) -> v.dataset.title
       .filter (_, v) -> v
 
     $progress.empty()
@@ -194,7 +211,7 @@ $(document).ready ->
         'current active'
       else
         if complete
-          'bg-success'
+          'bg-white'
         else
           'bg-white'
 
@@ -206,15 +223,13 @@ $(document).ready ->
 
         $progress.append("
           <div class='step #{ stepBackgroundClass(active, complete) }'>
-            <div class='step-desc'>
-              <span class='step-title'>
-                #{ step }
-              </span>
-            </div>
+            <span class='step-title'>
+              #{ step }
+            </span>
           </div>
         ")
 
-    if currentStep and currentSubstep and substeps.length > 1
+    if currentStep and currentSubstep and substeps.length > 1 and $fieldset.get(0).dataset.hideSubprogress isnt 'true'
       complete = true
       substeps.each (_, substep) ->
         active = substep is currentSubstep
@@ -222,30 +237,39 @@ $(document).ready ->
 
         $subprogress.append("
           <div class='step #{ stepBackgroundClass(active, complete) }'>
-            <div class='step-desc'>
-              <span>
-                #{ substep }
-              </span>
-            </div>
+            <span>
+              #{ substep }
+            </span>
           </div>
         ")
 
-  updateFormProgress()
+  updateFormSubmitButtons = () ->
+    $fieldset = $('fieldset.active')
+    index = $('fieldset').index($fieldset)
+
+    if index is 0
+      $('.form-prev').hide()
+    else
+      $('.form-prev').show()
+
+  showInitialFieldset()
 
 
   $form.find('.form-next').on 'click', (e) ->
     e.preventDefault()
+    return if this.disabled
+
+    $(this).prop('disabled', true)
 
     if validateCurrentFieldset()
-      showNextFieldset()
-      $form.trigger('submit.rails')
+      showNextFieldsetAndSave()
+
+    $(this).prop('disabled', false)
 
   $form.find('.form-prev').on 'click', (e) ->
     e.preventDefault()
 
     showPrevFieldset()
-
-
 
 
   $form.find('input[data-slide-target]').on 'change', ->
