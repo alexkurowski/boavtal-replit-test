@@ -11,6 +11,7 @@
 
   fieldset [
     data-group='instructions'
+    data-next-btn-label=t('property.submit.continue')
   ]
     .row
       .col
@@ -120,6 +121,7 @@
 ]
   fieldset [
     data-group='other'
+    data-next-btn-label=t('property.submit.save_and_create')
   ]
     .row
       .col
@@ -129,7 +131,7 @@
 = hidden_field_tag :submit_type, 'hard'
 
 
-button.form-next.float-right.btn.btn-success.ml-10
+button.form-next.float-right.btn.btn-success.ml-10 data-default-label=t('property.submit.save_and_continue')
   = t 'property.submit.save_and_continue'
 
 button.form-prev.float-right.btn.btn-default.ml-10

@@ -4,7 +4,7 @@
 - parsley_required_after_rate = @property.data(:interest, :after_payment) == 'true'
 
 = property_panel 'interest' do
-  h4 = t 'property.interest.before_payment_header'
+  h4.text-uppercase = t 'property.interest.before_payment_header'
   .form-group.mb-20
     - t('property.interest.before_payment').each do |p|
       p = p
@@ -46,7 +46,7 @@
 
     = faq_section 'property.interest.before_payment_rate_faq'
 
-  h4.mt-40 = t 'property.interest.after_payment_header'
+  h4.text-uppercase.mt-40 = t 'property.interest.after_payment_header'
   .form-group.mb-20
     - t('property.interest.after_payment').each do |p|
       p = p

@@ -1,6 +1,7 @@
 sv: &sv
   property:
     error:
+      terms: Du måste kryssa i att du läst och förstått villkoren.
       required: Ni måste svara på frågan.
       assets_empty: Ni svarade att ni hade tillgångar ni ville lägga till. Skriv ner tillgången/tillgångarna här eller ändra ert svar till "nej" ovan under "Tillgångar".
       debts_empty: Ni svarade att ni hade skulder ni ville ta upp till. Skriv ner skulden/skulderna här eller ändra ert svar till "nej" ovan under "Skulder".

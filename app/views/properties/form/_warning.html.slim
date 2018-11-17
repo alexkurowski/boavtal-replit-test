@@ -8,6 +8,6 @@
       = @f.check_box 'data[terms][agreement]',
         data: { \
           parsley_required: true,
-          parsley_error_message: t('property.error.required'),
+          parsley_error_message: t('property.error.terms'),
           parsley_group: 'warning' }
       = @f.label 'data[terms][agreement]', t('property.warning.terms_agreement')

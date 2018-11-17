@@ -18,9 +18,11 @@
 
   #any-assets-error.parsley-error data-message=t('property.error.assets_empty')
 
-  .add-asset.mx-20.mt-60
+  .add-asset.mx-20.mt-40
+    div
+      label.label = t 'property.assets.add.label'
     = select_tag 'add-asset-type',
       options_for_select(types.map { |type, name| [name, type] }),
       class: 'form-control d-inline mr-20'
     a.btn.btn-primary href='#'
-      = t 'property.assets.add'
+      = t 'property.assets.add.button'

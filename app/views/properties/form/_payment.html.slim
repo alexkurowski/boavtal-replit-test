@@ -2,6 +2,7 @@
 
 = property_panel 'payment' do
   .form-group
+    p = t 'property.payment.info'
     span = t 'property.payment.how_much'
     = @f.text_field 'data[payment][how_much]',
       type: 'tel',
