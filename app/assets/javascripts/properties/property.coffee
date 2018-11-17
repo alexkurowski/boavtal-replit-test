@@ -215,12 +215,19 @@ $(document).ready ->
 
   updateFormSubmitButtons = () ->
     $fieldset = $('fieldset.active')
-    index = $('fieldset').index($fieldset)
+    index     = $('fieldset').index($fieldset)
+    $prev     = $('.form-prev')
+    $next     = $('.form-next')
 
     if index is 0
-      $('.form-prev').hide()
+      $prev.hide()
     else
-      $('.form-prev').show()
+      $prev.show()
+
+    if $fieldset.data('next-btn-label')
+      $next.text($fieldset.data('next-btn-label'))
+    else
+      $next.text($next.data('default-label'))
 
   showInitialFieldset()
 

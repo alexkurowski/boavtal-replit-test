@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: [:edit, :update, :destroy]
-  before_action :clean_property_params, only: [:create, :update]
+  before_action :clean_property_params, only: [:update]
 
   def index
     @properties = Property.all.order(created_at: :desc)
@@ -8,18 +8,7 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.create
-    render :form
-  end
-
-  def create
-    create_customer if params[:customer].present? and not customer_signed_in?
-    set_customer if customer_signed_in?
-    Property.create property_params
-    if request.xhr?
-      render plain: 'ok'
-    else
-      redirect_to after_form_path, flash: { notice: 'Form was saved successfully' }
-    end
+    redirect_to edit_property_path @property
   end
 
   def edit
@@ -31,13 +20,13 @@ class PropertiesController < ApplicationController
     if request.xhr?
       render plain: 'ok'
     else
-      redirect_to after_form_path, flash: { notice: 'Form was saved successfully' }
+      redirect_to after_update_path, flash: { notice: 'Form was saved successfully' }
     end
   end
 
   def destroy
     @property.destroy
-    redirect_to after_form_path
+    redirect_to after_destroy_path
   end
 
     private
@@ -87,7 +76,19 @@ class PropertiesController < ApplicationController
         params[:property][:customer_id] = current_customer.id
       end
 
-      def after_form_path
+      def after_update_path
+        if @property&.validated?
+          property_reports_path @property
+        else
+          if customer_signed_in?
+            customers_root_path
+          else
+            properties_path
+          end
+        end
+      end
+
+      def after_destroy_path
         if customer_signed_in?
           customers_root_path
         else
