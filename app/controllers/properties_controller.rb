@@ -20,13 +20,13 @@ class PropertiesController < ApplicationController
     if request.xhr?
       render plain: 'ok'
     else
-      redirect_to after_update_path, flash: { notice: 'Form was saved successfully' }
+      redirect_to after_form_path, flash: { notice: 'Form was saved successfully' }
     end
   end
 
   def destroy
     @property.destroy
-    redirect_to after_destroy_path
+    redirect_to after_form_path
   end
 
     private
@@ -76,19 +76,7 @@ class PropertiesController < ApplicationController
         params[:property][:customer_id] = current_customer.id
       end
 
-      def after_update_path
-        if @property&.validated?
-          property_reports_path @property
-        else
-          if customer_signed_in?
-            customers_root_path
-          else
-            properties_path
-          end
-        end
-      end
-
-      def after_destroy_path
+      def after_form_path
         if customer_signed_in?
           customers_root_path
         else
