@@ -3,8 +3,6 @@ $(document).ready ->
   return unless $form.length
 
 
-  # submitting = false
-
   rangeSettings = {
     namespace: 'rangeUi',
     min: 0,
@@ -122,7 +120,8 @@ $(document).ready ->
     window.scrollTo(0, 0)
     $form.parsley().reset()
     updateFormProgress()
-    updateFormSubmitButtons()
+    updateFormButtons()
+    updateFormSubmitButton()
 
   showNextFieldsetAndSave = () ->
     $fieldsets = $('fieldset')
@@ -213,7 +212,7 @@ $(document).ready ->
           </div>
         ")
 
-  updateFormSubmitButtons = () ->
+  updateFormButtons = () ->
     $fieldset = $('fieldset.active')
     index     = $('fieldset').index($fieldset)
     $prev     = $('.form-prev')
@@ -229,7 +228,20 @@ $(document).ready ->
     else
       $next.text($next.data('default-label'))
 
+  updateFormSubmitButton = () ->
+    $fieldset = $('fieldset.active')
+    group     = $fieldset.data('group')
+    $next     = $('.form-next')
+
+    isValid = $form.parsley().isValid({ group: group })
+
+    if isValid
+      $next.prop('disabled', false)
+    else
+      $next.prop('disabled', true)
+
   showInitialFieldset()
+  setInterval(updateFormSubmitButton, 750)
 
 
   $form.find('.form-next').on 'click', (e) ->
