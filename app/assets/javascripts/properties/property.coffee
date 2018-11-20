@@ -56,7 +56,9 @@ $(document).ready ->
     allowMinus: false,
     autoGroup: true,
     groupSeparator: ' ',
-    removeMaskOnSubmit: true
+    removeMaskOnSubmit: true,
+    autoUnmask: true,
+    onUnMask: (v) -> v.replace(/\D/g, '')
   }
 
 
