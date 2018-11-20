@@ -96,7 +96,7 @@ $(document).ready ->
         .click()
 
       setTimeout ->
-        scrollOffset = 180
+        scrollOffset = window.innerHeight * 0.3
         $('html, body').animate({
           scrollTop: $fieldset
             .find('.is-invalid')
