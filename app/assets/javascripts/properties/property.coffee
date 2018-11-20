@@ -136,15 +136,20 @@ $(document).ready ->
 
     $form.find('#property_data_form_last_fieldset').val($fieldsets.index(next))
 
+    isFormValid = $form.parsley().validate()
+    if isFormValid
+      $form.find('#submit_type').val('hard')
+    else
+      $form.find('#submit_type').val('soft')
+
     if $(next).is('fieldset')
       showFieldset(next)
-      $form.find('#submit_type').val('soft')
       $form.trigger('submit.rails')
     else
       $form.removeAttr('data-remote')
       $form.off('submit.Parsley')
       $form.off('form:validate')
-      $form.find('#submit_type').val('hard')
+      $form.find('input').inputmask('remove')
       $form.get(0).submit()
 
   showPrevFieldset = () ->
