@@ -79,13 +79,14 @@ sv: &sv
         a4: Nej. Det vanliga är att parterna delar upp lösöret i godo. Enligt den avtalstext som verktyget tar fram så anses ni ha delat upp tillgångar som inte tas upp i avtalet i godo. Finns det vissa tillgångar bland lösöret (de föremål ni har i hemmet) som har ett avsevärt högre värde än annat lösöre, exempelvis konst av kända konstnärer eller andra värdefulla antikviteter, kan dessa med fördel tas upp.
 
     assets:
-      header: Tillgångar och nuvarande ägare
+      header: Era tillgångar och nuvarande ägarskap
       info:
-        - Ange de tillgångar som ska tas upp i bodelningen samt vem av er som äger respektive tillgång och vad egendomen totalt är värd. Ange hur ägandet av egendomen ser ut idag, längre fram kommer ni få välja vem som ska få tillgången eller del av tillgången efter bodelningen.
-        - Med tillgångens värde avses vad tillgången är värd som helhet och inte endast vad en andel är värd.
+        - Här tar ni upp de tillgångar som ni ägde vid brytdagen, d.v.s. den dag då er ansökan om äktenskapsskillnad kom in till tingsrätten.
+        - Ange vem som äger tillgången. Om ni ägde tillgången tillsammans ska ni ta upp om hur stor andel ni ägde var, normalt 50/50 om ni inte särskilt har bestämt något annat. Ange också vad hela tillgången är värd. När tillgångar ska delas upp mellan er längre fram i formuläret kommer ni att få bestämma vem som ska få vad i bodelningen.
+        - Ni kan ange det värde som ni själva uppskattar era tillgångar till. Har ni svårt att komma överens om värdet, eller är ni helt enkelt osäkra på vad en tillgång är värd, kan det vara klokt att ta kontakt med en värderingsman.
       faq:
-        q1: Vad ska ni ta upp?
-        a1: Oftast väljer de flesta att endast ta upp tillgångar av ett större värde när de ska bodela, såsom till exempel bilar, båtar, bostadsrätter och fastigheter. Möbler och annat bohag brukar inte tas upp om de inte är särskilt värdefulla. Tänk dock på att detta är en fullständig och inte en partiell bodelning, sådant som inte tas upp kommer alltså anses vara uppdelat även om det inte uttryckligen skrivits in i bodelningen. Detta innebär att ni inte kan komma med ytterligare krav på varandra.
+        q1: Bostadsrättens värde har stigit med flera hundra tusen sedan brytdagen, vilket värde ska vi ta upp bostadsrätten till?
+        a1: Avgörande för vilka tillgångar som ska omfattas av bodelningen är de tillgångar som ni ägde per brytdagen. Efter brytdagen kan dock värdet av tillgångarna förändras. Har ni fonder som stigit i värde efter brytdagen, eller om er bostadsrätt eller fastighet har stigit eller sjunkit i värde, är det värdet per det datum då ni gör färdigt bodelningen som är avgörande. Har det gått lång tid sedan brytdagen kan det därför vara en god idé att se till att ha en värdering av bostadsrätten som inte är mer än sex månader gamla. Beträffande aktier m.m. kan ni ta gällande kurs. Tänk på att fonder eller aktier som förvärvats efter brytdagen inte ska omfattas av bodelningen.
       types:
         realestate: Fastighet
         apartment:  Bostadsrätt
@@ -109,13 +110,13 @@ sv: &sv
 
     any_debts:
       header: Finns det några skulder
-      info: I princip alla skulder utom sådana som är hänförliga till enskild egendom får tas upp i ett bodelningsavtal. Skulder hänförliga till egendom, som är enskild genom äktenskapsförord, får tas upp om parterna är överens om det.
-      label: Finns det några skulder att ta upp i detta bodelningsavtal?
+      info: Alla skulder utom sådana som är direkt hänförliga till enskild egendom tas normalt upp i ett bodelningsavtal. Skulderna ska tas upp med utgångspunkt från hur stor skulden var på brytdagen, d.v.s. den dag då er ansökan om äktenskapsskillnad kom in till tingsrätten.
+      label: Har ni några skulder att ta upp i denna bodelning?
 
     debts:
       header: Era skulder och nuvarande betalningsansvar
       info:
-        - Här ska ni specificera de skulder som ska tas upp i bodelningen samt vem av er som innehar betalningsansvaret för respektive skuld och vad skulden uppgår till. Ni ska ange hur betalningsansvaret för skulderna ser ut idag.
+        - Ange de skulder ni hade vid brytdagen nedan och hur betalningsansvaret är fördelat mellan er.
       faq:
         a1: 'Samtliga skulder utom sådana som är knutna till enskild egendom får tas upp i bodelningen. Båda får behålla så mycket av sina tillgångar som de har i skulder. Alltså dras skulderna av från värdet av tillgångarna innan tillgångarna läggs samman och delas lika. Skulle någon av makarna hamna på ett minusbelopp räknas det som noll i bodelningen. Ett minusbelopp överförs således aldrig mellan makarna.'
       types:
@@ -134,10 +135,10 @@ sv: &sv
     compensation:
       header: Bodelningslikvid
       info:
-        - Bodelningslikvid
-        - Om en av er ska behålla egendom till ett högre värde än den andra och man delar upp sina tillgångar enligt lagens 50/50-regler så har hen rätt till kompensation för detta. Denna kompensation kallas för bodelningslikvid.
-        - Reglerna om hur mycket den ena maken ska utbetala till den andra som kompensation i samband med bodelningen är dispositiva. Det betyder att ni är fria att avtala om en annan summa än den som gäller enligt lag.
-        - Om ni är överens kan ni välja att ingen bodelningslikvid ska betalas mellan er, trots att ni har fått olika mycket egendom. Eller bestämma ett valfritt belopp.
+        - Bodelningslikviden kallas den kompensation som den av makarna som får behålla ett mindre värde än den andra har rätt till.
+        - När ni bodelar exempelvis en fastighet som varit er gemensamma bostad så påverkar det bodelningslikviden. Den av er som ska “lösa ut” den andra gör det genom bodelninglikviden.
+        - I lagen finns regler för hur bodelningslikviden ska räknas ut om makarna inte kommer överens själva om en visst belopp.
+        - Lagen är dock dispositiv i detta avseende, vilket innebär att det inte är obligatoriskt att tillämpa bestämmelserna i denna del om ni är överens om att någon bodelningslikvid inte ska utgå eller vill komma överens om ett annat belopp som ni tycker blir bättre.
         - Vill ni att en bodelningslikvid ska betalas till någon av er?
       decide:
         'yes': Ja, vi vill bestämma summan själva.
@@ -150,8 +151,7 @@ sv: &sv
           Det är en viktig distinktion att det inte är fråga om ett köp i juridiskt bemärkelse. Vid köp blir den som har sålt skyldig att betala reavinstskatt. I samband med bodelning så behöver inte den som blir utlöst betala någon skatt. Bodelningslikviden ska därför bestämmas med utgångspunkt på vad era tillgångar, exempelvis fastigheter, skulle vara värda efter att reavinstskatten är betald.
 
     payment:
-      header: Ange summan här
-      info: När ni skrivit ner en summa så kommer siffrorna ovan att uppdateras.
+      header: Betalning till vem
       how_much: Vi har kommit överens om en bodelningslikvid om totalt
       currency: kronor.
       to_whom: är den som ska få bodelningslikviden.
@@ -168,18 +168,21 @@ sv: &sv
       header: Ränta
       before_payment_header: Ränta
       before_payment:
-        - Om det är lång tid mellan bodelningen och betalningen av bodelningslikviden ses det som ett lån ur juridisk synvinkel. Den som ska få bodelningslikviden har därför rätt att få ränta på beloppet.
+        - Från det att ni har undertecknat avtalet och bestämt bodelningslikviden har den av er som ska få bodelningslikviden enligt lag rätt till ränta, om ni inte kommer överens om annat.
+        - I avtalet bestämmer ni normalt att betalning ska ske senast vid visst datum. Om det datumet ligger långt fram i tiden kan det finnas goda skäl att bestämma att viss så kallad avkastningsränta ska utgå. Om ni inte avtalar annat så motsvarar den ränta riksbankens referensränta + 2 procentenheters årlig ränta på beloppet.
+        - Om betalning inte sker i tid har den som ska få betalt rätt till dröjsmålsränta. Denna räntesats är normalt betydligt högre, se nedan.
         - Ska det löpa ränta på beloppet fram till betalningen?
       before_payment_rate_label: Räntan ska vara
       before_payment_rate_percent: procent.
       before_payment_rate_faq:
         q1: 'Vilken ränta ska vi ange?'
-        a1: 'Tänk på att inte sätta en oskäligt hög ränta. Normalt sett brukar räntan vara omkring 2-5 procent.'
-      after_payment_header: Förseningsränta
+        a1: 'Ni är i princip fria att avtala om vilken ränta ni vill. Den avkastningsränta som räntelagen föreskriver när man inte är överens om annat är riksbankens referensränta + 2 procent på skuldbeloppet per år. För närvarande är Riksbankens referensränta mycket låg. För att slippa hålla koll på vilken räntesats som gäller för närvarande kan det vara klokt att avtala om en fast räntesats som motsvarar normal ränta, förslagsvis ca 2-4 procent.'
+      after_payment_header: Dröjsmålsränta
       after_payment:
-        - För att undvika att bodelningslikviden inte betalas i tid kan det vara bra att ha avtalat om en förseningsränta. Förseningsränta innebär att ränta utgår från den dag bodelningslikviden borde ha betalats enligt er överenskommelse. Det blir alltså mer att betala desto längre betalningen drar ut på tiden.
-        - Vill ni avtala om förseningsränta?
-      after_payment_rate_label: Räntan ska vara
+        - För att se till att betalningar sker i tid föreskriver räntelagen att dröjsmålsränta enligt lag ska utgå om det finns en bestämd sista dag för betalning och betalning då inte sker. Dröjsmålsräntan är normalt mycket högre än vanlig avkastningsränta eftersom det är tänkt att kompensera den som räknat med att få betalning vid viss tidpunkt men inte får det. Om ni inte avtalar om att dröjsmålsränta inte ska utgå så gäller dröjsmålsränta enligt lag från sista dag för betalning. Denna ränta motsvarar riksbankens referensränta plus 8 procentenheters årlig ränta på beloppet. Om ni vill att dröjsmålsränta ska utgå kan ni också bestämma en annan räntesats en den som föreslås i lagen.
+        - För att slippa hålla reda på Riksbankens referensränta kan det vara klokt att avtala om en dröjsmålsränta som man anser är skälig. Utgår man från nuvarande referensränta så är den räntesats som gäller enligt lag just nu 8 procent. Det kan vara klokt att bestämma en räntesats som ligger där i närheten.
+        - Vill ni själva bestämma den räntesats som ska gälla om den som ska betala bodelningslikvid inte betalar i tid?
+      after_payment_rate_label: Vi är överens om följande räntesats för dröjsmålsränta
       after_payment_rate_percent: procent.
       after_payment_rate_faq:
         q1: 'Vilken ränta ska vi ange?'
@@ -187,7 +190,7 @@ sv: &sv
 
     other:
       header: Övriga villkor
-      label: Här har ni möjlighet att lägga till egna villkor i bodelningsavtalet genom att skriva in dem i rutan nedan. Tänk dock på att alla typer av villkor inte är tillåtna enligt lag. Om ni vill lägga till egna villkor rekommenderar vi därför att ni beställer vår extratjänst för att skriva bodelningsavtalet manuellt åt er.
+      label: 'Nedan har ni möjlighet att fylla i övriga avtalsvillkor. Tänk på att verktyget innehåller flera standardskrivningar som era egna skrivningar kan komma i konflikt med. Villkor ni kommer överens om kan också vara ogiltiga enligt lag. Vill ni lägga till egna övriga villkor bör ni därför kontakta oss innan ni skriver under.'
 
     copies:
       header: Antal undertecknade exemplar
