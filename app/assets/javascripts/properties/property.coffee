@@ -47,6 +47,8 @@ $(document).ready ->
         .closest('.form-group')
         .find('.parsley-error')
         .empty()
+
+      resetFormSubmitButtonsCooldown()
   }
 
   numericalSettings = {
@@ -139,8 +141,8 @@ $(document).ready ->
     $form.parsley().reset()
     updateFormProgress()
     updateFormButtons()
-    updateFormSubmitButtonsCooldown = 2
-    updateFormSubmitButtons()
+    resetFormSubmitButtonsCooldown()
+    setTimeout updateFormSubmitButtons, 0
 
   showNextFieldsetAndSave = () ->
     $fieldsets = $('fieldset')
@@ -252,7 +254,7 @@ $(document).ready ->
     else
       $next.text($next.data('default-label'))
 
-  $form.on 'input change', 'input, select', () ->
+  resetFormSubmitButtonsCooldown = () ->
     updateFormSubmitButtonsCooldown = 2
 
   updateFormSubmitButtons = () ->
@@ -305,6 +307,9 @@ $(document).ready ->
     if validateCurrentFieldset()
       saveAndQuit()
     $(this).prop('disabled', false)
+
+
+  $form.on 'input change', 'input, select', resetFormSubmitButtonsCooldown
 
 
   $form.find('input[data-slide-target]').on 'change', ->
@@ -388,11 +393,6 @@ $(document).ready ->
       .filter (i, node) -> node.id.indexOf('template') is -1
       .inputmask(numericalSettings)
 
-    setTimeout( ->
-      $form.find('.asset a.nav-link.active').click()
-      $form.find('.debt a.nav-link.active').click()
-    , 0)
-
 
   addProperty = (group, type) ->
     id = String(Date.now())
@@ -404,21 +404,6 @@ $(document).ready ->
       .clone()
       .removeClass('d-none')
       .appendTo($container)
-
-    $prop
-      .find('a.nav-link')
-      .each (_, node) ->
-        new_id = "#asset_#{node.dataset.tab}_#{id}"
-        node.href = new_id
-        node.setAttribute('aria-controls', new_id)
-
-    $prop
-      .find('.tab-pane')
-      .each (_, node) ->
-        new_id = "asset_#{node.dataset.tab}_#{id}"
-        node.id = new_id
-
-    $prop.find('.plugin-tabs').tabs()
 
     $prop
       .find('input[type="range"]')
@@ -437,6 +422,7 @@ $(document).ready ->
       input.name = new_name
 
     $("#any-#{group}s-error").html('')
+    resetFormSubmitButtonsCooldown()
 
 
   resetProperties = (type) ->
@@ -444,11 +430,6 @@ $(document).ready ->
       $form.find(".#{type}s").empty()
       addProperty(type)
     , 400)
-
-
-  $form.on 'click', '.asset a[data-toggle="tab"], .debt a[data-toggle="tab"]', ->
-    $parent = $(this).closest('.asset, .debt')
-    $parent.find('.tab-content.d-none').removeClass('d-none')
 
 
   $form.on 'click', '.add-asset a', (e) ->
@@ -465,10 +446,12 @@ $(document).ready ->
   $form.on 'click', '.remove-asset', (e) ->
     e.preventDefault()
     $(this).closest('.asset').remove()
+    resetFormSubmitButtonsCooldown()
 
   $form.on 'click', '.remove-debt', (e) ->
     e.preventDefault()
     $(this).closest('.debt').remove()
+    resetFormSubmitButtonsCooldown()
 
 
   $form.on 'click', '.minimize-asset', (e) ->
