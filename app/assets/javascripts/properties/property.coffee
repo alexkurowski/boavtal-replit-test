@@ -2,6 +2,7 @@ $(document).ready ->
   $form = $('.property-form > form')
   return unless $form.length
 
+  updateFormSubmitButtonsCooldown = 2
 
   rangeSettings = {
     namespace: 'rangeUi',
@@ -69,14 +70,22 @@ $(document).ready ->
     isValid = $form.parsley().validate({ group: group })
 
     if group is 'assets'
-      return validateProperty('asset', isValid)
+      return validatePropertyFieldset('asset', isValid)
 
     if group is 'debts'
-      return validateProperty('debt', isValid)
+      return validatePropertyFieldset('debt', isValid)
 
     return isValid
 
-  validateProperty = (group, isValid) ->
+  validateProperties = () ->
+    noAssets    = not $("[id='property_data[assets_debts][any_assets]_true']").get(0).checked
+    noDebts     = not $("[id='property_data[assets_debts][any_debts]_true']").get(0).checked
+    assetsCount = $form.find(".assets .asset").length
+    debtsCount  = $form.find(".debts .debt").length
+
+    return (noAssets or assetsCount > 0) and (noDebts or debtsCount > 0)
+
+  validatePropertyFieldset = (group, isValid) ->
     $fieldset = $('fieldset.active')
 
     if $form.find(".#{group}s .#{group}").length is 0
@@ -111,6 +120,13 @@ $(document).ready ->
 
     return isValid
 
+  saveAndQuit = () ->
+    $form.removeAttr('data-remote')
+    $form.off('submit.Parsley')
+    $form.off('form:validate')
+    $form.find('input').inputmask('remove')
+    $form.get(0).submit()
+
   showInitialFieldset = () ->
     index = $form.find('#property_data_form_last_fieldset').val()
     fieldset = $('fieldset')[index]
@@ -123,7 +139,8 @@ $(document).ready ->
     $form.parsley().reset()
     updateFormProgress()
     updateFormButtons()
-    updateFormSubmitButton()
+    updateFormSubmitButtonsCooldown = 2
+    updateFormSubmitButtons()
 
   showNextFieldsetAndSave = () ->
     $fieldsets = $('fieldset')
@@ -235,20 +252,35 @@ $(document).ready ->
     else
       $next.text($next.data('default-label'))
 
-  updateFormSubmitButton = () ->
+  $form.on 'input change', 'input, select', () ->
+    updateFormSubmitButtonsCooldown = 2
+
+  updateFormSubmitButtons = () ->
+    updateFormSubmitButtonsCooldown -= 1
+    return if updateFormSubmitButtonsCooldown <= 0
+
     $fieldset = $('fieldset.active')
     group     = $fieldset.data('group')
     $next     = $('.form-next')
+    $save     = $('.form-save')
 
     isValid = $form.parsley().isValid({ group: group })
-
     if isValid
       $next.prop('disabled', false)
     else
       $next.prop('disabled', true)
+      $save.prop('disabled', true)
+
+    return if $save.length is 0 or not isValid
+
+    isFormValid = $form.parsley().isValid() && validateProperties()
+    if isFormValid
+      $save.prop('disabled', false)
+    else
+      $save.prop('disabled', true)
 
   showInitialFieldset()
-  setInterval(updateFormSubmitButton, 750)
+  setInterval(updateFormSubmitButtons, 750)
 
 
   $form.find('.form-next').on 'click', (e) ->
@@ -256,16 +288,23 @@ $(document).ready ->
     return if this.disabled
 
     $(this).prop('disabled', true)
-
     if validateCurrentFieldset()
       showNextFieldsetAndSave()
-
     $(this).prop('disabled', false)
 
   $form.find('.form-prev').on 'click', (e) ->
     e.preventDefault()
 
     showPrevFieldset()
+
+  $form.find('.form-save').on 'click', (e) ->
+    e.preventDefault()
+    return if this.disabled
+
+    $(this).prop('disabled', true)
+    if validateCurrentFieldset()
+      saveAndQuit()
+    $(this).prop('disabled', false)
 
 
   $form.find('input[data-slide-target]').on 'change', ->

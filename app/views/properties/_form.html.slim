@@ -131,6 +131,10 @@
 = hidden_field_tag :submit_type, 'hard'
 
 
+- if @property.validated?
+  button.form-save.float-right.btn.btn-success.ml-10
+    = t 'property.submit.save_and_quit'
+
 button.form-next.float-right.btn.btn-success.ml-10 data-default-label=t('property.submit.save_and_continue')
   = t 'property.submit.save_and_continue'
 

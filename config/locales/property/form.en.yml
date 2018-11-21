@@ -227,6 +227,7 @@ sv: &sv
       signup: Create account and continue
       save_and_continue: Spara och forsätt
       continue: Forsätt
+      save_and_quit: Spara och uppdatera PDF
       save_and_create: Spara och skapa avtal!
       previous: Tillbaka
 
