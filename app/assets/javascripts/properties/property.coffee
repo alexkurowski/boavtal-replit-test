@@ -366,7 +366,12 @@ $(document).ready ->
 
 
   $form.find('.case-number-field').inputmask('T-*{*}', {
-    clearMaskOnLostFocus: false
+    clearMaskOnLostFocus: false,
+    definitions: {
+      '*': {
+        validator: "[0-9A-Za-z\-]"
+      }
+    }
   })
 
 
