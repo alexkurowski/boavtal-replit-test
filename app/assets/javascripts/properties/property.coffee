@@ -126,7 +126,7 @@ $(document).ready ->
     $form.removeAttr('data-remote')
     $form.off('submit.Parsley')
     $form.off('form:validate')
-    $form.find('input').inputmask('remove')
+    $form.find('input').not('.ssn2').inputmask('remove')
     $form.get(0).submit()
 
   showInitialFieldset = () ->
