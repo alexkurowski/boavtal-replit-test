@@ -165,11 +165,7 @@ $(document).ready ->
       showFieldset(next)
       $form.trigger('submit.rails')
     else
-      $form.removeAttr('data-remote')
-      $form.off('submit.Parsley')
-      $form.off('form:validate')
-      $form.find('input').inputmask('remove')
-      $form.get(0).submit()
+      saveAndQuit()
 
   showPrevFieldset = () ->
     $fieldsets = $('fieldset')

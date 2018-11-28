@@ -61,6 +61,11 @@ class PropertiesController < ApplicationController
           end
         end
 
+        unless params.dig(:property, :data, :court, :case_number).blank?
+          params[:property][:data][:court][:case_number].insert(0, 'T') unless params[:property][:data][:court][:case_number][0] == 'T'
+          params[:property][:data][:court][:case_number].insert(1, '-') unless params[:property][:data][:court][:case_number][1] == '-'
+        end
+
         case params[:submit_type]
         when 'soft' then params[:property][:validated] = false
         when 'hard' then params[:property][:validated] = true
