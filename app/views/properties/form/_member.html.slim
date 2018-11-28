@@ -56,7 +56,6 @@ h4 = t "property.members.#{member}"
     .col-sm
       = @f.text_field "data[#{member}][ssn2]",
         type: 'tel',
-        pattern: '^\d+$',
         class: 'form-control ssn2',
         placeholder: '1234',
         data: { \

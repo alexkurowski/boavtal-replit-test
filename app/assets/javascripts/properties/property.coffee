@@ -126,7 +126,7 @@ $(document).ready ->
     $form.removeAttr('data-remote')
     $form.off('submit.Parsley')
     $form.off('form:validate')
-    $form.find('input').not('.ssn2').inputmask('remove')
+    $form.find('input').inputmask('remove')
     $form.get(0).submit()
 
   showInitialFieldset = () ->
@@ -360,7 +360,6 @@ $(document).ready ->
 
 
   $form.find('.ssn2').inputmask('9{4}', {
-    numericInput: true,
     jitMasking: true
   })
 

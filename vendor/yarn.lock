@@ -2,9 +2,10 @@
 # yarn lockfile v1
 
 
-inputmask@^3.3.11:
-  version "3.3.11"
-  resolved "https://registry.yarnpkg.com/inputmask/-/inputmask-3.3.11.tgz#1421c94ae28c3dcd1b4d26337b508bb34998e2d8"
+inputmask@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/inputmask/-/inputmask-4.0.3.tgz#04f91cba299cb8c80f4ee8ba66087fae86c33ebf"
+  integrity sha512-4VXomRC/ITucrBFN4L094GSF7VQU+9+8PTld2CuP0Z2WCIlcXbCqq6Pi2JsN6RVOr1uzaEFnTlN58TaECTF8lQ==
 
 jquery@>=1.6.0, jquery@>=1.8.0:
   version "3.3.1"

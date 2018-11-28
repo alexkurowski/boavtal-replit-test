@@ -2,7 +2,7 @@
   "name": "boavtal",
   "license": "MIT",
   "dependencies": {
-    "inputmask": "^3.3.11",
+    "inputmask": "^4.0.3",
     "parsleyjs": "^2.8.1",
     "pnotify": "3.2.1"
   }
