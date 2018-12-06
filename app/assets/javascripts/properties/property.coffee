@@ -257,19 +257,9 @@ $(document).ready ->
     updateFormSubmitButtonsCooldown -= 1
     return if updateFormSubmitButtonsCooldown <= 0
 
-    $fieldset = $('fieldset.active')
-    group     = $fieldset.data('group')
-    $next     = $('.form-next')
-    $save     = $('.form-save')
+    $save = $('.form-save')
 
-    isValid = $form.parsley().isValid({ group: group })
-    if isValid
-      $next.prop('disabled', false)
-    else
-      $next.prop('disabled', true)
-      $save.prop('disabled', true)
-
-    return if $save.length is 0 or not isValid
+    return if $save.length is 0
 
     isFormValid = $form.parsley().isValid() && validateProperties()
     if isFormValid
