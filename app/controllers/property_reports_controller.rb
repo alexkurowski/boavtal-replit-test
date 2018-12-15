@@ -9,7 +9,7 @@ class PropertyReportsController < ApplicationController
 
     redirect_if_incomplete and return
 
-    @court    = Court.find(@property.data['court']['court'])
+    @court = Court.find(@property.data['court']['court'])
     @assets = @property.data['assets']&.flat_map do |asset_type, assets| # mapping through {isk: {...}, funds: {...}, ...}
                 assets.values.map { |asset| PropertyAsset.new(data_hash: asset, asset_type: asset_type).extend(class_name_for asset_type) }
               end

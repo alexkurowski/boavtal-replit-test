@@ -12,7 +12,6 @@ $(window).on 'load', ->
       , 0)
 
     menubarClass = localStorage.getItem('menubarClass')
-    console.log menubarClass
     if menubarClass
       $('body')
         .removeClass("#{menubarOpen} #{menubarClose}")

@@ -25,7 +25,7 @@ html
       = render 'layouts/admin_header'
       = render 'layouts/admin_aside'
 
-    .page role='main' class="#{content_for :page_class}"
+    .page.mt-35 role='main' class="#{content_for :page_class}"
       .page-content.container-fluid class="#{content_for :page_content_class}"
         == render 'layouts/flash_messages'
         = yield
