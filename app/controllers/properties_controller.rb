@@ -9,7 +9,7 @@ class PropertiesController < ApplicationController
   end
 
   def new
-    @property = Property.create
+    @property = Property.create customer: current_customer
     redirect_to edit_property_path @property
   end
 
