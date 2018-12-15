@@ -8,7 +8,7 @@
             = link_to new_property_path, class: 'btn btn-primary'
               | Create new bodelningsavtal
       .panel-body
-        - if @properties.count.zero?
+        - if @properties.blank?
           .h5.text-center.my-10
             | No forms here yet
         - else
