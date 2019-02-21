@@ -84,8 +84,8 @@ class AssetAndDebtCalculator
   def transitory_net_worth_for(member, timeframe, additional_values = 0)
     net_worth = total_transitory_asset_amount_for(member, timeframe) - total_transitory_debt_amount_for(member, timeframe)
 
-    return net_worth + additional_values
-    # net_worth < 0 ? 0 : net_worth # Commented out to allow negatives specifically on this formula
+    total_net_worth = net_worth + additional_values
+    total_net_worth < 0 ? 0 : total_net_worth
   end
 
   def cumulative_net_worth(timeframe)
