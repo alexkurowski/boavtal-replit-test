@@ -30,7 +30,7 @@ h1 Bodelning
 
     - else # member gets no ASSETS after divorce
       h3.underline Tillgångar:
-      - if @bodelningslikvid.zero?
+      - if @bodelningslikvid <= 0
         p -
       - else
         == render 'info/property_reports/files/assets_debts/bodelningslikvid', member: member, with_sum: true, type: :asset
