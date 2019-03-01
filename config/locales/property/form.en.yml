@@ -1,5 +1,8 @@
 sv: &sv
   property:
+    progress:
+      header: Din process
+
     groups:
       general: Grundfrågor
       assets: Tillgångar

@@ -181,18 +181,65 @@ $(document).ready ->
 
   updateFormProgress = () ->
     $progress      = $('#form-progress')
-    $subprogress   = $('#form-subprogress')
-    $fieldset      = $('fieldset.active')
-    $group         = $fieldset.closest('.fieldset-group')
-    currentStep    = $group.data('title')
-    currentSubstep = $fieldset.data('title')
+    $container     = $progress.find('.steps')
+    currentStep    = $('fieldset.active').closest('.fieldset-group').data('title')
+    currentSubstep = $('fieldset.active').data('title')
+
+    getStep = (group) ->
+      {
+        title: group.dataset.title,
+        icon: group.dataset.icon,
+        substeps: getSubsteps(group)
+      }
+
+    getSubstep = (fieldset) ->
+      {
+        title: fieldset.dataset.title
+      }
+
+    getSubsteps = (group) ->
+      $(group).find('fieldset')
+        .map (_, fieldset) -> getSubstep(fieldset)
+        .filter (_, substep) -> substep.title
+
+    getCompletionClass = (step, currentStep, complete) ->
+      if step.title is currentStep
+        'current'
+      else if complete
+        'active'
+      else
+        ''
+
+    $container.empty()
 
     steps = $('.fieldset-group')
-      .map (_, v) -> v.dataset.title
-      .filter (_, v) -> v
-    substeps = $group.find('fieldset')
-      .map (_, v) -> v.dataset.title
-      .filter (_, v) -> v
+      .map (_, group) -> getStep(group)
+      .filter (_, step) -> step.title
+
+    complete = true
+    steps.each (_, step) ->
+      completionClass = getCompletionClass(step, currentStep, complete)
+
+      $container.append("
+        <div class='step #{completionClass}'>
+          <div class='icon'>
+            <img src='#{step.icon}'/>
+          </div>
+          <span>#{step.title}</span>
+        </div>")
+
+      step.substeps.each (_, substep) ->
+        console.log substep.title is currentSubstep
+        completionClass = getCompletionClass(substep, currentSubstep, complete)
+        complete = false if substep.title is currentSubstep
+
+        $container.append("
+          <div class='substep #{completionClass}'>
+            <span>#{substep.title}</span>
+          </div>")
+
+    return if true
+
 
     $progress.empty()
     $subprogress.empty()

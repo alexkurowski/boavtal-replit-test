@@ -3,7 +3,7 @@ module PropertiesHelper
     """
     <div class='panel panel-bordered #{opts.dig :panel, :class}'>
       <div class='panel-heading #{opts.dig :heading, :class}'>
-        <div class='h1 panel-title mt-40 mt-sm-80 mb-20 text-center font-weight-600'>
+        <div class='h3 panel-title'>
           #{ I18n.t "property.#{type}.header" }
         </div>
       </div>

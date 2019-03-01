@@ -1,5 +1,7 @@
-#form-progress.steps.steps-sm
-#form-subprogress.steps.steps-sm
+#form-progress
+  .h3 = t('property.progress.header')
+
+  .steps
 
 .fieldset-group
   fieldset [
@@ -22,6 +24,7 @@
 
 .fieldset-group [
   data-title=t('property.groups.general')
+  data-icon=image_path('customers/group1.svg')
 ]
   fieldset [
     data-title=t('property.subgroups.members')
@@ -57,6 +60,7 @@
 
 .fieldset-group [
   data-title=t('property.groups.assets')
+  data-icon=image_path('customers/group2.svg')
 ]
   fieldset [
     data-title=t('property.subgroups.any_assets')
@@ -78,6 +82,7 @@
 
 .fieldset-group [
   data-title=t('property.groups.debts')
+  data-icon=image_path('customers/group3.svg')
 ]
   fieldset [
     data-title=t('property.subgroups.any_debts')
@@ -99,6 +104,7 @@
 
 .fieldset-group [
   data-title=t('property.groups.compensation')
+  data-icon=image_path('customers/group4.svg')
 ]
   fieldset [
     data-group='compensation'
@@ -121,6 +127,7 @@
 
 .fieldset-group [
   data-title=t('property.groups.other')
+  data-icon=image_path('customers/group5.svg')
 ]
   fieldset [
     data-group='other'
@@ -135,12 +142,12 @@
 
 
 .form-actions.d-none
-  button.form-prev.btn.btn-default.btn-round.ml-10.mb-10
+  button.form-prev.btn.btn-default.ml-20.mb-10
     = t 'property.submit.previous'
 
-  button.form-next.btn.btn-success.btn-round.ml-10.mb-10 data-default-label=t('property.submit.save_and_continue')
+  button.form-next.btn.btn-success.ml-20.mb-10 data-default-label=t('property.submit.save_and_continue')
     = t 'property.submit.save_and_continue'
 
   - if @property.validated?
-    button.form-save.btn.btn-success.btn-round.ml-10.mb-10
+    button.form-save.btn.btn-success.ml-20.mb-10
       = t 'property.submit.save_and_quit'
