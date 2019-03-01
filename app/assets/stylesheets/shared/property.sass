@@ -18,7 +18,6 @@ body.customer_properties
       pointer-events: all !important
 
   .property-form
-    max-width: 720px
     margin: 0 auto 80px
 
     #form-progress,
@@ -38,6 +37,15 @@ body.customer_properties
 
       @media (max-width: 667px)
         margin: 0
+
+    #form-progress
+      margin-top: 20px
+
+    #form-subprogress
+      margin-bottom: -60px
+
+      @media (max-width: 479px)
+        margin-bottom: -20px
 
     fieldset
       display: none
@@ -151,3 +159,35 @@ body.customer_properties
     .faq .answer
       p:last-of-type
         margin-bottom: 0
+
+    .form-actions
+      display: flex
+      flex-direction: row
+      justify-content: center
+      position: relative
+      text-align: center
+      margin: 32px -100px 0
+
+      button
+        position: relative
+        padding: .3rem 3rem
+        font-size: 22px
+
+      .arrow-next
+        position: absolute
+        top: -20px
+        right: 50%
+        margin-right: 100px
+
+      @media (max-width: 767px)
+        flex-direction: column-reverse
+        margin: 32px 0 0
+
+        button
+          width: 100%
+          margin-left: 0 !important
+          font-size: 20px
+
+      @media (max-width: 567px)
+        button
+          font-size: 16px

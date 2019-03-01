@@ -200,11 +200,6 @@ $(document).ready ->
     stepBackgroundClass = (active, complete) ->
       if active
         'current active'
-      else
-        if complete
-          'bg-white'
-        else
-          'bg-white'
 
     if currentStep
       complete = true
@@ -234,16 +229,34 @@ $(document).ready ->
           </div>
         ")
 
+    progressShown = $progress.children().length or $subprogress.children().length
+    if progressShown
+      $progress.removeClass('d-none')
+      $subprogress.removeClass('d-none')
+    else
+      $progress.addClass('d-none')
+      $subprogress.addClass('d-none')
+
+  showFormButtons = () ->
+    buttonContainer = $form.find('.form-actions')
+    buttonContainer.removeClass('d-none')
+
   updateFormButtons = () ->
     $fieldset = $('fieldset.active')
     index     = $('fieldset').index($fieldset)
     $prev     = $('.form-prev')
     $next     = $('.form-next')
+    $arrow    = $('.arrow-next')
 
-    if index is 0
+    if index is 0 or $fieldset.data('prev-btn-hide')
       $prev.hide()
     else
       $prev.show()
+
+    if index is 0
+      $arrow.show()
+    else
+      $arrow.hide()
 
     if $fieldset.data('next-btn-label')
       $next.text($fieldset.data('next-btn-label'))
@@ -268,6 +281,7 @@ $(document).ready ->
       $save.prop('disabled', true)
 
   showInitialFieldset()
+  showFormButtons()
   setInterval(updateFormSubmitButtons, 750)
 
 
@@ -399,9 +413,7 @@ $(document).ready ->
       .find('input[type="range"]')
       .asRange(rangeSettings)
 
-    $prop.find('input[data-plugin="datepicker"]').datepicker({
-      container: '.page'
-    })
+    $prop.find('input[data-plugin="datepicker"]').datepicker()
 
     $prop.find('.numerical').inputmask(numericalSettings)
 

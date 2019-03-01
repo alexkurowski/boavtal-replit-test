@@ -3,19 +3,22 @@
 
 .fieldset-group
   fieldset [
-    data-group='warning'
-  ]
-    .row
-      .col
-        == render 'properties/form/warning'
-
-  fieldset [
     data-group='instructions'
-    data-next-btn-label=t('property.submit.continue')
+    data-next-btn-label=t('property.submit.start_now')
+    data-prev-btn-hide='true'
   ]
     .row
       .col
         == render 'properties/form/instructions'
+
+  fieldset [
+    data-group='warning'
+    data-next-btn-label=t('property.submit.i_agree')
+    data-prev-btn-hide='true'
+  ]
+    .row
+      .col
+        == render 'properties/form/warning'
 
 .fieldset-group [
   data-title=t('property.groups.general')
@@ -131,12 +134,13 @@
 = hidden_field_tag :submit_type, 'hard'
 
 
-- if @property.validated?
-  button.form-save.float-right.btn.btn-success.ml-10
-    = t 'property.submit.save_and_quit'
+.form-actions.d-none
+  button.form-prev.btn.btn-default.btn-round.ml-10.mb-10
+    = t 'property.submit.previous'
 
-button.form-next.float-right.btn.btn-success.ml-10 data-default-label=t('property.submit.save_and_continue')
-  = t 'property.submit.save_and_continue'
+  button.form-next.btn.btn-success.btn-round.ml-10.mb-10 data-default-label=t('property.submit.save_and_continue')
+    = t 'property.submit.save_and_continue'
 
-button.form-prev.float-right.btn.btn-default.ml-10
-  = t 'property.submit.previous'
+  - if @property.validated?
+    button.form-save.btn.btn-success.btn-round.ml-10.mb-10
+      = t 'property.submit.save_and_quit'

@@ -1,4 +1,7 @@
 .container
+  .text-center.mt-50.mb-4
+    = image_tag 'customers/logo.svg'
+
   .property-form
     == form_for @property, remote: true, authenticity_token: true do |f|
       - @f = f
