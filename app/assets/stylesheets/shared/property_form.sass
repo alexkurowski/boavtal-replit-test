@@ -154,7 +154,6 @@
 
   .h3
     margin-top: 0
-    margin-bottom: 3rem
     font-size: 20px
     font-weight: 300
 
@@ -185,55 +184,95 @@
     &.active
       display: block
 
-  .assets,
-  .debts
-    margin-left: -20px
-    margin-right: -20px
+  .assets-panel,
+  .debts-panel
+    padding: 0
+    border: none
+    background: white
 
   .asset,
   .debt
     position: relative
     border: 1px solid #e4eaec
-    border-radius: 5px
     padding: 18px 19px 16px
-    margin-top: 40px
+    background: #F5F6F7
+    transition: background 0.3s
 
     &:first-of-type
       margin-top: 20px
-
-    &:before
-      content: ''
-      display: block
-      position: absolute
-      top: -1px
-      left: -1px
-      right: -1px
-      height: 5px
-      background: #18b3a3
       border-top-left-radius: 5px
       border-top-right-radius: 5px
+
+    &:last-of-type
+      border-bottom-left-radius: 5px
+      border-bottom-right-radius: 5px
+
+    & + .asset,
+    & + .debt
+      border-top: none
+
+    .h3
+      margin-top: 3px
+      margin-bottom: 2px
+      font-weight: 400
+      text-transform: uppercase
+
+    h4
+      color: #2D333D
+      margin-top: 6px
+      margin-bottom: 4px
+      line-height: 1
+
+    hr
+      border-color: #BDC0C9
+
+    .rangeUi-bar
+      position: relative
+      top: 0.5px
+      height: 3px
+      background-color: #BDC0C9
+      border-radius: 2px
+
+    .rangeUi-selected
+      border-radius: 2px
+
+    .rangeUi-pointer
+      top: -7px
+      width: 18px
+      height: 18px
+      background-color: #50A1FD
+      border-color: #50A1FD
+
+    p
+      font-size: 16px
 
     .remove-asset,
     .remove-debt,
     .maximize-asset,
-    .maximize-debt
+    .maximize-debt,
+    .minimize-asset,
+    .minimize-debt
       position: absolute
       display: flex
       justify-content: center
       align-items: center
       top: 20px
       right: 20px
-      width: 40px
-      height: 40px
+      width: 29px
+      height: 27px
       margin-left: auto
+
+    .remove-asset,
+    .remove-debt
+      right: 80px
 
     .maximize-asset,
     .maximize-debt
       display: none
-      top: 20px
-      right: 80px
 
     &.minimized
+      background: white
+
       .asset-fields,
       .debt-fields
         display: none
@@ -248,9 +287,16 @@
 
   .add-asset,
   .add-debt
+    padding: 30px 20px
+    background: #E3E7F4
+    border: 1px solid #50A1FD
+    border-radius: 5px
+
     select
       position: relative
       top: 1px
+      border-color: #BDC0C9
+      border-radius: 5px
 
     .btn
       padding: 0.35rem 1rem

@@ -1,15 +1,18 @@
 .debt
-  .h3.mt-10.mb-5
+  .h3
     = t("property.debts.types.#{type}")
 
-  a.maximize-debt.btn.btn-white href='#'
-    i.fa.fa-expand
-
   a.remove-debt.btn.btn-danger.mb-20 href='#'
-    i.fa.fa-trash
+    = image_tag 'customers/trash.svg'
+
+  a.maximize-debt.btn.btn-white href='#'
+    i.fa.fa-chevron-down
+
+  a.minimize-debt.btn.btn-white href='#'
+    i.fa.fa-chevron-up
 
   .debt-fields.p-5
-    .mt-40.mb-20
+    .my-20
       .form-group.m-0
         .row
           .col-md
@@ -36,14 +39,18 @@
 
         .parsley-error
 
+      hr.mt-40.mb-20
+
       h4.mt-60 = t 'property.debts.shared.details'
 
       = render partial: 'properties/form/assets_and_debts/fields',
         locals: { group: 'debts', id: id, type: type }
 
+      hr
+
       h4.mt-40 = t 'property.debts.shared.after'
 
-      .after-info
+      .after-info.mt-20
         p = t 'property.debts.shared.after_info'
 
       .form-group.m-0
@@ -72,6 +79,6 @@
 
         .parsley-error
 
-  .text-right
+  / .text-right
     a.minimize-debt.btn.btn-primary.mt-30 href='#'
       = t('property.debts.minimize')
