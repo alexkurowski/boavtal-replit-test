@@ -184,8 +184,7 @@
     &.active
       display: block
 
-  .assets-panel,
-  .debts-panel
+  .panel-body.panel-flat
     padding: 0
     border: none
     background: white
@@ -265,6 +264,10 @@
     .remove-asset,
     .remove-debt
       right: 80px
+
+      img
+        width: 15px
+        height: 18px
 
     .maximize-asset,
     .maximize-debt
@@ -352,7 +355,7 @@
     input:checked + label::after
       content: ""
       top: 0
-      left: 5px
+      left: 4px
       border: none
       color: #13C26D
       font-family: "Web Icons"
