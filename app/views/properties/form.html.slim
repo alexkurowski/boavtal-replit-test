@@ -3,6 +3,10 @@
     = image_tag 'customers/logo.svg'
 
   .property-form
+    .form-progress
+      .h3 = t('property.progress.header')
+      .steps
+
     == form_for @property, remote: true, authenticity_token: true do |f|
       - @f = f
       == render "form"

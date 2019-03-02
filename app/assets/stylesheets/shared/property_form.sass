@@ -1,108 +1,162 @@
 .property-form
+  position: relative
+  display: flex
+  flex-direction: row
   margin: 0 auto 80px
+  border: 1px solid #BDC0C9
+  border-radius: 8px
+
+
+  .form-progress
+    flex: 0.4
+    min-height: 100%
+    padding: 30px
+    padding-right: 0
+    color: #2D333D
+    background: #DBECFF
+    border-right: 1px solid #BDC0C9
+    border-top-left-radius: 7px
+    border-bottom-left-radius: 7px
+
+    @media (max-width: 767px)
+      display: none
+
+    .steps
+      margin-top: -10px
+
+    .step
+      position: relative
+      display: flex
+      align-items: center
+      margin-top: 30px
+
+      .icon
+        display: inline-flex
+        align-items: center
+        justify-content: center
+        width: 51px
+        height: 51px
+        background: white
+        border: 1px solid #8B8B8B
+        border-radius: 50%
+        user-select: none
+
+      img
+        margin-left: 1px
+
+      span
+        margin-left: .5rem
+        font-size: 18px
+
+      &.done,
+      &.current
+        span
+          font-weight: bold
+
+      &:before
+        content: ''
+        display: inline-block
+        position: absolute
+        width: 1px
+        left: 25.5px
+        margin-left: -0.5px
+        top: -30px
+        bottom: 100%
+        background: #8B8B8B
+        z-index: 1
+
+      &.done,
+      &.current
+        &:before
+          width: 3px
+          margin-left: -1.5px
+          background: #50A1FD
+
+      &.current
+        &:after
+          content: ''
+          display: inline-block
+          position: absolute
+          width: 3px
+          left: 25.5px
+          margin-left: -1.5px
+          top: 100%
+          bottom: -5px
+          background: #50A1FD
+          z-index: 1
+
+      &:first-of-type
+        &:before
+          content: none
+
+      &:last-of-type
+        &:after
+          content: none
+
+    .substep
+      position: relative
+      padding-left: 32.5px
+      margin-left: 25.5px
+      padding-right: 20px
+
+      &.done
+        span
+          font-weight: bold
+
+      &:before
+        content: ''
+        display: inline-block
+        position: absolute
+        width: 1px
+        left: 0
+        margin-left: -0.5px
+        top: 0
+        bottom: 0
+        background: #8B8B8B
+        z-index: 1
+
+      &.done
+        &:before
+          width: 3px
+          margin-left: -1.5px
+          bottom: -5px
+          background: #50A1FD
+
+      &.done
+        &:after
+          content: ""
+          position: absolute
+          top: 0
+          left: 14px
+          font-family: "Web Icons"
+          color: #13C26D
+
+      &.current
+        background: rgba(0, 0, 0, 0.05)
+
+        &:before
+          top: 5px
+
+        &:after
+          content: ''
+          position: absolute
+          top: 4px
+          left: -5.5px
+          width: 11px
+          height: 11px
+          background: #50A1FD
+          border-radius: 50%
+          z-index: 2
+
 
   form
-    position: relative
-    padding-left: 33%
-    border: 1px solid #BDC0C9
-    border-radius: 8px
+    flex: 1
 
   .h3
     margin-top: 0
     margin-bottom: 3rem
     font-size: 20px
     font-weight: 300
-
-  #form-progress
-    position: absolute
-    width: 33%
-    top: 0
-    left: 0
-    bottom: 0
-    padding: 30px
-    background: #DBECFF
-    border-right: 1px solid #BDC0C9
-
-  .steps
-    margin-top: -10px
-
-  .step
-    display: flex
-    align-items: center
-    margin-top: 30px
-
-    .icon
-      display: inline-flex
-      align-items: center
-      justify-content: center
-      width: 51px
-      height: 51px
-      background: white
-      border: 1px solid #8B8B8B
-      border-radius: 50%
-
-    img
-      margin-left: 1px
-
-    span
-      margin-left: .5rem
-      font-size: 18px
-
-    &.active,
-    &.current
-      span
-        font-weight: bold
-
-
-  .substep
-    position: relative
-    padding-left: 58px
-
-    &.active,
-    &.current
-      span
-        font-weight: bold
-
-    &:before
-      content: ''
-      display: inline-block
-      position: absolute
-      width: 1px
-      left: 25.5px
-      top: 0
-      bottom: 0
-      background: #8B8B8B
-
-    &.active
-      &:before
-        width: 3px
-        left: 24.5px
-        bottom: -5px
-        background: #50A1FD
-
-    &.current
-      &:before
-        top: 5px
-
-    &.active
-      &:after
-        content: ""
-        position: absolute
-        top: 0
-        left: 42px
-        font-family: "Web Icons"
-        color: #13C26D
-
-    &.current
-      &:after
-        content: ''
-        position: absolute
-        top: 4px
-        left: 20px
-        width: 11px
-        height: 11px
-        background: #50A1FD
-        border-radius: 50%
 
   .panel
     padding: 30px
@@ -112,6 +166,18 @@
     background: #F5F6F7
     border: 1px solid #DFE0E5
     border-radius: 6px
+
+  h4
+    color: #50A1FD
+    font-size: 21px
+
+    &:first-child
+      margin-top: 0
+
+  label
+    color: #2D333D
+    font-weight: 400
+    font-size: 16px
 
   fieldset
     display: none
@@ -180,10 +246,18 @@
       .minimize-debt
         display: none
 
-  .add-asset select,
-  .add-debt select
-    position: relative
-    top: 1px
+  .add-asset,
+  .add-debt
+    select
+      position: relative
+      top: 1px
+
+    .btn
+      padding: 0.35rem 1rem
+      border-radius: 8px
+      font-size: 16px
+      font-weight: 400
+      text-transform: uppercase
 
   .payment-how-much
     display: inline-block
@@ -237,10 +311,16 @@
     button
       position: relative
       padding: 0.5rem 1.5rem
-      font-size: 16px
       border-radius: 8px
+      color: white
+      font-size: 16px
+      font-weight: 400
       text-transform: uppercase
       box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.5)
+
+      &.btn-default
+        background: #8B8B8B
+        border-color: #8B8B8B
 
       &.btn-success
         background: #13C26D

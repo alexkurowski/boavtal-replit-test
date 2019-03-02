@@ -180,10 +180,13 @@ $(document).ready ->
       showFieldset(prev)
 
   updateFormProgress = () ->
-    $progress      = $('#form-progress')
-    $container     = $progress.find('.steps')
-    currentStep    = $('fieldset.active').closest('.fieldset-group').data('title')
-    currentSubstep = $('fieldset.active').data('title')
+    $progress        = $('.form-progress')
+    $container       = $progress.find('.steps')
+    $currentFieldset = $('fieldset.active')
+    $currentGroup    = $currentFieldset.closest('.fieldset-group')
+    currentStep      = $currentGroup.data('title')
+    currentSubstep   = $currentFieldset.data('title')
+
 
     getStep = (group) ->
       {
@@ -202,21 +205,29 @@ $(document).ready ->
         .map (_, fieldset) -> getSubstep(fieldset)
         .filter (_, substep) -> substep.title
 
-    getCompletionClass = (step, currentStep, complete) ->
-      if step.title is currentStep
-        'current'
-      else if complete
-        'active'
-      else
-        ''
-
-    $container.empty()
-
     steps = $('.fieldset-group')
       .map (_, group) -> getStep(group)
       .filter (_, step) -> step.title
 
+
+    getCompletionClass = (step, currentStep, complete) ->
+      if step.title is currentStep
+        'current'
+      else if complete
+        'done'
+      else
+        ''
+
+    if $currentGroup.data('hide-progress')
+      return $progress.addClass('d-none')
+    else
+      $progress.removeClass('d-none')
+
+    $container.empty()
+
     complete = true
+    complete = false if $currentGroup.data('initial-progress') is false
+
     steps.each (_, step) ->
       completionClass = getCompletionClass(step, currentStep, complete)
 
@@ -229,7 +240,6 @@ $(document).ready ->
         </div>")
 
       step.substeps.each (_, substep) ->
-        console.log substep.title is currentSubstep
         completionClass = getCompletionClass(substep, currentSubstep, complete)
         complete = false if substep.title is currentSubstep
 
@@ -237,52 +247,6 @@ $(document).ready ->
           <div class='substep #{completionClass}'>
             <span>#{substep.title}</span>
           </div>")
-
-    return if true
-
-
-    $progress.empty()
-    $subprogress.empty()
-
-    stepBackgroundClass = (active, complete) ->
-      if active
-        'current active'
-
-    if currentStep
-      complete = true
-      steps.each (_, step) ->
-        active = step is currentStep
-        complete = false if active
-
-        $progress.append("
-          <div class='step #{ stepBackgroundClass(active, complete) }'>
-            <span class='step-title'>
-              #{ step }
-            </span>
-          </div>
-        ")
-
-    if currentStep and currentSubstep and substeps.length > 1 and $fieldset.get(0).dataset.hideSubprogress isnt 'true'
-      complete = true
-      substeps.each (_, substep) ->
-        active = substep is currentSubstep
-        complete = false if active
-
-        $subprogress.append("
-          <div class='step #{ stepBackgroundClass(active, complete) }'>
-            <span>
-              #{ substep }
-            </span>
-          </div>
-        ")
-
-    progressShown = $progress.children().length or $subprogress.children().length
-    if progressShown
-      $progress.removeClass('d-none')
-      $subprogress.removeClass('d-none')
-    else
-      $progress.addClass('d-none')
-      $subprogress.addClass('d-none')
 
   showFormButtons = () ->
     buttonContainer = $form.find('.form-actions')
