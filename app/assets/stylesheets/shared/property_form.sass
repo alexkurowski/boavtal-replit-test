@@ -193,9 +193,9 @@
   .debt
     position: relative
     border: 1px solid #BDC0C9
-    padding: 18px 19px 16px
+    padding: 18px 10px
     background: #F5F6F7
-    transition: background 0.3s
+    transition: background 0.3s, border 0.1s
 
     &:first-of-type
       margin-top: 20px
@@ -206,15 +206,24 @@
       border-bottom-left-radius: 5px
       border-bottom-right-radius: 5px
 
+    & + .asset,
+    & + .debt
+      border-top-width: 1px
+
     & + .asset.minimized,
     & + .debt.minimized
-      border-top: none
+      border-top-width: 0px
 
     .h3
+      padding-left: 10px
       margin-top: 3px
       margin-bottom: 2px
       font-weight: 400
       text-transform: uppercase
+
+    .asset-fields,
+    .debt-fields
+      padding: 10px 15px
 
     h4
       color: #2D333D
