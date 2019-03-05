@@ -26,7 +26,7 @@
                 entangled: false,
                 maxvalue: 100 }
 
-          .col-md
+          .col-md.mt-20.mt-md-0
             label.mb-40 = t 'property.assets.shared.own', name: 'Kvinnan'
             = @f.range_field "data[assets][#{type}][#{id}][wife_own]",
               value: @property.fetch(:assets, type, id, :wife_own, 0),
@@ -67,7 +67,7 @@
                 entangled: true,
                 maxvalue: 100 }
 
-          .col-md
+          .col-md.mt-20.mt-md-0
             label.mb-40 Kvinnan
             = @f.range_field "data[assets][#{type}][#{id}][wife_after]",
               value: @property.fetch(:assets, type, id, :wife_after, 0),

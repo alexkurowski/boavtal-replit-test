@@ -467,34 +467,37 @@ $(document).ready ->
     resetFormSubmitButtonsCooldown()
 
 
+  slideUpTime = 600
+  slideDownTime = 600
+
   $form.on 'click', '.minimize-asset', (e) ->
     e.preventDefault()
     $asset = $(this).closest('.asset')
-    $asset.find('.asset-fields').slideUp(300)
+    $asset.find('.asset-fields').slideUp(slideUpTime)
     setTimeout ->
       $asset.addClass('minimized')
-    , 300
+    , slideUpTime
 
   $form.on 'click', '.minimize-debt', (e) ->
     e.preventDefault()
     $debt = $(this).closest('.debt')
-    $debt.find('.debt-fields').slideUp(300)
+    $debt.find('.debt-fields').slideUp(slideUpTime)
     setTimeout ->
       $debt.addClass('minimized')
-    , 300
+    , slideUpTime
 
 
   $form.on 'click', '.maximize-asset', (e) ->
     e.preventDefault()
     $asset = $(this).closest('.asset')
     $asset.removeClass('minimized')
-    $asset.find('.asset-fields').slideDown(300)
+    $asset.find('.asset-fields').slideDown(slideDownTime)
 
   $form.on 'click', '.maximize-debt', (e) ->
     e.preventDefault()
     $debt = $(this).closest('.debt')
     $debt.removeClass('minimized')
-    $debt.find('.debt-fields').slideDown(300)
+    $debt.find('.debt-fields').slideDown(slideDownTime)
 
 
   $form.on 'change', 'input[name="property[data[assets_debts][any_assets]]"]', () ->
