@@ -23,6 +23,6 @@
       label.label = t 'property.assets.add.label'
     = select_tag 'add-asset-type',
       options_for_select(types.map { |type, name| [name, type] }),
-      class: 'form-control d-inline mr-20'
+      class: 'form-control'
     a.btn.btn-primary href='#'
       = t 'property.assets.add.button'

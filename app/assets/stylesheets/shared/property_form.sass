@@ -305,8 +305,11 @@
     border-radius: 5px
 
     select
+      display: inline
       position: relative
       top: 1px
+      width: initial
+      margin-right: 20px
       border-color: #BDC0C9
       border-radius: 5px
 
@@ -316,6 +319,16 @@
       font-size: 16px
       font-weight: 400
       text-transform: uppercase
+
+    @media (max-width: 767px)
+      select
+        display: block
+        width: 100%
+        margin-right: 0
+        margin-bottom: 16px
+
+      .btn
+        display: block
 
   .payment-how-much
     display: inline-block
@@ -423,7 +436,7 @@
 
     @media (max-width: 767px)
       flex-direction: column-reverse
-      margin: 32px 0 0
+      margin: 32px 30px 0
 
       button
         width: 100%
