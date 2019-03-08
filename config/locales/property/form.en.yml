@@ -228,15 +228,16 @@ sv: &sv
       soft: Spara och fortsätt senare
       hard: Spara och skapa dokument
       signup: Create account and continue
-      save_and_continue: Spara och forsätt
+      save_and_continue: Spara och fortsätt
       start_now: Börja nu
       i_agree: Jag godkänner
-      continue: Forsätt
+      continue: Fortsätt
       save_and_quit: Spara och uppdatera PDF
       save_and_create: Spara och skapa avtal!
       previous: Tillbaka
 
     common:
+      are_you_sure: Är du säker?
       'yes': Ja
       'no': Nej
 

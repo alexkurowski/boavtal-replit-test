@@ -458,13 +458,15 @@ $(document).ready ->
 
   $form.on 'click', '.remove-asset', (e) ->
     e.preventDefault()
-    $(this).closest('.asset').remove()
-    resetFormSubmitButtonsCooldown()
+    if confirm(this.dataset.confirmText)
+      $(this).closest('.asset').remove()
+      resetFormSubmitButtonsCooldown()
 
   $form.on 'click', '.remove-debt', (e) ->
     e.preventDefault()
-    $(this).closest('.debt').remove()
-    resetFormSubmitButtonsCooldown()
+    if confirm(this.dataset.confirmText)
+      $(this).closest('.debt').remove()
+      resetFormSubmitButtonsCooldown()
 
 
   slideUpTime = 600

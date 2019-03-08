@@ -2,7 +2,7 @@
   .h3
     = t("property.assets.types.#{type}")
 
-  a.remove-asset.btn.btn-danger href='#'
+  a.remove-asset.btn.btn-danger href='#' data-confirm-text=t("property.common.are_you_sure")
     = image_tag 'customers/trash.svg'
 
   a.maximize-asset.btn.btn-white href='#'
