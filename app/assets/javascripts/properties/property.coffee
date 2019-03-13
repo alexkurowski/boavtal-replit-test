@@ -181,7 +181,9 @@ $(document).ready ->
 
   updateFormProgress = () ->
     $progress        = $('.form-progress')
+    $subprogress     = $('.form-subprogress')
     $container       = $progress.find('.steps')
+    $subcontainer    = $subprogress.find('.steps')
     $currentFieldset = $('fieldset.active')
     $currentGroup    = $currentFieldset.closest('.fieldset-group')
     currentStep      = $currentGroup.data('title')
@@ -247,6 +249,20 @@ $(document).ready ->
           <div class='substep #{completionClass}'>
             <span>#{substep.title}</span>
           </div>")
+
+    # Old style subprogress used in office only
+    if $subprogress.length
+      $subcontainer.empty()
+
+      step = steps.filter((_, step) -> step.title is currentStep)[0]
+      if step and step.substeps
+        step.substeps.each (_, substep) ->
+          completionClass = getCompletionClass(substep, currentSubstep, false)
+
+          $subcontainer.append("
+            <div class='step #{completionClass}'>
+              <span>#{substep.title}</span>
+            </div>")
 
   showFormButtons = () ->
     buttonContainer = $form.find('.form-actions')
