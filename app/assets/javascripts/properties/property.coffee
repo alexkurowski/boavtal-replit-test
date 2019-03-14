@@ -440,7 +440,10 @@ $(document).ready ->
       .find('input[type="range"]')
       .asRange(rangeSettings)
 
-    $prop.find('input[data-plugin="datepicker"]').datepicker()
+    $prop.find('input[data-plugin="datepicker"]').each (i, input) ->
+      $(input).datepicker({
+        language: input.dataset.language
+      })
 
     $prop.find('.numerical').inputmask(numericalSettings)
 
