@@ -31,9 +31,13 @@
                 - if property.validated?
                   td
                     = link_to 'Download PDF', property_reports_path(property), class: 'btn btn-success ml-10', target: '_blank'
+                  td
+                    = link_to 'Download DOCX', property_reports_docx_path(property), class: 'btn btn-success ml-10', download: "property_#{property.id}.docx"
                 - else
                   td
                     = link_to 'Download PDF', '#', class: 'btn btn-success disabled ml-10 tool-tip', data: {:"original-title" => "Please complete the form to generate the files", :toggle => "tooltip", :placement => 'bottom'}
+                  td
+                    = link_to 'Download DOCX', '#', class: 'btn btn-success disabled ml-10 tool-tip', data: {:"original-title" => "Please complete the form to generate the files", :toggle => "tooltip", :placement => 'bottom'}
 
 
 css:

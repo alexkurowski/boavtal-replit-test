@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   resources :properties, except: [:new] do
     resources :property_reports, only: [:index], as: 'reports'
+    get 'docx' => 'property_reports#docx', as: :reports_docx
   end
 
   resource :property, only: [:edit, :update, :destroy], as: :customers_property
