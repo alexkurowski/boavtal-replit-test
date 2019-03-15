@@ -82,11 +82,7 @@ class PropertyReportsController < ApplicationController
       layout:     'property_pdf.html.slim',
       template:   'info/property_reports/index'
 
-    file = Tempfile.new
-    file.write html
-    docx = `pandoc #{file.path} --from=html --to=docx`
-    file.close
-    file.unlink
+    docx = Htmltoword::Document.create html
 
     render plain: docx
   end

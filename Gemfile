@@ -25,6 +25,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'wicked_pdf'
 gem 'tinymce-rails'
 gem 'wkhtmltopdf-binary'
+gem 'htmltoword'
 
 gem 'slim-rails'
 

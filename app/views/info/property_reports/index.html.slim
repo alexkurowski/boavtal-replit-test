@@ -2,29 +2,29 @@
 .alwaysbreak == render 'info/property_reports/files/1_init'
 
 / 2. Tillgångar och skulder - Assets and debts
-.alwaysbreak == render 'info/property_reports/files/2_assets_and_debts'
+.alwaysbreak.-page-break == render 'info/property_reports/files/2_assets_and_debts'
 
 / 3. Andelsberäkning - Calculating net worth
 - if (any_debts? || any_assets?) && @property.compensate_by_law?
-  .alwaysbreak == render 'info/property_reports/files/3_net_worth'
+  .alwaysbreak.-page-break == render 'info/property_reports/files/3_net_worth'
 
 / 4. Bodelning - Who gets what
-.alwaysbreak == render 'info/property_reports/files/4_division'
+.alwaysbreak.-page-break == render 'info/property_reports/files/4_division'
 
 / 5. Bodelningslikvid - Anyone paying the other anything
-.alwaysbreak == render 'info/property_reports/files/5_bodelning'
+.alwaysbreak.-page-break == render 'info/property_reports/files/5_bodelning'
 
 / 6. Övrigt - Misc
 - unless @property.data['other'].empty?
-  .alwaysbreak == render 'info/property_reports/files/6_other'
+  .alwaysbreak.-page-break == render 'info/property_reports/files/6_other'
 
 / 7. Underskrift - Signatures
-.alwaysbreak == render 'info/property_reports/files/7_signatures'
+.alwaysbreak.-page-break == render 'info/property_reports/files/7_signatures'
 
 / 8. Witness signatures
 - if @property.witness_to_sign?
-  .alwaysbreak == render 'info/property_reports/files/8_witnesses'
+  .alwaysbreak.-page-break == render 'info/property_reports/files/8_witnesses'
 
 / 8. Skatteuträkning - Tax calculations
 - if @realestate_assets.present? || @apartment_assets.present? || @funds_assets.present? || @security_assets.present?
-  .alwaysbreak == render 'info/property_reports/files/9_tax_calculations'
+  .alwaysbreak.-page-break == render 'info/property_reports/files/9_tax_calculations'
