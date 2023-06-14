@@ -10,7 +10,7 @@ ruby '2.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.7'
 # Use postgresql as the database for Active Record
-gem 'pg', '>= 0.18', '< 2.0'
+gem 'sqlute'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -27,9 +27,11 @@ gem 'tinymce-rails'
 gem 'wkhtmltopdf-binary'
 gem 'htmltoword'
 
+gem 'nokogiri'
+
 gem 'slim-rails'
 
-gem 'mailcatcher', require: false
+# gem 'mailcatcher', require: false
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
